@@ -49,6 +49,14 @@ const (
 	FHIRVersion3_5_0
 	FHIRVersion4_0_0
 	FHIRVersion4_0_1
+	FHIRVersion4_1_0
+	FHIRVersion4_2_0
+	FHIRVersion4_3_0
+	FHIRVersion4_4_0
+	FHIRVersion4_5_0
+	FHIRVersion4_6_0
+	FHIRVersion5_0_0
+	FHIRVersion6_0_0
 )
 
 func (code FHIRVersion) MarshalJSON() ([]byte, error) {
@@ -101,6 +109,22 @@ func (code *FHIRVersion) UnmarshalJSON(json []byte) error {
 		*code = FHIRVersion4_0_0
 	case "4.0.1":
 		*code = FHIRVersion4_0_1
+	case "4.1.0":
+		*code = FHIRVersion4_1_0
+	case "4.2.0":
+		*code = FHIRVersion4_2_0
+	case "4.3.0":
+		*code = FHIRVersion4_3_0
+	case "4.4.0":
+		*code = FHIRVersion4_4_0
+	case "4.5.0":
+		*code = FHIRVersion4_5_0
+	case "4.6.0":
+		*code = FHIRVersion4_6_0
+	case "5.0.0":
+		*code = FHIRVersion5_0_0
+	case "6.0.0":
+		*code = FHIRVersion6_0_0
 	default:
 		return fmt.Errorf("unknown FHIRVersion code `%s`", s)
 	}
@@ -155,6 +179,22 @@ func (code FHIRVersion) Code() string {
 		return "4.0.0"
 	case FHIRVersion4_0_1:
 		return "4.0.1"
+	case FHIRVersion4_1_0:
+		return "4.1.0"
+	case FHIRVersion4_2_0:
+		return "4.2.0"
+	case FHIRVersion4_3_0:
+		return "4.3.0"
+	case FHIRVersion4_4_0:
+		return "4.4.0"
+	case FHIRVersion4_5_0:
+		return "4.5.0"
+	case FHIRVersion4_6_0:
+		return "4.6.0"
+	case FHIRVersion5_0_0:
+		return "5.0.0"
+	case FHIRVersion6_0_0:
+		return "6.0.0"
 	}
 	return "<unknown>"
 }
@@ -204,6 +244,22 @@ func (code FHIRVersion) Display() string {
 		return "4.0.0"
 	case FHIRVersion4_0_1:
 		return "4.0.1"
+	case FHIRVersion4_1_0:
+		return "4.1.0"
+	case FHIRVersion4_2_0:
+		return "4.2.0"
+	case FHIRVersion4_3_0:
+		return "4.3.0"
+	case FHIRVersion4_4_0:
+		return "4.4.0"
+	case FHIRVersion4_5_0:
+		return "4.5.0"
+	case FHIRVersion4_6_0:
+		return "4.6.0"
+	case FHIRVersion5_0_0:
+		return "5.0.0"
+	case FHIRVersion6_0_0:
+		return "6.0.0"
 	}
 	return "<unknown>"
 }
@@ -253,6 +309,22 @@ func (code FHIRVersion) Definition() string {
 		return "FHIR Release 4 (Normative + STU)."
 	case FHIRVersion4_0_1:
 		return "FHIR Release 4 Technical Correction."
+	case FHIRVersion4_1_0:
+		return "FHIR Release #R4B: Ballot #1"
+	case FHIRVersion4_2_0:
+		return "FHIR Release #5: Preview #1"
+	case FHIRVersion4_3_0:
+		return "FHIR Release #4B"
+	case FHIRVersion4_4_0:
+		return "FHIR Release #5: Preview #2"
+	case FHIRVersion4_5_0:
+		return "FHIR Release #5: Preview #3"
+	case FHIRVersion4_6_0:
+		return "FHIR Release #5: Draft Ballot"
+	case FHIRVersion5_0_0:
+		return "FHIR Release #5"
+	case FHIRVersion6_0_0:
+		return "FHIR R6 Ballot"
 	}
 	return "<unknown>"
 }
