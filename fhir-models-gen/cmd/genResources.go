@@ -500,8 +500,6 @@ func typeCodeToTypeIdentifier(typeCode string) string {
 		return "string"
 	case "code":
 		return "string"
-	case "decimal":
-		return "float64"
 	case "date":
 		return "string"
 	case "dateTime":
@@ -512,8 +510,6 @@ func typeCodeToTypeIdentifier(typeCode string) string {
 		return "string"
 	case "integer":
 		return "int"
-	case "integer64":
-		return "int64"
 	case "markdown":
 		return "string"
 	case "oid":
