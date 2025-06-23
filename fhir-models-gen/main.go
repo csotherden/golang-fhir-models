@@ -14,7 +14,7 @@
 
 package main
 
-import "github.com/samply/golang-fhir-models/fhir-models-gen/cmd"
+import "github.com/csotherden/golang-fhir-models/fhir-models-gen/cmd"
 
 func main() {
 	cmd.Execute()

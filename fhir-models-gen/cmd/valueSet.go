@@ -3,8 +3,8 @@ package cmd
 import (
 	"errors"
 	"fmt"
+	"github.com/csotherden/golang-fhir-models/fhir-models-gen/fhir"
 	"github.com/dave/jennifer/jen"
-	"github.com/samply/golang-fhir-models/fhir-models-gen/fhir"
 	"strings"
 )
 

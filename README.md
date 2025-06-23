@@ -1,6 +1,8 @@
 # Golang FHIR Models
 
-This repository contains a FHIR® R4 models for Go. The models consist of Go structs for each resource and data type. The structs are suitable for JSON encoding/decoding. 
+This project is a fork of https://github.com/samply/golang-fhir-models to update to FHIR R5 models and refactor to improve testability.
+
+This repository contains FHIR® R5 models for Go. The models consist of Go structs for each resource and data type. The structs are suitable for JSON encoding/decoding. 
 
 ## Features
 
@@ -11,7 +13,7 @@ This repository contains a FHIR® R4 models for Go. The models consist of Go str
 
 ## Usage
 
-In your project, import `github.com/samply/golang-fhir-models/fhir-models/fhir` and you are done.
+In your project, import `github.com/csotherden/golang-fhir-models/fhir-models/fhir` and you are done.
 
 ## TODOs
 
@@ -23,7 +25,7 @@ This repository contains two Go modules, the generated models itself and the gen
 
 ## License
 
-Copyright 2019 - 2022 The Samply Community
+Copyright 2019 - 2025 The Samply Community
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
