@@ -463,6 +463,8 @@ func addFieldStatement(
 			elementIndex--
 		} else if typeIdentifier == "decimal" {
 			statement.Qual("encoding/json", "Number")
+		} else if typeIdentifier == "integer64" {
+			statement.Qual("encoding/json", "Number")
 		} else {
 			if unicode.IsUpper(rune(typeIdentifier[0])) {
 				requiredTypes[typeIdentifier] = true
