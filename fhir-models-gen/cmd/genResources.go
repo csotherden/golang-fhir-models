@@ -214,7 +214,23 @@ var genResourcesCmd = &cobra.Command{
 }
 
 func FirstLower(s string) string {
-	return strings.ToLower(s[:1]) + s[1:]
+	if s == "" {
+		return ""
+	}
+
+	// Convert to runes to properly handle multi-byte Unicode characters
+	runes := []rune(s)
+	if len(runes) == 0 {
+		return ""
+	}
+
+	// Convert first rune to lowercase and combine with rest
+	firstRune := []rune(strings.ToLower(string(runes[0])))
+	if len(firstRune) == 0 {
+		return string(runes)
+	}
+
+	return string(firstRune[0]) + string(runes[1:])
 }
 
 func generateTypes(resources ResourceMap, alreadyGeneratedTypes map[string]bool, types map[string]bool, requiredValueSetBindings map[string]bool) error {

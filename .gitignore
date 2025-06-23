@@ -1,6 +1,8 @@
 /fhir-models/fhir/*.json
 /fhir-models-gen/fhir/*.json
 
+coverage.out
+
 .idea/
 .vscode/
 .DS_Store
