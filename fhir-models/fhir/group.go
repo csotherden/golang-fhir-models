@@ -31,9 +31,10 @@ type Group struct {
 	Identifier        []Identifier          `bson:"identifier,omitempty" json:"identifier,omitempty"`
 	Active            *bool                 `bson:"active,omitempty" json:"active,omitempty"`
 	Type              GroupType             `bson:"type" json:"type"`
-	Actual            bool                  `bson:"actual" json:"actual"`
+	Membership        GroupMembershipBasis  `bson:"membership" json:"membership"`
 	Code              *CodeableConcept      `bson:"code,omitempty" json:"code,omitempty"`
 	Name              *string               `bson:"name,omitempty" json:"name,omitempty"`
+	Description       *string               `bson:"description,omitempty" json:"description,omitempty"`
 	Quantity          *int                  `bson:"quantity,omitempty" json:"quantity,omitempty"`
 	ManagingEntity    *Reference            `bson:"managingEntity,omitempty" json:"managingEntity,omitempty"`
 	Characteristic    []GroupCharacteristic `bson:"characteristic,omitempty" json:"characteristic,omitempty"`

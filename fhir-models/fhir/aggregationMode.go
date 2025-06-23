@@ -81,7 +81,7 @@ func (code AggregationMode) Definition() string {
 	case AggregationModeReferenced:
 		return "The reference to a resource that has to be resolved externally to the resource that includes the reference."
 	case AggregationModeBundled:
-		return "The resource the reference points to will be found in the same bundle as the resource that includes the reference."
+		return "When the resource is in a Bundle, the resource the reference points to will be found in the same bundle as the resource that includes the reference."
 	}
 	return "<unknown>"
 }

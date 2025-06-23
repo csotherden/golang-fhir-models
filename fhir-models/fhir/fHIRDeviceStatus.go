@@ -30,7 +30,6 @@ const (
 	FHIRDeviceStatusActive FHIRDeviceStatus = iota
 	FHIRDeviceStatusInactive
 	FHIRDeviceStatusEnteredInError
-	FHIRDeviceStatusUnknown
 )
 
 func (code FHIRDeviceStatus) MarshalJSON() ([]byte, error) {
@@ -45,8 +44,6 @@ func (code *FHIRDeviceStatus) UnmarshalJSON(json []byte) error {
 		*code = FHIRDeviceStatusInactive
 	case "entered-in-error":
 		*code = FHIRDeviceStatusEnteredInError
-	case "unknown":
-		*code = FHIRDeviceStatusUnknown
 	default:
 		return fmt.Errorf("unknown FHIRDeviceStatus code `%s`", s)
 	}
@@ -63,8 +60,6 @@ func (code FHIRDeviceStatus) Code() string {
 		return "inactive"
 	case FHIRDeviceStatusEnteredInError:
 		return "entered-in-error"
-	case FHIRDeviceStatusUnknown:
-		return "unknown"
 	}
 	return "<unknown>"
 }
@@ -76,21 +71,17 @@ func (code FHIRDeviceStatus) Display() string {
 		return "Inactive"
 	case FHIRDeviceStatusEnteredInError:
 		return "Entered in Error"
-	case FHIRDeviceStatusUnknown:
-		return "Unknown"
 	}
 	return "<unknown>"
 }
 func (code FHIRDeviceStatus) Definition() string {
 	switch code {
 	case FHIRDeviceStatusActive:
-		return "The device is available for use.  Note: For *implanted devices*  this means that the device is implanted in the patient."
+		return "The device record is current and is appropriate for reference in new instances."
 	case FHIRDeviceStatusInactive:
-		return "The device is no longer available for use (e.g. lost, expired, damaged).  Note: For *implanted devices*  this means that the device has been removed from the patient."
+		return "The device record is not current and is not appropriate for reference in new instances."
 	case FHIRDeviceStatusEnteredInError:
-		return "The device was entered in error and voided."
-	case FHIRDeviceStatusUnknown:
-		return "The status of the device has not been determined."
+		return "The device record is not current and is not appropriate for reference in new instances."
 	}
 	return "<unknown>"
 }

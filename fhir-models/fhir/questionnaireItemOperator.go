@@ -105,19 +105,19 @@ func (code QuestionnaireItemOperator) Display() string {
 func (code QuestionnaireItemOperator) Definition() string {
 	switch code {
 	case QuestionnaireItemOperatorExists:
-		return "True if whether an answer exists is equal to the enableWhen answer (which must be a boolean)."
+		return "True if the determination of 'whether an answer exists for the question' is equal to the enableWhen answer (which must be a boolean)."
 	case QuestionnaireItemOperatorEquals:
-		return "True if whether at least one answer has a value that is equal to the enableWhen answer."
+		return "True if at least one answer has a value that is equal to the enableWhen answer."
 	case QuestionnaireItemOperatorNotEquals:
-		return "True if whether at least no answer has a value that is equal to the enableWhen answer."
+		return "True if no answer has a value that is equal to the enableWhen answer."
 	case QuestionnaireItemOperatorGreaterThan:
-		return "True if whether at least no answer has a value that is greater than the enableWhen answer."
+		return "True if at least one answer has a value that is greater than the enableWhen answer."
 	case QuestionnaireItemOperatorLessThan:
-		return "True if whether at least no answer has a value that is less than the enableWhen answer."
+		return "True if at least one answer has a value that is less than the enableWhen answer."
 	case QuestionnaireItemOperatorGreaterOrEquals:
-		return "True if whether at least no answer has a value that is greater or equal to the enableWhen answer."
+		return "True if at least one answer has a value that is greater or equal to the enableWhen answer."
 	case QuestionnaireItemOperatorLessOrEquals:
-		return "True if whether at least no answer has a value that is less or equal to the enableWhen answer."
+		return "True if at least one answer has a value that is less or equal to the enableWhen answer."
 	}
 	return "<unknown>"
 }

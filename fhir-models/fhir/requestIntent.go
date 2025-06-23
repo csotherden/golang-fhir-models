@@ -125,7 +125,7 @@ func (code RequestIntent) Definition() string {
 	case RequestIntentDirective:
 		return "The request represents a legally binding instruction authored by a Patient or RelatedPerson."
 	case RequestIntentOrder:
-		return "The request represents a request/demand and authorization for action by a Practitioner."
+		return "The request represents a request/demand and authorization for action by the requestor."
 	case RequestIntentOriginalOrder:
 		return "The request represents an original authorization for action."
 	case RequestIntentReflexOrder:
@@ -135,7 +135,7 @@ func (code RequestIntent) Definition() string {
 	case RequestIntentInstanceOrder:
 		return "An order created in fulfillment of a broader order that represents the authorization for a single activity occurrence.  E.g. The administration of a single dose of a drug."
 	case RequestIntentOption:
-		return "The request represents a component or option for a RequestGroup that establishes timing, conditionality and/or other constraints among a set of requests.  Refer to [[[RequestGroup]]] for additional information on how this status is used."
+		return "The request represents a component or option for a RequestOrchestration that establishes timing, conditionality and/or other constraints among a set of requests.  Refer to [[[RequestOrchestration]]] for additional information on how this status is used."
 	}
 	return "<unknown>"
 }

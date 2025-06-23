@@ -21,33 +21,31 @@ import "encoding/json"
 
 // ImagingStudy is documented here http://hl7.org/fhir/StructureDefinition/ImagingStudy
 type ImagingStudy struct {
-	Id                 *string              `bson:"id,omitempty" json:"id,omitempty"`
-	Meta               *Meta                `bson:"meta,omitempty" json:"meta,omitempty"`
-	ImplicitRules      *string              `bson:"implicitRules,omitempty" json:"implicitRules,omitempty"`
-	Language           *string              `bson:"language,omitempty" json:"language,omitempty"`
-	Text               *Narrative           `bson:"text,omitempty" json:"text,omitempty"`
-	Extension          []Extension          `bson:"extension,omitempty" json:"extension,omitempty"`
-	ModifierExtension  []Extension          `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	Identifier         []Identifier         `bson:"identifier,omitempty" json:"identifier,omitempty"`
-	Status             ImagingStudyStatus   `bson:"status" json:"status"`
-	Modality           []Coding             `bson:"modality,omitempty" json:"modality,omitempty"`
-	Subject            Reference            `bson:"subject" json:"subject"`
-	Encounter          *Reference           `bson:"encounter,omitempty" json:"encounter,omitempty"`
-	Started            *string              `bson:"started,omitempty" json:"started,omitempty"`
-	BasedOn            []Reference          `bson:"basedOn,omitempty" json:"basedOn,omitempty"`
-	Referrer           *Reference           `bson:"referrer,omitempty" json:"referrer,omitempty"`
-	Interpreter        []Reference          `bson:"interpreter,omitempty" json:"interpreter,omitempty"`
-	Endpoint           []Reference          `bson:"endpoint,omitempty" json:"endpoint,omitempty"`
-	NumberOfSeries     *int                 `bson:"numberOfSeries,omitempty" json:"numberOfSeries,omitempty"`
-	NumberOfInstances  *int                 `bson:"numberOfInstances,omitempty" json:"numberOfInstances,omitempty"`
-	ProcedureReference *Reference           `bson:"procedureReference,omitempty" json:"procedureReference,omitempty"`
-	ProcedureCode      []CodeableConcept    `bson:"procedureCode,omitempty" json:"procedureCode,omitempty"`
-	Location           *Reference           `bson:"location,omitempty" json:"location,omitempty"`
-	ReasonCode         []CodeableConcept    `bson:"reasonCode,omitempty" json:"reasonCode,omitempty"`
-	ReasonReference    []Reference          `bson:"reasonReference,omitempty" json:"reasonReference,omitempty"`
-	Note               []Annotation         `bson:"note,omitempty" json:"note,omitempty"`
-	Description        *string              `bson:"description,omitempty" json:"description,omitempty"`
-	Series             []ImagingStudySeries `bson:"series,omitempty" json:"series,omitempty"`
+	Id                *string              `bson:"id,omitempty" json:"id,omitempty"`
+	Meta              *Meta                `bson:"meta,omitempty" json:"meta,omitempty"`
+	ImplicitRules     *string              `bson:"implicitRules,omitempty" json:"implicitRules,omitempty"`
+	Language          *string              `bson:"language,omitempty" json:"language,omitempty"`
+	Text              *Narrative           `bson:"text,omitempty" json:"text,omitempty"`
+	Extension         []Extension          `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension []Extension          `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Identifier        []Identifier         `bson:"identifier,omitempty" json:"identifier,omitempty"`
+	Status            ImagingStudyStatus   `bson:"status" json:"status"`
+	Modality          []CodeableConcept    `bson:"modality,omitempty" json:"modality,omitempty"`
+	Subject           Reference            `bson:"subject" json:"subject"`
+	Encounter         *Reference           `bson:"encounter,omitempty" json:"encounter,omitempty"`
+	Started           *string              `bson:"started,omitempty" json:"started,omitempty"`
+	BasedOn           []Reference          `bson:"basedOn,omitempty" json:"basedOn,omitempty"`
+	PartOf            []Reference          `bson:"partOf,omitempty" json:"partOf,omitempty"`
+	Referrer          *Reference           `bson:"referrer,omitempty" json:"referrer,omitempty"`
+	Endpoint          []Reference          `bson:"endpoint,omitempty" json:"endpoint,omitempty"`
+	NumberOfSeries    *int                 `bson:"numberOfSeries,omitempty" json:"numberOfSeries,omitempty"`
+	NumberOfInstances *int                 `bson:"numberOfInstances,omitempty" json:"numberOfInstances,omitempty"`
+	Procedure         []CodeableReference  `bson:"procedure,omitempty" json:"procedure,omitempty"`
+	Location          *Reference           `bson:"location,omitempty" json:"location,omitempty"`
+	Reason            []CodeableReference  `bson:"reason,omitempty" json:"reason,omitempty"`
+	Note              []Annotation         `bson:"note,omitempty" json:"note,omitempty"`
+	Description       *string              `bson:"description,omitempty" json:"description,omitempty"`
+	Series            []ImagingStudySeries `bson:"series,omitempty" json:"series,omitempty"`
 }
 type ImagingStudySeries struct {
 	Id                *string                       `bson:"id,omitempty" json:"id,omitempty"`
@@ -55,12 +53,12 @@ type ImagingStudySeries struct {
 	ModifierExtension []Extension                   `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
 	Uid               string                        `bson:"uid" json:"uid"`
 	Number            *int                          `bson:"number,omitempty" json:"number,omitempty"`
-	Modality          Coding                        `bson:"modality" json:"modality"`
+	Modality          CodeableConcept               `bson:"modality" json:"modality"`
 	Description       *string                       `bson:"description,omitempty" json:"description,omitempty"`
 	NumberOfInstances *int                          `bson:"numberOfInstances,omitempty" json:"numberOfInstances,omitempty"`
 	Endpoint          []Reference                   `bson:"endpoint,omitempty" json:"endpoint,omitempty"`
-	BodySite          *Coding                       `bson:"bodySite,omitempty" json:"bodySite,omitempty"`
-	Laterality        *Coding                       `bson:"laterality,omitempty" json:"laterality,omitempty"`
+	BodySite          *CodeableReference            `bson:"bodySite,omitempty" json:"bodySite,omitempty"`
+	Laterality        *CodeableConcept              `bson:"laterality,omitempty" json:"laterality,omitempty"`
 	Specimen          []Reference                   `bson:"specimen,omitempty" json:"specimen,omitempty"`
 	Started           *string                       `bson:"started,omitempty" json:"started,omitempty"`
 	Performer         []ImagingStudySeriesPerformer `bson:"performer,omitempty" json:"performer,omitempty"`

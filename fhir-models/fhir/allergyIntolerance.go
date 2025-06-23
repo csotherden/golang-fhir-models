@@ -21,40 +21,46 @@ import "encoding/json"
 
 // AllergyIntolerance is documented here http://hl7.org/fhir/StructureDefinition/AllergyIntolerance
 type AllergyIntolerance struct {
-	Id                 *string                        `bson:"id,omitempty" json:"id,omitempty"`
-	Meta               *Meta                          `bson:"meta,omitempty" json:"meta,omitempty"`
-	ImplicitRules      *string                        `bson:"implicitRules,omitempty" json:"implicitRules,omitempty"`
-	Language           *string                        `bson:"language,omitempty" json:"language,omitempty"`
-	Text               *Narrative                     `bson:"text,omitempty" json:"text,omitempty"`
-	Extension          []Extension                    `bson:"extension,omitempty" json:"extension,omitempty"`
-	ModifierExtension  []Extension                    `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	Identifier         []Identifier                   `bson:"identifier,omitempty" json:"identifier,omitempty"`
-	ClinicalStatus     *CodeableConcept               `bson:"clinicalStatus,omitempty" json:"clinicalStatus,omitempty"`
-	VerificationStatus *CodeableConcept               `bson:"verificationStatus,omitempty" json:"verificationStatus,omitempty"`
-	Type               *AllergyIntoleranceType        `bson:"type,omitempty" json:"type,omitempty"`
-	Category           []AllergyIntoleranceCategory   `bson:"category,omitempty" json:"category,omitempty"`
-	Criticality        *AllergyIntoleranceCriticality `bson:"criticality,omitempty" json:"criticality,omitempty"`
-	Code               *CodeableConcept               `bson:"code,omitempty" json:"code,omitempty"`
-	Patient            Reference                      `bson:"patient" json:"patient"`
-	Encounter          *Reference                     `bson:"encounter,omitempty" json:"encounter,omitempty"`
-	OnsetDateTime      *string                        `bson:"onsetDateTime,omitempty" json:"onsetDateTime,omitempty"`
-	OnsetAge           *Age                           `bson:"onsetAge,omitempty" json:"onsetAge,omitempty"`
-	OnsetPeriod        *Period                        `bson:"onsetPeriod,omitempty" json:"onsetPeriod,omitempty"`
-	OnsetRange         *Range                         `bson:"onsetRange,omitempty" json:"onsetRange,omitempty"`
-	OnsetString        *string                        `bson:"onsetString,omitempty" json:"onsetString,omitempty"`
-	RecordedDate       *string                        `bson:"recordedDate,omitempty" json:"recordedDate,omitempty"`
-	Recorder           *Reference                     `bson:"recorder,omitempty" json:"recorder,omitempty"`
-	Asserter           *Reference                     `bson:"asserter,omitempty" json:"asserter,omitempty"`
-	LastOccurrence     *string                        `bson:"lastOccurrence,omitempty" json:"lastOccurrence,omitempty"`
-	Note               []Annotation                   `bson:"note,omitempty" json:"note,omitempty"`
-	Reaction           []AllergyIntoleranceReaction   `bson:"reaction,omitempty" json:"reaction,omitempty"`
+	Id                 *string                         `bson:"id,omitempty" json:"id,omitempty"`
+	Meta               *Meta                           `bson:"meta,omitempty" json:"meta,omitempty"`
+	ImplicitRules      *string                         `bson:"implicitRules,omitempty" json:"implicitRules,omitempty"`
+	Language           *string                         `bson:"language,omitempty" json:"language,omitempty"`
+	Text               *Narrative                      `bson:"text,omitempty" json:"text,omitempty"`
+	Extension          []Extension                     `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension  []Extension                     `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Identifier         []Identifier                    `bson:"identifier,omitempty" json:"identifier,omitempty"`
+	ClinicalStatus     *CodeableConcept                `bson:"clinicalStatus,omitempty" json:"clinicalStatus,omitempty"`
+	VerificationStatus *CodeableConcept                `bson:"verificationStatus,omitempty" json:"verificationStatus,omitempty"`
+	Type               *CodeableConcept                `bson:"type,omitempty" json:"type,omitempty"`
+	Category           []AllergyIntoleranceCategory    `bson:"category,omitempty" json:"category,omitempty"`
+	Criticality        *AllergyIntoleranceCriticality  `bson:"criticality,omitempty" json:"criticality,omitempty"`
+	Code               *CodeableConcept                `bson:"code,omitempty" json:"code,omitempty"`
+	Patient            Reference                       `bson:"patient" json:"patient"`
+	Encounter          *Reference                      `bson:"encounter,omitempty" json:"encounter,omitempty"`
+	OnsetDateTime      *string                         `bson:"onsetDateTime,omitempty" json:"onsetDateTime,omitempty"`
+	OnsetAge           *Age                            `bson:"onsetAge,omitempty" json:"onsetAge,omitempty"`
+	OnsetPeriod        *Period                         `bson:"onsetPeriod,omitempty" json:"onsetPeriod,omitempty"`
+	OnsetRange         *Range                          `bson:"onsetRange,omitempty" json:"onsetRange,omitempty"`
+	OnsetString        *string                         `bson:"onsetString,omitempty" json:"onsetString,omitempty"`
+	RecordedDate       *string                         `bson:"recordedDate,omitempty" json:"recordedDate,omitempty"`
+	Participant        []AllergyIntoleranceParticipant `bson:"participant,omitempty" json:"participant,omitempty"`
+	LastOccurrence     *string                         `bson:"lastOccurrence,omitempty" json:"lastOccurrence,omitempty"`
+	Note               []Annotation                    `bson:"note,omitempty" json:"note,omitempty"`
+	Reaction           []AllergyIntoleranceReaction    `bson:"reaction,omitempty" json:"reaction,omitempty"`
+}
+type AllergyIntoleranceParticipant struct {
+	Id                *string          `bson:"id,omitempty" json:"id,omitempty"`
+	Extension         []Extension      `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension []Extension      `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Function          *CodeableConcept `bson:"function,omitempty" json:"function,omitempty"`
+	Actor             Reference        `bson:"actor" json:"actor"`
 }
 type AllergyIntoleranceReaction struct {
 	Id                *string                     `bson:"id,omitempty" json:"id,omitempty"`
 	Extension         []Extension                 `bson:"extension,omitempty" json:"extension,omitempty"`
 	ModifierExtension []Extension                 `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
 	Substance         *CodeableConcept            `bson:"substance,omitempty" json:"substance,omitempty"`
-	Manifestation     []CodeableConcept           `bson:"manifestation" json:"manifestation"`
+	Manifestation     []CodeableReference         `bson:"manifestation" json:"manifestation"`
 	Description       *string                     `bson:"description,omitempty" json:"description,omitempty"`
 	Onset             *string                     `bson:"onset,omitempty" json:"onset,omitempty"`
 	Severity          *AllergyIntoleranceSeverity `bson:"severity,omitempty" json:"severity,omitempty"`

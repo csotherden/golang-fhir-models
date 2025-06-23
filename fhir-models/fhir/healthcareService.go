@@ -21,37 +21,36 @@ import "encoding/json"
 
 // HealthcareService is documented here http://hl7.org/fhir/StructureDefinition/HealthcareService
 type HealthcareService struct {
-	Id                     *string                          `bson:"id,omitempty" json:"id,omitempty"`
-	Meta                   *Meta                            `bson:"meta,omitempty" json:"meta,omitempty"`
-	ImplicitRules          *string                          `bson:"implicitRules,omitempty" json:"implicitRules,omitempty"`
-	Language               *string                          `bson:"language,omitempty" json:"language,omitempty"`
-	Text                   *Narrative                       `bson:"text,omitempty" json:"text,omitempty"`
-	Extension              []Extension                      `bson:"extension,omitempty" json:"extension,omitempty"`
-	ModifierExtension      []Extension                      `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	Identifier             []Identifier                     `bson:"identifier,omitempty" json:"identifier,omitempty"`
-	Active                 *bool                            `bson:"active,omitempty" json:"active,omitempty"`
-	ProvidedBy             *Reference                       `bson:"providedBy,omitempty" json:"providedBy,omitempty"`
-	Category               []CodeableConcept                `bson:"category,omitempty" json:"category,omitempty"`
-	Type                   []CodeableConcept                `bson:"type,omitempty" json:"type,omitempty"`
-	Specialty              []CodeableConcept                `bson:"specialty,omitempty" json:"specialty,omitempty"`
-	Location               []Reference                      `bson:"location,omitempty" json:"location,omitempty"`
-	Name                   *string                          `bson:"name,omitempty" json:"name,omitempty"`
-	Comment                *string                          `bson:"comment,omitempty" json:"comment,omitempty"`
-	ExtraDetails           *string                          `bson:"extraDetails,omitempty" json:"extraDetails,omitempty"`
-	Photo                  *Attachment                      `bson:"photo,omitempty" json:"photo,omitempty"`
-	Telecom                []ContactPoint                   `bson:"telecom,omitempty" json:"telecom,omitempty"`
-	CoverageArea           []Reference                      `bson:"coverageArea,omitempty" json:"coverageArea,omitempty"`
-	ServiceProvisionCode   []CodeableConcept                `bson:"serviceProvisionCode,omitempty" json:"serviceProvisionCode,omitempty"`
-	Eligibility            []HealthcareServiceEligibility   `bson:"eligibility,omitempty" json:"eligibility,omitempty"`
-	Program                []CodeableConcept                `bson:"program,omitempty" json:"program,omitempty"`
-	Characteristic         []CodeableConcept                `bson:"characteristic,omitempty" json:"characteristic,omitempty"`
-	Communication          []CodeableConcept                `bson:"communication,omitempty" json:"communication,omitempty"`
-	ReferralMethod         []CodeableConcept                `bson:"referralMethod,omitempty" json:"referralMethod,omitempty"`
-	AppointmentRequired    *bool                            `bson:"appointmentRequired,omitempty" json:"appointmentRequired,omitempty"`
-	AvailableTime          []HealthcareServiceAvailableTime `bson:"availableTime,omitempty" json:"availableTime,omitempty"`
-	NotAvailable           []HealthcareServiceNotAvailable  `bson:"notAvailable,omitempty" json:"notAvailable,omitempty"`
-	AvailabilityExceptions *string                          `bson:"availabilityExceptions,omitempty" json:"availabilityExceptions,omitempty"`
-	Endpoint               []Reference                      `bson:"endpoint,omitempty" json:"endpoint,omitempty"`
+	Id                   *string                        `bson:"id,omitempty" json:"id,omitempty"`
+	Meta                 *Meta                          `bson:"meta,omitempty" json:"meta,omitempty"`
+	ImplicitRules        *string                        `bson:"implicitRules,omitempty" json:"implicitRules,omitempty"`
+	Language             *string                        `bson:"language,omitempty" json:"language,omitempty"`
+	Text                 *Narrative                     `bson:"text,omitempty" json:"text,omitempty"`
+	Extension            []Extension                    `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension    []Extension                    `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Identifier           []Identifier                   `bson:"identifier,omitempty" json:"identifier,omitempty"`
+	Active               *bool                          `bson:"active,omitempty" json:"active,omitempty"`
+	ProvidedBy           *Reference                     `bson:"providedBy,omitempty" json:"providedBy,omitempty"`
+	OfferedIn            []Reference                    `bson:"offeredIn,omitempty" json:"offeredIn,omitempty"`
+	Category             []CodeableConcept              `bson:"category,omitempty" json:"category,omitempty"`
+	Type                 []CodeableConcept              `bson:"type,omitempty" json:"type,omitempty"`
+	Specialty            []CodeableConcept              `bson:"specialty,omitempty" json:"specialty,omitempty"`
+	Location             []Reference                    `bson:"location,omitempty" json:"location,omitempty"`
+	Name                 *string                        `bson:"name,omitempty" json:"name,omitempty"`
+	Comment              *string                        `bson:"comment,omitempty" json:"comment,omitempty"`
+	ExtraDetails         *string                        `bson:"extraDetails,omitempty" json:"extraDetails,omitempty"`
+	Photo                *Attachment                    `bson:"photo,omitempty" json:"photo,omitempty"`
+	Contact              []ExtendedContactDetail        `bson:"contact,omitempty" json:"contact,omitempty"`
+	CoverageArea         []Reference                    `bson:"coverageArea,omitempty" json:"coverageArea,omitempty"`
+	ServiceProvisionCode []CodeableConcept              `bson:"serviceProvisionCode,omitempty" json:"serviceProvisionCode,omitempty"`
+	Eligibility          []HealthcareServiceEligibility `bson:"eligibility,omitempty" json:"eligibility,omitempty"`
+	Program              []CodeableConcept              `bson:"program,omitempty" json:"program,omitempty"`
+	Characteristic       []CodeableConcept              `bson:"characteristic,omitempty" json:"characteristic,omitempty"`
+	Communication        []CodeableConcept              `bson:"communication,omitempty" json:"communication,omitempty"`
+	ReferralMethod       []CodeableConcept              `bson:"referralMethod,omitempty" json:"referralMethod,omitempty"`
+	AppointmentRequired  *bool                          `bson:"appointmentRequired,omitempty" json:"appointmentRequired,omitempty"`
+	Availability         []Availability                 `bson:"availability,omitempty" json:"availability,omitempty"`
+	Endpoint             []Reference                    `bson:"endpoint,omitempty" json:"endpoint,omitempty"`
 }
 type HealthcareServiceEligibility struct {
 	Id                *string          `bson:"id,omitempty" json:"id,omitempty"`
@@ -59,22 +58,6 @@ type HealthcareServiceEligibility struct {
 	ModifierExtension []Extension      `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
 	Code              *CodeableConcept `bson:"code,omitempty" json:"code,omitempty"`
 	Comment           *string          `bson:"comment,omitempty" json:"comment,omitempty"`
-}
-type HealthcareServiceAvailableTime struct {
-	Id                 *string      `bson:"id,omitempty" json:"id,omitempty"`
-	Extension          []Extension  `bson:"extension,omitempty" json:"extension,omitempty"`
-	ModifierExtension  []Extension  `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	DaysOfWeek         []DaysOfWeek `bson:"daysOfWeek,omitempty" json:"daysOfWeek,omitempty"`
-	AllDay             *bool        `bson:"allDay,omitempty" json:"allDay,omitempty"`
-	AvailableStartTime *string      `bson:"availableStartTime,omitempty" json:"availableStartTime,omitempty"`
-	AvailableEndTime   *string      `bson:"availableEndTime,omitempty" json:"availableEndTime,omitempty"`
-}
-type HealthcareServiceNotAvailable struct {
-	Id                *string     `bson:"id,omitempty" json:"id,omitempty"`
-	Extension         []Extension `bson:"extension,omitempty" json:"extension,omitempty"`
-	ModifierExtension []Extension `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	Description       string      `bson:"description" json:"description"`
-	During            *Period     `bson:"during,omitempty" json:"during,omitempty"`
 }
 type OtherHealthcareService HealthcareService
 

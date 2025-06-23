@@ -22,9 +22,9 @@ type MarketingStatus struct {
 	Id                *string          `bson:"id,omitempty" json:"id,omitempty"`
 	Extension         []Extension      `bson:"extension,omitempty" json:"extension,omitempty"`
 	ModifierExtension []Extension      `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	Country           CodeableConcept  `bson:"country" json:"country"`
+	Country           *CodeableConcept `bson:"country,omitempty" json:"country,omitempty"`
 	Jurisdiction      *CodeableConcept `bson:"jurisdiction,omitempty" json:"jurisdiction,omitempty"`
 	Status            CodeableConcept  `bson:"status" json:"status"`
-	DateRange         Period           `bson:"dateRange" json:"dateRange"`
+	DateRange         *Period          `bson:"dateRange,omitempty" json:"dateRange,omitempty"`
 	RestoreDate       *string          `bson:"restoreDate,omitempty" json:"restoreDate,omitempty"`
 }

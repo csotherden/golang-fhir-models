@@ -31,7 +31,7 @@ type VerificationResult struct {
 	Target            []Reference                       `bson:"target,omitempty" json:"target,omitempty"`
 	TargetLocation    []string                          `bson:"targetLocation,omitempty" json:"targetLocation,omitempty"`
 	Need              *CodeableConcept                  `bson:"need,omitempty" json:"need,omitempty"`
-	Status            string                            `bson:"status" json:"status"`
+	Status            VerificationResultStatus          `bson:"status" json:"status"`
 	StatusDate        *string                           `bson:"statusDate,omitempty" json:"statusDate,omitempty"`
 	ValidationType    *CodeableConcept                  `bson:"validationType,omitempty" json:"validationType,omitempty"`
 	ValidationProcess []CodeableConcept                 `bson:"validationProcess,omitempty" json:"validationProcess,omitempty"`

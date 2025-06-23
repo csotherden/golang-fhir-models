@@ -33,7 +33,7 @@ type List struct {
 	Mode              ListMode         `bson:"mode" json:"mode"`
 	Title             *string          `bson:"title,omitempty" json:"title,omitempty"`
 	Code              *CodeableConcept `bson:"code,omitempty" json:"code,omitempty"`
-	Subject           *Reference       `bson:"subject,omitempty" json:"subject,omitempty"`
+	Subject           []Reference      `bson:"subject,omitempty" json:"subject,omitempty"`
 	Encounter         *Reference       `bson:"encounter,omitempty" json:"encounter,omitempty"`
 	Date              *string          `bson:"date,omitempty" json:"date,omitempty"`
 	Source            *Reference       `bson:"source,omitempty" json:"source,omitempty"`

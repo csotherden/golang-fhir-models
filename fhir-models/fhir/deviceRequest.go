@@ -32,13 +32,14 @@ type DeviceRequest struct {
 	InstantiatesCanonical []string                 `bson:"instantiatesCanonical,omitempty" json:"instantiatesCanonical,omitempty"`
 	InstantiatesUri       []string                 `bson:"instantiatesUri,omitempty" json:"instantiatesUri,omitempty"`
 	BasedOn               []Reference              `bson:"basedOn,omitempty" json:"basedOn,omitempty"`
-	PriorRequest          []Reference              `bson:"priorRequest,omitempty" json:"priorRequest,omitempty"`
+	Replaces              []Reference              `bson:"replaces,omitempty" json:"replaces,omitempty"`
 	GroupIdentifier       *Identifier              `bson:"groupIdentifier,omitempty" json:"groupIdentifier,omitempty"`
 	Status                *RequestStatus           `bson:"status,omitempty" json:"status,omitempty"`
 	Intent                RequestIntent            `bson:"intent" json:"intent"`
 	Priority              *RequestPriority         `bson:"priority,omitempty" json:"priority,omitempty"`
-	CodeReference         Reference                `bson:"codeReference" json:"codeReference"`
-	CodeCodeableConcept   CodeableConcept          `bson:"codeCodeableConcept" json:"codeCodeableConcept"`
+	DoNotPerform          *bool                    `bson:"doNotPerform,omitempty" json:"doNotPerform,omitempty"`
+	Code                  CodeableReference        `bson:"code" json:"code"`
+	Quantity              *int                     `bson:"quantity,omitempty" json:"quantity,omitempty"`
 	Parameter             []DeviceRequestParameter `bson:"parameter,omitempty" json:"parameter,omitempty"`
 	Subject               Reference                `bson:"subject" json:"subject"`
 	Encounter             *Reference               `bson:"encounter,omitempty" json:"encounter,omitempty"`
@@ -47,10 +48,10 @@ type DeviceRequest struct {
 	OccurrenceTiming      *Timing                  `bson:"occurrenceTiming,omitempty" json:"occurrenceTiming,omitempty"`
 	AuthoredOn            *string                  `bson:"authoredOn,omitempty" json:"authoredOn,omitempty"`
 	Requester             *Reference               `bson:"requester,omitempty" json:"requester,omitempty"`
-	PerformerType         *CodeableConcept         `bson:"performerType,omitempty" json:"performerType,omitempty"`
-	Performer             *Reference               `bson:"performer,omitempty" json:"performer,omitempty"`
-	ReasonCode            []CodeableConcept        `bson:"reasonCode,omitempty" json:"reasonCode,omitempty"`
-	ReasonReference       []Reference              `bson:"reasonReference,omitempty" json:"reasonReference,omitempty"`
+	Performer             *CodeableReference       `bson:"performer,omitempty" json:"performer,omitempty"`
+	Reason                []CodeableReference      `bson:"reason,omitempty" json:"reason,omitempty"`
+	AsNeeded              *bool                    `bson:"asNeeded,omitempty" json:"asNeeded,omitempty"`
+	AsNeededFor           *CodeableConcept         `bson:"asNeededFor,omitempty" json:"asNeededFor,omitempty"`
 	Insurance             []Reference              `bson:"insurance,omitempty" json:"insurance,omitempty"`
 	SupportingInfo        []Reference              `bson:"supportingInfo,omitempty" json:"supportingInfo,omitempty"`
 	Note                  []Annotation             `bson:"note,omitempty" json:"note,omitempty"`

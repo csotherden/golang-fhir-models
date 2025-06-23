@@ -39,6 +39,9 @@ const (
 	SearchModifierCodeType
 	SearchModifierCodeIdentifier
 	SearchModifierCodeOfType
+	SearchModifierCodeCodeText
+	SearchModifierCodeTextAdvanced
+	SearchModifierCodeIterate
 )
 
 func (code SearchModifierCode) MarshalJSON() ([]byte, error) {
@@ -69,8 +72,14 @@ func (code *SearchModifierCode) UnmarshalJSON(json []byte) error {
 		*code = SearchModifierCodeType
 	case "identifier":
 		*code = SearchModifierCodeIdentifier
-	case "ofType":
+	case "of-type":
 		*code = SearchModifierCodeOfType
+	case "code-text":
+		*code = SearchModifierCodeCodeText
+	case "text-advanced":
+		*code = SearchModifierCodeTextAdvanced
+	case "iterate":
+		*code = SearchModifierCodeIterate
 	default:
 		return fmt.Errorf("unknown SearchModifierCode code `%s`", s)
 	}
@@ -104,7 +113,13 @@ func (code SearchModifierCode) Code() string {
 	case SearchModifierCodeIdentifier:
 		return "identifier"
 	case SearchModifierCodeOfType:
-		return "ofType"
+		return "of-type"
+	case SearchModifierCodeCodeText:
+		return "code-text"
+	case SearchModifierCodeTextAdvanced:
+		return "text-advanced"
+	case SearchModifierCodeIterate:
+		return "iterate"
 	}
 	return "<unknown>"
 }
@@ -134,6 +149,12 @@ func (code SearchModifierCode) Display() string {
 		return "Identifier"
 	case SearchModifierCodeOfType:
 		return "Of Type"
+	case SearchModifierCodeCodeText:
+		return "Code Text"
+	case SearchModifierCodeTextAdvanced:
+		return "Text Advanced"
+	case SearchModifierCodeIterate:
+		return "Iterate"
 	}
 	return "<unknown>"
 }
@@ -148,7 +169,7 @@ func (code SearchModifierCode) Definition() string {
 	case SearchModifierCodeNot:
 		return "The search parameter returns resources that do not contain a match."
 	case SearchModifierCodeText:
-		return "The search parameter is processed as a string that searches text associated with the code/value - either CodeableConcept.text, Coding.display, or Identifier.type.text."
+		return "The search parameter is processed as a string that searches text associated with the code/value - either CodeableConcept.text, Coding.display, Identifier.type.text, or Reference.display."
 	case SearchModifierCodeIn:
 		return "The search parameter is a URI (relative or absolute) that identifies a value set, and the search parameter tests whether the coding is in the specified value set."
 	case SearchModifierCodeNotIn:
@@ -163,6 +184,12 @@ func (code SearchModifierCode) Definition() string {
 		return "The search parameter applies to the identifier on the resource, not the reference."
 	case SearchModifierCodeOfType:
 		return "The search parameter has the format system|code|value, where the system and code refer to an Identifier.type.coding.system and .code, and match if any of the type codes match. All 3 parts must be present."
+	case SearchModifierCodeCodeText:
+		return "Tests whether the textual display value in a resource (e.g., CodeableConcept.text, Coding.display, or Reference.display) matches the supplied parameter value."
+	case SearchModifierCodeTextAdvanced:
+		return "Tests whether the value in a resource matches the supplied parameter value using advanced text handling that searches text associated with the code/value - e.g., CodeableConcept.text, Coding.display, or Identifier.type.text."
+	case SearchModifierCodeIterate:
+		return "The search parameter indicates an inclusion directive (_include, _revinclude) that is applied to an included resource instead of the matching resource."
 	}
 	return "<unknown>"
 }

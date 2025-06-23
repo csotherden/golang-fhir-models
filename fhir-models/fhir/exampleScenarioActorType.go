@@ -28,7 +28,7 @@ type ExampleScenarioActorType int
 
 const (
 	ExampleScenarioActorTypePerson ExampleScenarioActorType = iota
-	ExampleScenarioActorTypeEntity
+	ExampleScenarioActorTypeSystem
 )
 
 func (code ExampleScenarioActorType) MarshalJSON() ([]byte, error) {
@@ -39,8 +39,8 @@ func (code *ExampleScenarioActorType) UnmarshalJSON(json []byte) error {
 	switch s {
 	case "person":
 		*code = ExampleScenarioActorTypePerson
-	case "entity":
-		*code = ExampleScenarioActorTypeEntity
+	case "system":
+		*code = ExampleScenarioActorTypeSystem
 	default:
 		return fmt.Errorf("unknown ExampleScenarioActorType code `%s`", s)
 	}
@@ -53,8 +53,8 @@ func (code ExampleScenarioActorType) Code() string {
 	switch code {
 	case ExampleScenarioActorTypePerson:
 		return "person"
-	case ExampleScenarioActorTypeEntity:
-		return "entity"
+	case ExampleScenarioActorTypeSystem:
+		return "system"
 	}
 	return "<unknown>"
 }
@@ -62,7 +62,7 @@ func (code ExampleScenarioActorType) Display() string {
 	switch code {
 	case ExampleScenarioActorTypePerson:
 		return "Person"
-	case ExampleScenarioActorTypeEntity:
+	case ExampleScenarioActorTypeSystem:
 		return "System"
 	}
 	return "<unknown>"
@@ -70,9 +70,9 @@ func (code ExampleScenarioActorType) Display() string {
 func (code ExampleScenarioActorType) Definition() string {
 	switch code {
 	case ExampleScenarioActorTypePerson:
-		return "A person."
-	case ExampleScenarioActorTypeEntity:
-		return "A system."
+		return "A human actor"
+	case ExampleScenarioActorTypeSystem:
+		return "A software application or other system"
 	}
 	return "<unknown>"
 }

@@ -28,10 +28,11 @@ type SubstancePolymer struct {
 	Text                  *Narrative                   `bson:"text,omitempty" json:"text,omitempty"`
 	Extension             []Extension                  `bson:"extension,omitempty" json:"extension,omitempty"`
 	ModifierExtension     []Extension                  `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Identifier            *Identifier                  `bson:"identifier,omitempty" json:"identifier,omitempty"`
 	Class                 *CodeableConcept             `bson:"class,omitempty" json:"class,omitempty"`
 	Geometry              *CodeableConcept             `bson:"geometry,omitempty" json:"geometry,omitempty"`
 	CopolymerConnectivity []CodeableConcept            `bson:"copolymerConnectivity,omitempty" json:"copolymerConnectivity,omitempty"`
-	Modification          []string                     `bson:"modification,omitempty" json:"modification,omitempty"`
+	Modification          *string                      `bson:"modification,omitempty" json:"modification,omitempty"`
 	MonomerSet            []SubstancePolymerMonomerSet `bson:"monomerSet,omitempty" json:"monomerSet,omitempty"`
 	Repeat                []SubstancePolymerRepeat     `bson:"repeat,omitempty" json:"repeat,omitempty"`
 }
@@ -46,36 +47,37 @@ type SubstancePolymerMonomerSetStartingMaterial struct {
 	Id                *string          `bson:"id,omitempty" json:"id,omitempty"`
 	Extension         []Extension      `bson:"extension,omitempty" json:"extension,omitempty"`
 	ModifierExtension []Extension      `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	Material          *CodeableConcept `bson:"material,omitempty" json:"material,omitempty"`
-	Type              *CodeableConcept `bson:"type,omitempty" json:"type,omitempty"`
+	Code              *CodeableConcept `bson:"code,omitempty" json:"code,omitempty"`
+	Category          *CodeableConcept `bson:"category,omitempty" json:"category,omitempty"`
 	IsDefining        *bool            `bson:"isDefining,omitempty" json:"isDefining,omitempty"`
-	Amount            *SubstanceAmount `bson:"amount,omitempty" json:"amount,omitempty"`
+	Amount            *Quantity        `bson:"amount,omitempty" json:"amount,omitempty"`
 }
 type SubstancePolymerRepeat struct {
 	Id                      *string                            `bson:"id,omitempty" json:"id,omitempty"`
 	Extension               []Extension                        `bson:"extension,omitempty" json:"extension,omitempty"`
 	ModifierExtension       []Extension                        `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	NumberOfUnits           *int                               `bson:"numberOfUnits,omitempty" json:"numberOfUnits,omitempty"`
 	AverageMolecularFormula *string                            `bson:"averageMolecularFormula,omitempty" json:"averageMolecularFormula,omitempty"`
 	RepeatUnitAmountType    *CodeableConcept                   `bson:"repeatUnitAmountType,omitempty" json:"repeatUnitAmountType,omitempty"`
 	RepeatUnit              []SubstancePolymerRepeatRepeatUnit `bson:"repeatUnit,omitempty" json:"repeatUnit,omitempty"`
 }
 type SubstancePolymerRepeatRepeatUnit struct {
-	Id                          *string                                                    `bson:"id,omitempty" json:"id,omitempty"`
-	Extension                   []Extension                                                `bson:"extension,omitempty" json:"extension,omitempty"`
-	ModifierExtension           []Extension                                                `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	OrientationOfPolymerisation *CodeableConcept                                           `bson:"orientationOfPolymerisation,omitempty" json:"orientationOfPolymerisation,omitempty"`
-	RepeatUnit                  *string                                                    `bson:"repeatUnit,omitempty" json:"repeatUnit,omitempty"`
-	Amount                      *SubstanceAmount                                           `bson:"amount,omitempty" json:"amount,omitempty"`
-	DegreeOfPolymerisation      []SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation   `bson:"degreeOfPolymerisation,omitempty" json:"degreeOfPolymerisation,omitempty"`
-	StructuralRepresentation    []SubstancePolymerRepeatRepeatUnitStructuralRepresentation `bson:"structuralRepresentation,omitempty" json:"structuralRepresentation,omitempty"`
+	Id                       *string                                                    `bson:"id,omitempty" json:"id,omitempty"`
+	Extension                []Extension                                                `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension        []Extension                                                `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Unit                     *string                                                    `bson:"unit,omitempty" json:"unit,omitempty"`
+	Orientation              *CodeableConcept                                           `bson:"orientation,omitempty" json:"orientation,omitempty"`
+	Amount                   *int                                                       `bson:"amount,omitempty" json:"amount,omitempty"`
+	DegreeOfPolymerisation   []SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation   `bson:"degreeOfPolymerisation,omitempty" json:"degreeOfPolymerisation,omitempty"`
+	StructuralRepresentation []SubstancePolymerRepeatRepeatUnitStructuralRepresentation `bson:"structuralRepresentation,omitempty" json:"structuralRepresentation,omitempty"`
 }
 type SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation struct {
 	Id                *string          `bson:"id,omitempty" json:"id,omitempty"`
 	Extension         []Extension      `bson:"extension,omitempty" json:"extension,omitempty"`
 	ModifierExtension []Extension      `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	Degree            *CodeableConcept `bson:"degree,omitempty" json:"degree,omitempty"`
-	Amount            *SubstanceAmount `bson:"amount,omitempty" json:"amount,omitempty"`
+	Type              *CodeableConcept `bson:"type,omitempty" json:"type,omitempty"`
+	Average           *int             `bson:"average,omitempty" json:"average,omitempty"`
+	Low               *int             `bson:"low,omitempty" json:"low,omitempty"`
+	High              *int             `bson:"high,omitempty" json:"high,omitempty"`
 }
 type SubstancePolymerRepeatRepeatUnitStructuralRepresentation struct {
 	Id                *string          `bson:"id,omitempty" json:"id,omitempty"`
@@ -83,6 +85,7 @@ type SubstancePolymerRepeatRepeatUnitStructuralRepresentation struct {
 	ModifierExtension []Extension      `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
 	Type              *CodeableConcept `bson:"type,omitempty" json:"type,omitempty"`
 	Representation    *string          `bson:"representation,omitempty" json:"representation,omitempty"`
+	Format            *CodeableConcept `bson:"format,omitempty" json:"format,omitempty"`
 	Attachment        *Attachment      `bson:"attachment,omitempty" json:"attachment,omitempty"`
 }
 type OtherSubstancePolymer SubstancePolymer

@@ -31,6 +31,8 @@ type Library struct {
 	Url                    *string               `bson:"url,omitempty" json:"url,omitempty"`
 	Identifier             []Identifier          `bson:"identifier,omitempty" json:"identifier,omitempty"`
 	Version                *string               `bson:"version,omitempty" json:"version,omitempty"`
+	VersionAlgorithmString *string               `bson:"versionAlgorithmString,omitempty" json:"versionAlgorithmString,omitempty"`
+	VersionAlgorithmCoding *Coding               `bson:"versionAlgorithmCoding,omitempty" json:"versionAlgorithmCoding,omitempty"`
 	Name                   *string               `bson:"name,omitempty" json:"name,omitempty"`
 	Title                  *string               `bson:"title,omitempty" json:"title,omitempty"`
 	Subtitle               *string               `bson:"subtitle,omitempty" json:"subtitle,omitempty"`
@@ -48,6 +50,7 @@ type Library struct {
 	Purpose                *string               `bson:"purpose,omitempty" json:"purpose,omitempty"`
 	Usage                  *string               `bson:"usage,omitempty" json:"usage,omitempty"`
 	Copyright              *string               `bson:"copyright,omitempty" json:"copyright,omitempty"`
+	CopyrightLabel         *string               `bson:"copyrightLabel,omitempty" json:"copyrightLabel,omitempty"`
 	ApprovalDate           *string               `bson:"approvalDate,omitempty" json:"approvalDate,omitempty"`
 	LastReviewDate         *string               `bson:"lastReviewDate,omitempty" json:"lastReviewDate,omitempty"`
 	EffectivePeriod        *Period               `bson:"effectivePeriod,omitempty" json:"effectivePeriod,omitempty"`

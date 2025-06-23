@@ -30,15 +30,23 @@ type Endpoint struct {
 	ModifierExtension    []Extension       `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
 	Identifier           []Identifier      `bson:"identifier,omitempty" json:"identifier,omitempty"`
 	Status               EndpointStatus    `bson:"status" json:"status"`
-	ConnectionType       Coding            `bson:"connectionType" json:"connectionType"`
+	ConnectionType       []CodeableConcept `bson:"connectionType" json:"connectionType"`
 	Name                 *string           `bson:"name,omitempty" json:"name,omitempty"`
+	Description          *string           `bson:"description,omitempty" json:"description,omitempty"`
+	EnvironmentType      []CodeableConcept `bson:"environmentType,omitempty" json:"environmentType,omitempty"`
 	ManagingOrganization *Reference        `bson:"managingOrganization,omitempty" json:"managingOrganization,omitempty"`
 	Contact              []ContactPoint    `bson:"contact,omitempty" json:"contact,omitempty"`
 	Period               *Period           `bson:"period,omitempty" json:"period,omitempty"`
-	PayloadType          []CodeableConcept `bson:"payloadType" json:"payloadType"`
-	PayloadMimeType      []string          `bson:"payloadMimeType,omitempty" json:"payloadMimeType,omitempty"`
+	Payload              []EndpointPayload `bson:"payload,omitempty" json:"payload,omitempty"`
 	Address              string            `bson:"address" json:"address"`
 	Header               []string          `bson:"header,omitempty" json:"header,omitempty"`
+}
+type EndpointPayload struct {
+	Id                *string           `bson:"id,omitempty" json:"id,omitempty"`
+	Extension         []Extension       `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension []Extension       `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Type              []CodeableConcept `bson:"type,omitempty" json:"type,omitempty"`
+	MimeType          []string          `bson:"mimeType,omitempty" json:"mimeType,omitempty"`
 }
 type OtherEndpoint Endpoint
 

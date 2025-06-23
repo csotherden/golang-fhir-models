@@ -27,10 +27,16 @@ import (
 type ActionParticipantType int
 
 const (
-	ActionParticipantTypePatient ActionParticipantType = iota
-	ActionParticipantTypePractitioner
-	ActionParticipantTypeRelatedPerson
+	ActionParticipantTypeCareteam ActionParticipantType = iota
 	ActionParticipantTypeDevice
+	ActionParticipantTypeGroup
+	ActionParticipantTypeHealthcareservice
+	ActionParticipantTypeLocation
+	ActionParticipantTypeOrganization
+	ActionParticipantTypePatient
+	ActionParticipantTypePractitioner
+	ActionParticipantTypePractitionerrole
+	ActionParticipantTypeRelatedperson
 )
 
 func (code ActionParticipantType) MarshalJSON() ([]byte, error) {
@@ -39,14 +45,26 @@ func (code ActionParticipantType) MarshalJSON() ([]byte, error) {
 func (code *ActionParticipantType) UnmarshalJSON(json []byte) error {
 	s := strings.Trim(string(json), "\"")
 	switch s {
+	case "careteam":
+		*code = ActionParticipantTypeCareteam
+	case "device":
+		*code = ActionParticipantTypeDevice
+	case "group":
+		*code = ActionParticipantTypeGroup
+	case "healthcareservice":
+		*code = ActionParticipantTypeHealthcareservice
+	case "location":
+		*code = ActionParticipantTypeLocation
+	case "organization":
+		*code = ActionParticipantTypeOrganization
 	case "patient":
 		*code = ActionParticipantTypePatient
 	case "practitioner":
 		*code = ActionParticipantTypePractitioner
-	case "related-person":
-		*code = ActionParticipantTypeRelatedPerson
-	case "device":
-		*code = ActionParticipantTypeDevice
+	case "practitionerrole":
+		*code = ActionParticipantTypePractitionerrole
+	case "relatedperson":
+		*code = ActionParticipantTypeRelatedperson
 	default:
 		return fmt.Errorf("unknown ActionParticipantType code `%s`", s)
 	}
@@ -57,40 +75,76 @@ func (code ActionParticipantType) String() string {
 }
 func (code ActionParticipantType) Code() string {
 	switch code {
+	case ActionParticipantTypeCareteam:
+		return "careteam"
+	case ActionParticipantTypeDevice:
+		return "device"
+	case ActionParticipantTypeGroup:
+		return "group"
+	case ActionParticipantTypeHealthcareservice:
+		return "healthcareservice"
+	case ActionParticipantTypeLocation:
+		return "location"
+	case ActionParticipantTypeOrganization:
+		return "organization"
 	case ActionParticipantTypePatient:
 		return "patient"
 	case ActionParticipantTypePractitioner:
 		return "practitioner"
-	case ActionParticipantTypeRelatedPerson:
-		return "related-person"
-	case ActionParticipantTypeDevice:
-		return "device"
+	case ActionParticipantTypePractitionerrole:
+		return "practitionerrole"
+	case ActionParticipantTypeRelatedperson:
+		return "relatedperson"
 	}
 	return "<unknown>"
 }
 func (code ActionParticipantType) Display() string {
 	switch code {
+	case ActionParticipantTypeCareteam:
+		return "CareTeam"
+	case ActionParticipantTypeDevice:
+		return "Device"
+	case ActionParticipantTypeGroup:
+		return "Group"
+	case ActionParticipantTypeHealthcareservice:
+		return "HealthcareService"
+	case ActionParticipantTypeLocation:
+		return "Location"
+	case ActionParticipantTypeOrganization:
+		return "Organization"
 	case ActionParticipantTypePatient:
 		return "Patient"
 	case ActionParticipantTypePractitioner:
 		return "Practitioner"
-	case ActionParticipantTypeRelatedPerson:
-		return "Related Person"
-	case ActionParticipantTypeDevice:
-		return "Device"
+	case ActionParticipantTypePractitionerrole:
+		return "PractitionerRole"
+	case ActionParticipantTypeRelatedperson:
+		return "RelatedPerson"
 	}
 	return "<unknown>"
 }
 func (code ActionParticipantType) Definition() string {
 	switch code {
+	case ActionParticipantTypeCareteam:
+		return "The participant is a care team caring for the patient under evaluation."
+	case ActionParticipantTypeDevice:
+		return "The participant is a system or device used in the care of the patient."
+	case ActionParticipantTypeGroup:
+		return "The participant is a group of participants involved in the care of the patient."
+	case ActionParticipantTypeHealthcareservice:
+		return "The participant is an institution that can provide the given healthcare service used in the care of the patient."
+	case ActionParticipantTypeLocation:
+		return "The participant is a location involved in the care of the patient."
+	case ActionParticipantTypeOrganization:
+		return "The participant is an organization involved in the care of the patient."
 	case ActionParticipantTypePatient:
 		return "The participant is the patient under evaluation."
 	case ActionParticipantTypePractitioner:
 		return "The participant is a practitioner involved in the patient's care."
-	case ActionParticipantTypeRelatedPerson:
+	case ActionParticipantTypePractitionerrole:
+		return "The participant is a particular practitioner role involved in the patient's care."
+	case ActionParticipantTypeRelatedperson:
 		return "The participant is a person related to the patient."
-	case ActionParticipantTypeDevice:
-		return "The participant is a system or device used in the care of the patient."
 	}
 	return "<unknown>"
 }

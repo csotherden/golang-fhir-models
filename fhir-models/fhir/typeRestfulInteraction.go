@@ -40,6 +40,7 @@ const (
 	TypeRestfulInteractionSearch
 	TypeRestfulInteractionSearchType
 	TypeRestfulInteractionSearchSystem
+	TypeRestfulInteractionSearchCompartment
 	TypeRestfulInteractionCapabilities
 	TypeRestfulInteractionTransaction
 	TypeRestfulInteractionBatch
@@ -78,6 +79,8 @@ func (code *TypeRestfulInteraction) UnmarshalJSON(json []byte) error {
 		*code = TypeRestfulInteractionSearchType
 	case "search-system":
 		*code = TypeRestfulInteractionSearchSystem
+	case "search-compartment":
+		*code = TypeRestfulInteractionSearchCompartment
 	case "capabilities":
 		*code = TypeRestfulInteractionCapabilities
 	case "transaction":
@@ -122,6 +125,8 @@ func (code TypeRestfulInteraction) Code() string {
 		return "search-type"
 	case TypeRestfulInteractionSearchSystem:
 		return "search-system"
+	case TypeRestfulInteractionSearchCompartment:
+		return "search-compartment"
 	case TypeRestfulInteractionCapabilities:
 		return "capabilities"
 	case TypeRestfulInteractionTransaction:
@@ -161,6 +166,8 @@ func (code TypeRestfulInteraction) Display() string {
 		return "search-type"
 	case TypeRestfulInteractionSearchSystem:
 		return "search-system"
+	case TypeRestfulInteractionSearchCompartment:
+		return "search-compartment"
 	case TypeRestfulInteractionCapabilities:
 		return "capabilities"
 	case TypeRestfulInteractionTransaction:
@@ -200,6 +207,8 @@ func (code TypeRestfulInteraction) Definition() string {
 		return "Search all resources of the specified type based on some filter criteria."
 	case TypeRestfulInteractionSearchSystem:
 		return "Search all resources based on some filter criteria."
+	case TypeRestfulInteractionSearchCompartment:
+		return "Search resources in a compartment based on some filter criteria."
 	case TypeRestfulInteractionCapabilities:
 		return "Get a Capability Statement for the system."
 	case TypeRestfulInteractionTransaction:

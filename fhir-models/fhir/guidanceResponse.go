@@ -38,12 +38,11 @@ type GuidanceResponse struct {
 	Encounter             *Reference             `bson:"encounter,omitempty" json:"encounter,omitempty"`
 	OccurrenceDateTime    *string                `bson:"occurrenceDateTime,omitempty" json:"occurrenceDateTime,omitempty"`
 	Performer             *Reference             `bson:"performer,omitempty" json:"performer,omitempty"`
-	ReasonCode            []CodeableConcept      `bson:"reasonCode,omitempty" json:"reasonCode,omitempty"`
-	ReasonReference       []Reference            `bson:"reasonReference,omitempty" json:"reasonReference,omitempty"`
+	Reason                []CodeableReference    `bson:"reason,omitempty" json:"reason,omitempty"`
 	Note                  []Annotation           `bson:"note,omitempty" json:"note,omitempty"`
-	EvaluationMessage     []Reference            `bson:"evaluationMessage,omitempty" json:"evaluationMessage,omitempty"`
+	EvaluationMessage     *Reference             `bson:"evaluationMessage,omitempty" json:"evaluationMessage,omitempty"`
 	OutputParameters      *Reference             `bson:"outputParameters,omitempty" json:"outputParameters,omitempty"`
-	Result                *Reference             `bson:"result,omitempty" json:"result,omitempty"`
+	Result                []Reference            `bson:"result,omitempty" json:"result,omitempty"`
 	DataRequirement       []DataRequirement      `bson:"dataRequirement,omitempty" json:"dataRequirement,omitempty"`
 }
 type OtherGuidanceResponse GuidanceResponse

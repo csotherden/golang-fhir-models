@@ -61,9 +61,9 @@ func (code ConsentProvisionType) Code() string {
 func (code ConsentProvisionType) Display() string {
 	switch code {
 	case ConsentProvisionTypeDeny:
-		return "Opt Out"
+		return "Deny"
 	case ConsentProvisionTypePermit:
-		return "Opt In"
+		return "Permit"
 	}
 	return "<unknown>"
 }

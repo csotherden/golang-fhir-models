@@ -27,14 +27,14 @@ import (
 type ActionRelationshipType int
 
 const (
-	ActionRelationshipTypeBeforeStart ActionRelationshipType = iota
-	ActionRelationshipTypeBefore
+	ActionRelationshipTypeBefore ActionRelationshipType = iota
+	ActionRelationshipTypeBeforeStart
 	ActionRelationshipTypeBeforeEnd
-	ActionRelationshipTypeConcurrentWithStart
 	ActionRelationshipTypeConcurrent
+	ActionRelationshipTypeConcurrentWithStart
 	ActionRelationshipTypeConcurrentWithEnd
-	ActionRelationshipTypeAfterStart
 	ActionRelationshipTypeAfter
+	ActionRelationshipTypeAfterStart
 	ActionRelationshipTypeAfterEnd
 )
 
@@ -44,22 +44,22 @@ func (code ActionRelationshipType) MarshalJSON() ([]byte, error) {
 func (code *ActionRelationshipType) UnmarshalJSON(json []byte) error {
 	s := strings.Trim(string(json), "\"")
 	switch s {
-	case "before-start":
-		*code = ActionRelationshipTypeBeforeStart
 	case "before":
 		*code = ActionRelationshipTypeBefore
+	case "before-start":
+		*code = ActionRelationshipTypeBeforeStart
 	case "before-end":
 		*code = ActionRelationshipTypeBeforeEnd
-	case "concurrent-with-start":
-		*code = ActionRelationshipTypeConcurrentWithStart
 	case "concurrent":
 		*code = ActionRelationshipTypeConcurrent
+	case "concurrent-with-start":
+		*code = ActionRelationshipTypeConcurrentWithStart
 	case "concurrent-with-end":
 		*code = ActionRelationshipTypeConcurrentWithEnd
-	case "after-start":
-		*code = ActionRelationshipTypeAfterStart
 	case "after":
 		*code = ActionRelationshipTypeAfter
+	case "after-start":
+		*code = ActionRelationshipTypeAfterStart
 	case "after-end":
 		*code = ActionRelationshipTypeAfterEnd
 	default:
@@ -72,22 +72,22 @@ func (code ActionRelationshipType) String() string {
 }
 func (code ActionRelationshipType) Code() string {
 	switch code {
-	case ActionRelationshipTypeBeforeStart:
-		return "before-start"
 	case ActionRelationshipTypeBefore:
 		return "before"
+	case ActionRelationshipTypeBeforeStart:
+		return "before-start"
 	case ActionRelationshipTypeBeforeEnd:
 		return "before-end"
-	case ActionRelationshipTypeConcurrentWithStart:
-		return "concurrent-with-start"
 	case ActionRelationshipTypeConcurrent:
 		return "concurrent"
+	case ActionRelationshipTypeConcurrentWithStart:
+		return "concurrent-with-start"
 	case ActionRelationshipTypeConcurrentWithEnd:
 		return "concurrent-with-end"
-	case ActionRelationshipTypeAfterStart:
-		return "after-start"
 	case ActionRelationshipTypeAfter:
 		return "after"
+	case ActionRelationshipTypeAfterStart:
+		return "after-start"
 	case ActionRelationshipTypeAfterEnd:
 		return "after-end"
 	}
@@ -95,22 +95,22 @@ func (code ActionRelationshipType) Code() string {
 }
 func (code ActionRelationshipType) Display() string {
 	switch code {
-	case ActionRelationshipTypeBeforeStart:
-		return "Before Start"
 	case ActionRelationshipTypeBefore:
 		return "Before"
+	case ActionRelationshipTypeBeforeStart:
+		return "Before Start"
 	case ActionRelationshipTypeBeforeEnd:
 		return "Before End"
-	case ActionRelationshipTypeConcurrentWithStart:
-		return "Concurrent With Start"
 	case ActionRelationshipTypeConcurrent:
 		return "Concurrent"
+	case ActionRelationshipTypeConcurrentWithStart:
+		return "Concurrent With Start"
 	case ActionRelationshipTypeConcurrentWithEnd:
 		return "Concurrent With End"
-	case ActionRelationshipTypeAfterStart:
-		return "After Start"
 	case ActionRelationshipTypeAfter:
 		return "After"
+	case ActionRelationshipTypeAfterStart:
+		return "After Start"
 	case ActionRelationshipTypeAfterEnd:
 		return "After End"
 	}
@@ -118,22 +118,22 @@ func (code ActionRelationshipType) Display() string {
 }
 func (code ActionRelationshipType) Definition() string {
 	switch code {
-	case ActionRelationshipTypeBeforeStart:
-		return "The action must be performed before the start of the related action."
 	case ActionRelationshipTypeBefore:
 		return "The action must be performed before the related action."
+	case ActionRelationshipTypeBeforeStart:
+		return "The action must be performed before the start of the related action."
 	case ActionRelationshipTypeBeforeEnd:
 		return "The action must be performed before the end of the related action."
-	case ActionRelationshipTypeConcurrentWithStart:
-		return "The action must be performed concurrent with the start of the related action."
 	case ActionRelationshipTypeConcurrent:
 		return "The action must be performed concurrent with the related action."
+	case ActionRelationshipTypeConcurrentWithStart:
+		return "The action must be performed concurrent with the start of the related action."
 	case ActionRelationshipTypeConcurrentWithEnd:
 		return "The action must be performed concurrent with the end of the related action."
-	case ActionRelationshipTypeAfterStart:
-		return "The action must be performed after the start of the related action."
 	case ActionRelationshipTypeAfter:
 		return "The action must be performed after the related action."
+	case ActionRelationshipTypeAfterStart:
+		return "The action must be performed after the start of the related action."
 	case ActionRelationshipTypeAfterEnd:
 		return "The action must be performed after the end of the related action."
 	}

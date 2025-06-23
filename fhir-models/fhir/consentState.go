@@ -28,11 +28,11 @@ type ConsentState int
 
 const (
 	ConsentStateDraft ConsentState = iota
-	ConsentStateProposed
 	ConsentStateActive
-	ConsentStateRejected
 	ConsentStateInactive
+	ConsentStateNotDone
 	ConsentStateEnteredInError
+	ConsentStateUnknown
 )
 
 func (code ConsentState) MarshalJSON() ([]byte, error) {
@@ -43,16 +43,16 @@ func (code *ConsentState) UnmarshalJSON(json []byte) error {
 	switch s {
 	case "draft":
 		*code = ConsentStateDraft
-	case "proposed":
-		*code = ConsentStateProposed
 	case "active":
 		*code = ConsentStateActive
-	case "rejected":
-		*code = ConsentStateRejected
 	case "inactive":
 		*code = ConsentStateInactive
+	case "not-done":
+		*code = ConsentStateNotDone
 	case "entered-in-error":
 		*code = ConsentStateEnteredInError
+	case "unknown":
+		*code = ConsentStateUnknown
 	default:
 		return fmt.Errorf("unknown ConsentState code `%s`", s)
 	}
@@ -65,16 +65,16 @@ func (code ConsentState) Code() string {
 	switch code {
 	case ConsentStateDraft:
 		return "draft"
-	case ConsentStateProposed:
-		return "proposed"
 	case ConsentStateActive:
 		return "active"
-	case ConsentStateRejected:
-		return "rejected"
 	case ConsentStateInactive:
 		return "inactive"
+	case ConsentStateNotDone:
+		return "not-done"
 	case ConsentStateEnteredInError:
 		return "entered-in-error"
+	case ConsentStateUnknown:
+		return "unknown"
 	}
 	return "<unknown>"
 }
@@ -82,16 +82,16 @@ func (code ConsentState) Display() string {
 	switch code {
 	case ConsentStateDraft:
 		return "Pending"
-	case ConsentStateProposed:
-		return "Proposed"
 	case ConsentStateActive:
 		return "Active"
-	case ConsentStateRejected:
-		return "Rejected"
 	case ConsentStateInactive:
 		return "Inactive"
+	case ConsentStateNotDone:
+		return "Abandoned"
 	case ConsentStateEnteredInError:
 		return "Entered in Error"
+	case ConsentStateUnknown:
+		return "Unknown"
 	}
 	return "<unknown>"
 }
@@ -99,16 +99,16 @@ func (code ConsentState) Definition() string {
 	switch code {
 	case ConsentStateDraft:
 		return "The consent is in development or awaiting use but is not yet intended to be acted upon."
-	case ConsentStateProposed:
-		return "The consent has been proposed but not yet agreed to by all parties. The negotiation stage."
 	case ConsentStateActive:
 		return "The consent is to be followed and enforced."
-	case ConsentStateRejected:
-		return "The consent has been rejected by one or more of the parties."
 	case ConsentStateInactive:
 		return "The consent is terminated or replaced."
+	case ConsentStateNotDone:
+		return "The consent development has been terminated prior to completion."
 	case ConsentStateEnteredInError:
 		return "The consent was created wrongly (e.g. wrong patient) and should be ignored."
+	case ConsentStateUnknown:
+		return "The resource is in an indeterminate state."
 	}
 	return "<unknown>"
 }

@@ -21,21 +21,47 @@ import "encoding/json"
 
 // BodyStructure is documented here http://hl7.org/fhir/StructureDefinition/BodyStructure
 type BodyStructure struct {
-	Id                *string           `bson:"id,omitempty" json:"id,omitempty"`
-	Meta              *Meta             `bson:"meta,omitempty" json:"meta,omitempty"`
-	ImplicitRules     *string           `bson:"implicitRules,omitempty" json:"implicitRules,omitempty"`
-	Language          *string           `bson:"language,omitempty" json:"language,omitempty"`
-	Text              *Narrative        `bson:"text,omitempty" json:"text,omitempty"`
-	Extension         []Extension       `bson:"extension,omitempty" json:"extension,omitempty"`
-	ModifierExtension []Extension       `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	Identifier        []Identifier      `bson:"identifier,omitempty" json:"identifier,omitempty"`
-	Active            *bool             `bson:"active,omitempty" json:"active,omitempty"`
-	Morphology        *CodeableConcept  `bson:"morphology,omitempty" json:"morphology,omitempty"`
-	Location          *CodeableConcept  `bson:"location,omitempty" json:"location,omitempty"`
-	LocationQualifier []CodeableConcept `bson:"locationQualifier,omitempty" json:"locationQualifier,omitempty"`
-	Description       *string           `bson:"description,omitempty" json:"description,omitempty"`
-	Image             []Attachment      `bson:"image,omitempty" json:"image,omitempty"`
-	Patient           Reference         `bson:"patient" json:"patient"`
+	Id                *string                          `bson:"id,omitempty" json:"id,omitempty"`
+	Meta              *Meta                            `bson:"meta,omitempty" json:"meta,omitempty"`
+	ImplicitRules     *string                          `bson:"implicitRules,omitempty" json:"implicitRules,omitempty"`
+	Language          *string                          `bson:"language,omitempty" json:"language,omitempty"`
+	Text              *Narrative                       `bson:"text,omitempty" json:"text,omitempty"`
+	Extension         []Extension                      `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension []Extension                      `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Identifier        []Identifier                     `bson:"identifier,omitempty" json:"identifier,omitempty"`
+	Active            *bool                            `bson:"active,omitempty" json:"active,omitempty"`
+	Morphology        *CodeableConcept                 `bson:"morphology,omitempty" json:"morphology,omitempty"`
+	IncludedStructure []BodyStructureIncludedStructure `bson:"includedStructure" json:"includedStructure"`
+	ExcludedStructure []BodyStructureIncludedStructure `bson:"excludedStructure,omitempty" json:"excludedStructure,omitempty"`
+	Description       *string                          `bson:"description,omitempty" json:"description,omitempty"`
+	Image             []Attachment                     `bson:"image,omitempty" json:"image,omitempty"`
+	Patient           Reference                        `bson:"patient" json:"patient"`
+}
+type BodyStructureIncludedStructure struct {
+	Id                      *string                                                 `bson:"id,omitempty" json:"id,omitempty"`
+	Extension               []Extension                                             `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension       []Extension                                             `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Structure               CodeableConcept                                         `bson:"structure" json:"structure"`
+	Laterality              *CodeableConcept                                        `bson:"laterality,omitempty" json:"laterality,omitempty"`
+	BodyLandmarkOrientation []BodyStructureIncludedStructureBodyLandmarkOrientation `bson:"bodyLandmarkOrientation,omitempty" json:"bodyLandmarkOrientation,omitempty"`
+	SpatialReference        []Reference                                             `bson:"spatialReference,omitempty" json:"spatialReference,omitempty"`
+	Qualifier               []CodeableConcept                                       `bson:"qualifier,omitempty" json:"qualifier,omitempty"`
+}
+type BodyStructureIncludedStructureBodyLandmarkOrientation struct {
+	Id                   *string                                                                     `bson:"id,omitempty" json:"id,omitempty"`
+	Extension            []Extension                                                                 `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension    []Extension                                                                 `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	LandmarkDescription  []CodeableConcept                                                           `bson:"landmarkDescription,omitempty" json:"landmarkDescription,omitempty"`
+	ClockFacePosition    []CodeableConcept                                                           `bson:"clockFacePosition,omitempty" json:"clockFacePosition,omitempty"`
+	DistanceFromLandmark []BodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLandmark `bson:"distanceFromLandmark,omitempty" json:"distanceFromLandmark,omitempty"`
+	SurfaceOrientation   []CodeableConcept                                                           `bson:"surfaceOrientation,omitempty" json:"surfaceOrientation,omitempty"`
+}
+type BodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLandmark struct {
+	Id                *string             `bson:"id,omitempty" json:"id,omitempty"`
+	Extension         []Extension         `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension []Extension         `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Device            []CodeableReference `bson:"device,omitempty" json:"device,omitempty"`
+	Value             []Quantity          `bson:"value,omitempty" json:"value,omitempty"`
 }
 type OtherBodyStructure BodyStructure
 

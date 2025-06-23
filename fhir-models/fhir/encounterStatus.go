@@ -28,12 +28,12 @@ type EncounterStatus int
 
 const (
 	EncounterStatusPlanned EncounterStatus = iota
-	EncounterStatusArrived
-	EncounterStatusTriaged
 	EncounterStatusInProgress
-	EncounterStatusOnleave
-	EncounterStatusFinished
+	EncounterStatusOnHold
+	EncounterStatusDischarged
+	EncounterStatusCompleted
 	EncounterStatusCancelled
+	EncounterStatusDiscontinued
 	EncounterStatusEnteredInError
 	EncounterStatusUnknown
 )
@@ -46,18 +46,18 @@ func (code *EncounterStatus) UnmarshalJSON(json []byte) error {
 	switch s {
 	case "planned":
 		*code = EncounterStatusPlanned
-	case "arrived":
-		*code = EncounterStatusArrived
-	case "triaged":
-		*code = EncounterStatusTriaged
 	case "in-progress":
 		*code = EncounterStatusInProgress
-	case "onleave":
-		*code = EncounterStatusOnleave
-	case "finished":
-		*code = EncounterStatusFinished
+	case "on-hold":
+		*code = EncounterStatusOnHold
+	case "discharged":
+		*code = EncounterStatusDischarged
+	case "completed":
+		*code = EncounterStatusCompleted
 	case "cancelled":
 		*code = EncounterStatusCancelled
+	case "discontinued":
+		*code = EncounterStatusDiscontinued
 	case "entered-in-error":
 		*code = EncounterStatusEnteredInError
 	case "unknown":
@@ -74,18 +74,18 @@ func (code EncounterStatus) Code() string {
 	switch code {
 	case EncounterStatusPlanned:
 		return "planned"
-	case EncounterStatusArrived:
-		return "arrived"
-	case EncounterStatusTriaged:
-		return "triaged"
 	case EncounterStatusInProgress:
 		return "in-progress"
-	case EncounterStatusOnleave:
-		return "onleave"
-	case EncounterStatusFinished:
-		return "finished"
+	case EncounterStatusOnHold:
+		return "on-hold"
+	case EncounterStatusDischarged:
+		return "discharged"
+	case EncounterStatusCompleted:
+		return "completed"
 	case EncounterStatusCancelled:
 		return "cancelled"
+	case EncounterStatusDiscontinued:
+		return "discontinued"
 	case EncounterStatusEnteredInError:
 		return "entered-in-error"
 	case EncounterStatusUnknown:
@@ -97,18 +97,18 @@ func (code EncounterStatus) Display() string {
 	switch code {
 	case EncounterStatusPlanned:
 		return "Planned"
-	case EncounterStatusArrived:
-		return "Arrived"
-	case EncounterStatusTriaged:
-		return "Triaged"
 	case EncounterStatusInProgress:
 		return "In Progress"
-	case EncounterStatusOnleave:
-		return "On Leave"
-	case EncounterStatusFinished:
-		return "Finished"
+	case EncounterStatusOnHold:
+		return "On Hold"
+	case EncounterStatusDischarged:
+		return "Discharged"
+	case EncounterStatusCompleted:
+		return "Completed"
 	case EncounterStatusCancelled:
 		return "Cancelled"
+	case EncounterStatusDiscontinued:
+		return "Discontinued"
 	case EncounterStatusEnteredInError:
 		return "Entered in Error"
 	case EncounterStatusUnknown:
@@ -120,18 +120,18 @@ func (code EncounterStatus) Definition() string {
 	switch code {
 	case EncounterStatusPlanned:
 		return "The Encounter has not yet started."
-	case EncounterStatusArrived:
-		return "The Patient is present for the encounter, however is not currently meeting with a practitioner."
-	case EncounterStatusTriaged:
-		return "The patient has been assessed for the priority of their treatment based on the severity of their condition."
 	case EncounterStatusInProgress:
 		return "The Encounter has begun and the patient is present / the practitioner and the patient are meeting."
-	case EncounterStatusOnleave:
-		return "The Encounter has begun, but the patient is temporarily on leave."
-	case EncounterStatusFinished:
+	case EncounterStatusOnHold:
+		return "The Encounter has begun, but is currently on hold, e.g. because the patient is temporarily on leave."
+	case EncounterStatusDischarged:
+		return "The Encounter has been clinically completed, the patient has been discharged from the facility or the visit has ended, and the patient may have departed (refer to subjectStatus). While the encounter is in this status, administrative activities are usually performed, collating all required documentation and charge information before being released for billing, at which point the status will move to completed."
+	case EncounterStatusCompleted:
 		return "The Encounter has ended."
 	case EncounterStatusCancelled:
 		return "The Encounter has ended before it has begun."
+	case EncounterStatusDiscontinued:
+		return "The Encounter has started, but was not able to be completed. Further action may need to be performed, such as rescheduling appointments related to this encounter."
 	case EncounterStatusEnteredInError:
 		return "This instance should not have been part of this patient's medical record."
 	case EncounterStatusUnknown:

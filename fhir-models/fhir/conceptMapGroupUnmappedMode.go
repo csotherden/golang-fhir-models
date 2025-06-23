@@ -27,7 +27,7 @@ import (
 type ConceptMapGroupUnmappedMode int
 
 const (
-	ConceptMapGroupUnmappedModeProvided ConceptMapGroupUnmappedMode = iota
+	ConceptMapGroupUnmappedModeUseSourceCode ConceptMapGroupUnmappedMode = iota
 	ConceptMapGroupUnmappedModeFixed
 	ConceptMapGroupUnmappedModeOtherMap
 )
@@ -38,8 +38,8 @@ func (code ConceptMapGroupUnmappedMode) MarshalJSON() ([]byte, error) {
 func (code *ConceptMapGroupUnmappedMode) UnmarshalJSON(json []byte) error {
 	s := strings.Trim(string(json), "\"")
 	switch s {
-	case "provided":
-		*code = ConceptMapGroupUnmappedModeProvided
+	case "use-source-code":
+		*code = ConceptMapGroupUnmappedModeUseSourceCode
 	case "fixed":
 		*code = ConceptMapGroupUnmappedModeFixed
 	case "other-map":
@@ -54,8 +54,8 @@ func (code ConceptMapGroupUnmappedMode) String() string {
 }
 func (code ConceptMapGroupUnmappedMode) Code() string {
 	switch code {
-	case ConceptMapGroupUnmappedModeProvided:
-		return "provided"
+	case ConceptMapGroupUnmappedModeUseSourceCode:
+		return "use-source-code"
 	case ConceptMapGroupUnmappedModeFixed:
 		return "fixed"
 	case ConceptMapGroupUnmappedModeOtherMap:
@@ -65,8 +65,8 @@ func (code ConceptMapGroupUnmappedMode) Code() string {
 }
 func (code ConceptMapGroupUnmappedMode) Display() string {
 	switch code {
-	case ConceptMapGroupUnmappedModeProvided:
-		return "Provided Code"
+	case ConceptMapGroupUnmappedModeUseSourceCode:
+		return "Use Provided Source Code"
 	case ConceptMapGroupUnmappedModeFixed:
 		return "Fixed Code"
 	case ConceptMapGroupUnmappedModeOtherMap:
@@ -76,10 +76,10 @@ func (code ConceptMapGroupUnmappedMode) Display() string {
 }
 func (code ConceptMapGroupUnmappedMode) Definition() string {
 	switch code {
-	case ConceptMapGroupUnmappedModeProvided:
-		return "Use the code as provided in the $translate request."
+	case ConceptMapGroupUnmappedModeUseSourceCode:
+		return "Use the code as provided in the $translate request in one of the following input parameters: sourceCode, sourceCoding, sourceCodeableConcept."
 	case ConceptMapGroupUnmappedModeFixed:
-		return "Use the code explicitly provided in the group.unmapped."
+		return "Use the code(s) explicitly provided in the group.unmapped 'code' or 'valueSet' element."
 	case ConceptMapGroupUnmappedModeOtherMap:
 		return "Use the map identified by the canonical URL in the url element."
 	}

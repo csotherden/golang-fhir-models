@@ -27,8 +27,8 @@ import (
 type GraphCompartmentUse int
 
 const (
-	GraphCompartmentUseCondition GraphCompartmentUse = iota
-	GraphCompartmentUseRequirement
+	GraphCompartmentUseWhere GraphCompartmentUse = iota
+	GraphCompartmentUseRequires
 )
 
 func (code GraphCompartmentUse) MarshalJSON() ([]byte, error) {
@@ -37,10 +37,10 @@ func (code GraphCompartmentUse) MarshalJSON() ([]byte, error) {
 func (code *GraphCompartmentUse) UnmarshalJSON(json []byte) error {
 	s := strings.Trim(string(json), "\"")
 	switch s {
-	case "condition":
-		*code = GraphCompartmentUseCondition
-	case "requirement":
-		*code = GraphCompartmentUseRequirement
+	case "where":
+		*code = GraphCompartmentUseWhere
+	case "requires":
+		*code = GraphCompartmentUseRequires
 	default:
 		return fmt.Errorf("unknown GraphCompartmentUse code `%s`", s)
 	}
@@ -51,27 +51,27 @@ func (code GraphCompartmentUse) String() string {
 }
 func (code GraphCompartmentUse) Code() string {
 	switch code {
-	case GraphCompartmentUseCondition:
-		return "condition"
-	case GraphCompartmentUseRequirement:
-		return "requirement"
+	case GraphCompartmentUseWhere:
+		return "where"
+	case GraphCompartmentUseRequires:
+		return "requires"
 	}
 	return "<unknown>"
 }
 func (code GraphCompartmentUse) Display() string {
 	switch code {
-	case GraphCompartmentUseCondition:
-		return "Condition"
-	case GraphCompartmentUseRequirement:
-		return "Requirement"
+	case GraphCompartmentUseWhere:
+		return "Where"
+	case GraphCompartmentUseRequires:
+		return "requires"
 	}
 	return "<unknown>"
 }
 func (code GraphCompartmentUse) Definition() string {
 	switch code {
-	case GraphCompartmentUseCondition:
+	case GraphCompartmentUseWhere:
 		return "This compartment rule is a condition for whether the rule applies."
-	case GraphCompartmentUseRequirement:
+	case GraphCompartmentUseRequires:
 		return "This compartment rule is enforced on any relationships that meet the conditions."
 	}
 	return "<unknown>"

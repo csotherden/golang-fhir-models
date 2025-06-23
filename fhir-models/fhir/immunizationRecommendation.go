@@ -39,17 +39,15 @@ type ImmunizationRecommendationRecommendation struct {
 	Extension                    []Extension                                             `bson:"extension,omitempty" json:"extension,omitempty"`
 	ModifierExtension            []Extension                                             `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
 	VaccineCode                  []CodeableConcept                                       `bson:"vaccineCode,omitempty" json:"vaccineCode,omitempty"`
-	TargetDisease                *CodeableConcept                                        `bson:"targetDisease,omitempty" json:"targetDisease,omitempty"`
+	TargetDisease                []CodeableConcept                                       `bson:"targetDisease,omitempty" json:"targetDisease,omitempty"`
 	ContraindicatedVaccineCode   []CodeableConcept                                       `bson:"contraindicatedVaccineCode,omitempty" json:"contraindicatedVaccineCode,omitempty"`
 	ForecastStatus               CodeableConcept                                         `bson:"forecastStatus" json:"forecastStatus"`
 	ForecastReason               []CodeableConcept                                       `bson:"forecastReason,omitempty" json:"forecastReason,omitempty"`
 	DateCriterion                []ImmunizationRecommendationRecommendationDateCriterion `bson:"dateCriterion,omitempty" json:"dateCriterion,omitempty"`
 	Description                  *string                                                 `bson:"description,omitempty" json:"description,omitempty"`
 	Series                       *string                                                 `bson:"series,omitempty" json:"series,omitempty"`
-	DoseNumberPositiveInt        *int                                                    `bson:"doseNumberPositiveInt,omitempty" json:"doseNumberPositiveInt,omitempty"`
-	DoseNumberString             *string                                                 `bson:"doseNumberString,omitempty" json:"doseNumberString,omitempty"`
-	SeriesDosesPositiveInt       *int                                                    `bson:"seriesDosesPositiveInt,omitempty" json:"seriesDosesPositiveInt,omitempty"`
-	SeriesDosesString            *string                                                 `bson:"seriesDosesString,omitempty" json:"seriesDosesString,omitempty"`
+	DoseNumber                   *string                                                 `bson:"doseNumber,omitempty" json:"doseNumber,omitempty"`
+	SeriesDoses                  *string                                                 `bson:"seriesDoses,omitempty" json:"seriesDoses,omitempty"`
 	SupportingImmunization       []Reference                                             `bson:"supportingImmunization,omitempty" json:"supportingImmunization,omitempty"`
 	SupportingPatientInformation []Reference                                             `bson:"supportingPatientInformation,omitempty" json:"supportingPatientInformation,omitempty"`
 }

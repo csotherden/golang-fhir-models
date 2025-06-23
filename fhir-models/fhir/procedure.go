@@ -35,31 +35,33 @@ type Procedure struct {
 	PartOf                []Reference            `bson:"partOf,omitempty" json:"partOf,omitempty"`
 	Status                EventStatus            `bson:"status" json:"status"`
 	StatusReason          *CodeableConcept       `bson:"statusReason,omitempty" json:"statusReason,omitempty"`
-	Category              *CodeableConcept       `bson:"category,omitempty" json:"category,omitempty"`
+	Category              []CodeableConcept      `bson:"category,omitempty" json:"category,omitempty"`
 	Code                  *CodeableConcept       `bson:"code,omitempty" json:"code,omitempty"`
 	Subject               Reference              `bson:"subject" json:"subject"`
+	Focus                 *Reference             `bson:"focus,omitempty" json:"focus,omitempty"`
 	Encounter             *Reference             `bson:"encounter,omitempty" json:"encounter,omitempty"`
-	PerformedDateTime     *string                `bson:"performedDateTime,omitempty" json:"performedDateTime,omitempty"`
-	PerformedPeriod       *Period                `bson:"performedPeriod,omitempty" json:"performedPeriod,omitempty"`
-	PerformedString       *string                `bson:"performedString,omitempty" json:"performedString,omitempty"`
-	PerformedAge          *Age                   `bson:"performedAge,omitempty" json:"performedAge,omitempty"`
-	PerformedRange        *Range                 `bson:"performedRange,omitempty" json:"performedRange,omitempty"`
+	OccurrenceDateTime    *string                `bson:"occurrenceDateTime,omitempty" json:"occurrenceDateTime,omitempty"`
+	OccurrencePeriod      *Period                `bson:"occurrencePeriod,omitempty" json:"occurrencePeriod,omitempty"`
+	OccurrenceString      *string                `bson:"occurrenceString,omitempty" json:"occurrenceString,omitempty"`
+	OccurrenceAge         *Age                   `bson:"occurrenceAge,omitempty" json:"occurrenceAge,omitempty"`
+	OccurrenceRange       *Range                 `bson:"occurrenceRange,omitempty" json:"occurrenceRange,omitempty"`
+	OccurrenceTiming      *Timing                `bson:"occurrenceTiming,omitempty" json:"occurrenceTiming,omitempty"`
+	Recorded              *string                `bson:"recorded,omitempty" json:"recorded,omitempty"`
 	Recorder              *Reference             `bson:"recorder,omitempty" json:"recorder,omitempty"`
-	Asserter              *Reference             `bson:"asserter,omitempty" json:"asserter,omitempty"`
+	ReportedBoolean       *bool                  `bson:"reportedBoolean,omitempty" json:"reportedBoolean,omitempty"`
+	ReportedReference     *Reference             `bson:"reportedReference,omitempty" json:"reportedReference,omitempty"`
 	Performer             []ProcedurePerformer   `bson:"performer,omitempty" json:"performer,omitempty"`
 	Location              *Reference             `bson:"location,omitempty" json:"location,omitempty"`
-	ReasonCode            []CodeableConcept      `bson:"reasonCode,omitempty" json:"reasonCode,omitempty"`
-	ReasonReference       []Reference            `bson:"reasonReference,omitempty" json:"reasonReference,omitempty"`
+	Reason                []CodeableReference    `bson:"reason,omitempty" json:"reason,omitempty"`
 	BodySite              []CodeableConcept      `bson:"bodySite,omitempty" json:"bodySite,omitempty"`
 	Outcome               *CodeableConcept       `bson:"outcome,omitempty" json:"outcome,omitempty"`
 	Report                []Reference            `bson:"report,omitempty" json:"report,omitempty"`
-	Complication          []CodeableConcept      `bson:"complication,omitempty" json:"complication,omitempty"`
-	ComplicationDetail    []Reference            `bson:"complicationDetail,omitempty" json:"complicationDetail,omitempty"`
+	Complication          []CodeableReference    `bson:"complication,omitempty" json:"complication,omitempty"`
 	FollowUp              []CodeableConcept      `bson:"followUp,omitempty" json:"followUp,omitempty"`
 	Note                  []Annotation           `bson:"note,omitempty" json:"note,omitempty"`
 	FocalDevice           []ProcedureFocalDevice `bson:"focalDevice,omitempty" json:"focalDevice,omitempty"`
-	UsedReference         []Reference            `bson:"usedReference,omitempty" json:"usedReference,omitempty"`
-	UsedCode              []CodeableConcept      `bson:"usedCode,omitempty" json:"usedCode,omitempty"`
+	Used                  []CodeableReference    `bson:"used,omitempty" json:"used,omitempty"`
+	SupportingInfo        []Reference            `bson:"supportingInfo,omitempty" json:"supportingInfo,omitempty"`
 }
 type ProcedurePerformer struct {
 	Id                *string          `bson:"id,omitempty" json:"id,omitempty"`
@@ -68,6 +70,7 @@ type ProcedurePerformer struct {
 	Function          *CodeableConcept `bson:"function,omitempty" json:"function,omitempty"`
 	Actor             Reference        `bson:"actor" json:"actor"`
 	OnBehalfOf        *Reference       `bson:"onBehalfOf,omitempty" json:"onBehalfOf,omitempty"`
+	Period            *Period          `bson:"period,omitempty" json:"period,omitempty"`
 }
 type ProcedureFocalDevice struct {
 	Id                *string          `bson:"id,omitempty" json:"id,omitempty"`

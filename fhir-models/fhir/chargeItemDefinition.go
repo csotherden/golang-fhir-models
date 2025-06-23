@@ -21,60 +21,55 @@ import "encoding/json"
 
 // ChargeItemDefinition is documented here http://hl7.org/fhir/StructureDefinition/ChargeItemDefinition
 type ChargeItemDefinition struct {
-	Id                *string                             `bson:"id,omitempty" json:"id,omitempty"`
-	Meta              *Meta                               `bson:"meta,omitempty" json:"meta,omitempty"`
-	ImplicitRules     *string                             `bson:"implicitRules,omitempty" json:"implicitRules,omitempty"`
-	Language          *string                             `bson:"language,omitempty" json:"language,omitempty"`
-	Text              *Narrative                          `bson:"text,omitempty" json:"text,omitempty"`
-	Extension         []Extension                         `bson:"extension,omitempty" json:"extension,omitempty"`
-	ModifierExtension []Extension                         `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	Url               string                              `bson:"url" json:"url"`
-	Identifier        []Identifier                        `bson:"identifier,omitempty" json:"identifier,omitempty"`
-	Version           *string                             `bson:"version,omitempty" json:"version,omitempty"`
-	Title             *string                             `bson:"title,omitempty" json:"title,omitempty"`
-	DerivedFromUri    []string                            `bson:"derivedFromUri,omitempty" json:"derivedFromUri,omitempty"`
-	PartOf            []string                            `bson:"partOf,omitempty" json:"partOf,omitempty"`
-	Replaces          []string                            `bson:"replaces,omitempty" json:"replaces,omitempty"`
-	Status            PublicationStatus                   `bson:"status" json:"status"`
-	Experimental      *bool                               `bson:"experimental,omitempty" json:"experimental,omitempty"`
-	Date              *string                             `bson:"date,omitempty" json:"date,omitempty"`
-	Publisher         *string                             `bson:"publisher,omitempty" json:"publisher,omitempty"`
-	Contact           []ContactDetail                     `bson:"contact,omitempty" json:"contact,omitempty"`
-	Description       *string                             `bson:"description,omitempty" json:"description,omitempty"`
-	UseContext        []UsageContext                      `bson:"useContext,omitempty" json:"useContext,omitempty"`
-	Jurisdiction      []CodeableConcept                   `bson:"jurisdiction,omitempty" json:"jurisdiction,omitempty"`
-	Copyright         *string                             `bson:"copyright,omitempty" json:"copyright,omitempty"`
-	ApprovalDate      *string                             `bson:"approvalDate,omitempty" json:"approvalDate,omitempty"`
-	LastReviewDate    *string                             `bson:"lastReviewDate,omitempty" json:"lastReviewDate,omitempty"`
-	EffectivePeriod   *Period                             `bson:"effectivePeriod,omitempty" json:"effectivePeriod,omitempty"`
-	Code              *CodeableConcept                    `bson:"code,omitempty" json:"code,omitempty"`
-	Instance          []Reference                         `bson:"instance,omitempty" json:"instance,omitempty"`
-	Applicability     []ChargeItemDefinitionApplicability `bson:"applicability,omitempty" json:"applicability,omitempty"`
-	PropertyGroup     []ChargeItemDefinitionPropertyGroup `bson:"propertyGroup,omitempty" json:"propertyGroup,omitempty"`
+	Id                     *string                             `bson:"id,omitempty" json:"id,omitempty"`
+	Meta                   *Meta                               `bson:"meta,omitempty" json:"meta,omitempty"`
+	ImplicitRules          *string                             `bson:"implicitRules,omitempty" json:"implicitRules,omitempty"`
+	Language               *string                             `bson:"language,omitempty" json:"language,omitempty"`
+	Text                   *Narrative                          `bson:"text,omitempty" json:"text,omitempty"`
+	Extension              []Extension                         `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension      []Extension                         `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Url                    *string                             `bson:"url,omitempty" json:"url,omitempty"`
+	Identifier             []Identifier                        `bson:"identifier,omitempty" json:"identifier,omitempty"`
+	Version                *string                             `bson:"version,omitempty" json:"version,omitempty"`
+	VersionAlgorithmString *string                             `bson:"versionAlgorithmString,omitempty" json:"versionAlgorithmString,omitempty"`
+	VersionAlgorithmCoding *Coding                             `bson:"versionAlgorithmCoding,omitempty" json:"versionAlgorithmCoding,omitempty"`
+	Name                   *string                             `bson:"name,omitempty" json:"name,omitempty"`
+	Title                  *string                             `bson:"title,omitempty" json:"title,omitempty"`
+	DerivedFromUri         []string                            `bson:"derivedFromUri,omitempty" json:"derivedFromUri,omitempty"`
+	PartOf                 []string                            `bson:"partOf,omitempty" json:"partOf,omitempty"`
+	Replaces               []string                            `bson:"replaces,omitempty" json:"replaces,omitempty"`
+	Status                 PublicationStatus                   `bson:"status" json:"status"`
+	Experimental           *bool                               `bson:"experimental,omitempty" json:"experimental,omitempty"`
+	Date                   *string                             `bson:"date,omitempty" json:"date,omitempty"`
+	Publisher              *string                             `bson:"publisher,omitempty" json:"publisher,omitempty"`
+	Contact                []ContactDetail                     `bson:"contact,omitempty" json:"contact,omitempty"`
+	Description            *string                             `bson:"description,omitempty" json:"description,omitempty"`
+	UseContext             []UsageContext                      `bson:"useContext,omitempty" json:"useContext,omitempty"`
+	Jurisdiction           []CodeableConcept                   `bson:"jurisdiction,omitempty" json:"jurisdiction,omitempty"`
+	Purpose                *string                             `bson:"purpose,omitempty" json:"purpose,omitempty"`
+	Copyright              *string                             `bson:"copyright,omitempty" json:"copyright,omitempty"`
+	CopyrightLabel         *string                             `bson:"copyrightLabel,omitempty" json:"copyrightLabel,omitempty"`
+	ApprovalDate           *string                             `bson:"approvalDate,omitempty" json:"approvalDate,omitempty"`
+	LastReviewDate         *string                             `bson:"lastReviewDate,omitempty" json:"lastReviewDate,omitempty"`
+	Code                   *CodeableConcept                    `bson:"code,omitempty" json:"code,omitempty"`
+	Instance               []Reference                         `bson:"instance,omitempty" json:"instance,omitempty"`
+	Applicability          []ChargeItemDefinitionApplicability `bson:"applicability,omitempty" json:"applicability,omitempty"`
+	PropertyGroup          []ChargeItemDefinitionPropertyGroup `bson:"propertyGroup,omitempty" json:"propertyGroup,omitempty"`
 }
 type ChargeItemDefinitionApplicability struct {
-	Id                *string     `bson:"id,omitempty" json:"id,omitempty"`
-	Extension         []Extension `bson:"extension,omitempty" json:"extension,omitempty"`
-	ModifierExtension []Extension `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	Description       *string     `bson:"description,omitempty" json:"description,omitempty"`
-	Language          *string     `bson:"language,omitempty" json:"language,omitempty"`
-	Expression        *string     `bson:"expression,omitempty" json:"expression,omitempty"`
+	Id                *string          `bson:"id,omitempty" json:"id,omitempty"`
+	Extension         []Extension      `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension []Extension      `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Condition         *Expression      `bson:"condition,omitempty" json:"condition,omitempty"`
+	EffectivePeriod   *Period          `bson:"effectivePeriod,omitempty" json:"effectivePeriod,omitempty"`
+	RelatedArtifact   *RelatedArtifact `bson:"relatedArtifact,omitempty" json:"relatedArtifact,omitempty"`
 }
 type ChargeItemDefinitionPropertyGroup struct {
-	Id                *string                                           `bson:"id,omitempty" json:"id,omitempty"`
-	Extension         []Extension                                       `bson:"extension,omitempty" json:"extension,omitempty"`
-	ModifierExtension []Extension                                       `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	Applicability     []ChargeItemDefinitionApplicability               `bson:"applicability,omitempty" json:"applicability,omitempty"`
-	PriceComponent    []ChargeItemDefinitionPropertyGroupPriceComponent `bson:"priceComponent,omitempty" json:"priceComponent,omitempty"`
-}
-type ChargeItemDefinitionPropertyGroupPriceComponent struct {
-	Id                *string                   `bson:"id,omitempty" json:"id,omitempty"`
-	Extension         []Extension               `bson:"extension,omitempty" json:"extension,omitempty"`
-	ModifierExtension []Extension               `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	Type              InvoicePriceComponentType `bson:"type" json:"type"`
-	Code              *CodeableConcept          `bson:"code,omitempty" json:"code,omitempty"`
-	Factor            *json.Number              `bson:"factor,omitempty" json:"factor,omitempty"`
-	Amount            *Money                    `bson:"amount,omitempty" json:"amount,omitempty"`
+	Id                *string                             `bson:"id,omitempty" json:"id,omitempty"`
+	Extension         []Extension                         `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension []Extension                         `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Applicability     []ChargeItemDefinitionApplicability `bson:"applicability,omitempty" json:"applicability,omitempty"`
+	PriceComponent    []MonetaryComponent                 `bson:"priceComponent,omitempty" json:"priceComponent,omitempty"`
 }
 type OtherChargeItemDefinition ChargeItemDefinition
 

@@ -26,6 +26,6 @@ type ParameterDefinition struct {
 	Min           *int                  `bson:"min,omitempty" json:"min,omitempty"`
 	Max           *string               `bson:"max,omitempty" json:"max,omitempty"`
 	Documentation *string               `bson:"documentation,omitempty" json:"documentation,omitempty"`
-	Type          string                `bson:"type" json:"type"`
+	Type          FHIRTypes             `bson:"type" json:"type"`
 	Profile       *string               `bson:"profile,omitempty" json:"profile,omitempty"`
 }

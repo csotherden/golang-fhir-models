@@ -70,7 +70,7 @@ func (code TypeDerivationRule) Display() string {
 func (code TypeDerivationRule) Definition() string {
 	switch code {
 	case TypeDerivationRuleSpecialization:
-		return "This definition defines a new type that adds additional elements to the base type."
+		return "This definition defines a new type that adds additional elements and optionally additional rules to the base type."
 	case TypeDerivationRuleConstraint:
 		return "This definition adds additional rules to an existing concrete type."
 	}

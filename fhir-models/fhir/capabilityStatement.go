@@ -21,39 +21,44 @@ import "encoding/json"
 
 // CapabilityStatement is documented here http://hl7.org/fhir/StructureDefinition/CapabilityStatement
 type CapabilityStatement struct {
-	Id                  *string                            `bson:"id,omitempty" json:"id,omitempty"`
-	Meta                *Meta                              `bson:"meta,omitempty" json:"meta,omitempty"`
-	ImplicitRules       *string                            `bson:"implicitRules,omitempty" json:"implicitRules,omitempty"`
-	Language            *string                            `bson:"language,omitempty" json:"language,omitempty"`
-	Text                *Narrative                         `bson:"text,omitempty" json:"text,omitempty"`
-	Extension           []Extension                        `bson:"extension,omitempty" json:"extension,omitempty"`
-	ModifierExtension   []Extension                        `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	Url                 *string                            `bson:"url,omitempty" json:"url,omitempty"`
-	Version             *string                            `bson:"version,omitempty" json:"version,omitempty"`
-	Name                *string                            `bson:"name,omitempty" json:"name,omitempty"`
-	Title               *string                            `bson:"title,omitempty" json:"title,omitempty"`
-	Status              PublicationStatus                  `bson:"status" json:"status"`
-	Experimental        *bool                              `bson:"experimental,omitempty" json:"experimental,omitempty"`
-	Date                string                             `bson:"date" json:"date"`
-	Publisher           *string                            `bson:"publisher,omitempty" json:"publisher,omitempty"`
-	Contact             []ContactDetail                    `bson:"contact,omitempty" json:"contact,omitempty"`
-	Description         *string                            `bson:"description,omitempty" json:"description,omitempty"`
-	UseContext          []UsageContext                     `bson:"useContext,omitempty" json:"useContext,omitempty"`
-	Jurisdiction        []CodeableConcept                  `bson:"jurisdiction,omitempty" json:"jurisdiction,omitempty"`
-	Purpose             *string                            `bson:"purpose,omitempty" json:"purpose,omitempty"`
-	Copyright           *string                            `bson:"copyright,omitempty" json:"copyright,omitempty"`
-	Kind                CapabilityStatementKind            `bson:"kind" json:"kind"`
-	Instantiates        []string                           `bson:"instantiates,omitempty" json:"instantiates,omitempty"`
-	Imports             []string                           `bson:"imports,omitempty" json:"imports,omitempty"`
-	Software            *CapabilityStatementSoftware       `bson:"software,omitempty" json:"software,omitempty"`
-	Implementation      *CapabilityStatementImplementation `bson:"implementation,omitempty" json:"implementation,omitempty"`
-	FhirVersion         FHIRVersion                        `bson:"fhirVersion" json:"fhirVersion"`
-	Format              []string                           `bson:"format" json:"format"`
-	PatchFormat         []string                           `bson:"patchFormat,omitempty" json:"patchFormat,omitempty"`
-	ImplementationGuide []string                           `bson:"implementationGuide,omitempty" json:"implementationGuide,omitempty"`
-	Rest                []CapabilityStatementRest          `bson:"rest,omitempty" json:"rest,omitempty"`
-	Messaging           []CapabilityStatementMessaging     `bson:"messaging,omitempty" json:"messaging,omitempty"`
-	Document            []CapabilityStatementDocument      `bson:"document,omitempty" json:"document,omitempty"`
+	Id                     *string                            `bson:"id,omitempty" json:"id,omitempty"`
+	Meta                   *Meta                              `bson:"meta,omitempty" json:"meta,omitempty"`
+	ImplicitRules          *string                            `bson:"implicitRules,omitempty" json:"implicitRules,omitempty"`
+	Language               *string                            `bson:"language,omitempty" json:"language,omitempty"`
+	Text                   *Narrative                         `bson:"text,omitempty" json:"text,omitempty"`
+	Extension              []Extension                        `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension      []Extension                        `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Url                    *string                            `bson:"url,omitempty" json:"url,omitempty"`
+	Identifier             []Identifier                       `bson:"identifier,omitempty" json:"identifier,omitempty"`
+	Version                *string                            `bson:"version,omitempty" json:"version,omitempty"`
+	VersionAlgorithmString *string                            `bson:"versionAlgorithmString,omitempty" json:"versionAlgorithmString,omitempty"`
+	VersionAlgorithmCoding *Coding                            `bson:"versionAlgorithmCoding,omitempty" json:"versionAlgorithmCoding,omitempty"`
+	Name                   *string                            `bson:"name,omitempty" json:"name,omitempty"`
+	Title                  *string                            `bson:"title,omitempty" json:"title,omitempty"`
+	Status                 PublicationStatus                  `bson:"status" json:"status"`
+	Experimental           *bool                              `bson:"experimental,omitempty" json:"experimental,omitempty"`
+	Date                   string                             `bson:"date" json:"date"`
+	Publisher              *string                            `bson:"publisher,omitempty" json:"publisher,omitempty"`
+	Contact                []ContactDetail                    `bson:"contact,omitempty" json:"contact,omitempty"`
+	Description            *string                            `bson:"description,omitempty" json:"description,omitempty"`
+	UseContext             []UsageContext                     `bson:"useContext,omitempty" json:"useContext,omitempty"`
+	Jurisdiction           []CodeableConcept                  `bson:"jurisdiction,omitempty" json:"jurisdiction,omitempty"`
+	Purpose                *string                            `bson:"purpose,omitempty" json:"purpose,omitempty"`
+	Copyright              *string                            `bson:"copyright,omitempty" json:"copyright,omitempty"`
+	CopyrightLabel         *string                            `bson:"copyrightLabel,omitempty" json:"copyrightLabel,omitempty"`
+	Kind                   CapabilityStatementKind            `bson:"kind" json:"kind"`
+	Instantiates           []string                           `bson:"instantiates,omitempty" json:"instantiates,omitempty"`
+	Imports                []string                           `bson:"imports,omitempty" json:"imports,omitempty"`
+	Software               *CapabilityStatementSoftware       `bson:"software,omitempty" json:"software,omitempty"`
+	Implementation         *CapabilityStatementImplementation `bson:"implementation,omitempty" json:"implementation,omitempty"`
+	FhirVersion            FHIRVersion                        `bson:"fhirVersion" json:"fhirVersion"`
+	Format                 []string                           `bson:"format" json:"format"`
+	PatchFormat            []string                           `bson:"patchFormat,omitempty" json:"patchFormat,omitempty"`
+	AcceptLanguage         []string                           `bson:"acceptLanguage,omitempty" json:"acceptLanguage,omitempty"`
+	ImplementationGuide    []string                           `bson:"implementationGuide,omitempty" json:"implementationGuide,omitempty"`
+	Rest                   []CapabilityStatementRest          `bson:"rest,omitempty" json:"rest,omitempty"`
+	Messaging              []CapabilityStatementMessaging     `bson:"messaging,omitempty" json:"messaging,omitempty"`
+	Document               []CapabilityStatementDocument      `bson:"document,omitempty" json:"document,omitempty"`
 }
 type CapabilityStatementSoftware struct {
 	Id                *string     `bson:"id,omitempty" json:"id,omitempty"`
@@ -107,6 +112,7 @@ type CapabilityStatementRestResource struct {
 	ConditionalCreate *bool                                        `bson:"conditionalCreate,omitempty" json:"conditionalCreate,omitempty"`
 	ConditionalRead   *ConditionalReadStatus                       `bson:"conditionalRead,omitempty" json:"conditionalRead,omitempty"`
 	ConditionalUpdate *bool                                        `bson:"conditionalUpdate,omitempty" json:"conditionalUpdate,omitempty"`
+	ConditionalPatch  *bool                                        `bson:"conditionalPatch,omitempty" json:"conditionalPatch,omitempty"`
 	ConditionalDelete *ConditionalDeleteStatus                     `bson:"conditionalDelete,omitempty" json:"conditionalDelete,omitempty"`
 	ReferencePolicy   []ReferenceHandlingPolicy                    `bson:"referencePolicy,omitempty" json:"referencePolicy,omitempty"`
 	SearchInclude     []string                                     `bson:"searchInclude,omitempty" json:"searchInclude,omitempty"`

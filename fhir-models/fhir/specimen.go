@@ -36,47 +36,55 @@ type Specimen struct {
 	ReceivedTime        *string              `bson:"receivedTime,omitempty" json:"receivedTime,omitempty"`
 	Parent              []Reference          `bson:"parent,omitempty" json:"parent,omitempty"`
 	Request             []Reference          `bson:"request,omitempty" json:"request,omitempty"`
+	Combined            *SpecimenCombined    `bson:"combined,omitempty" json:"combined,omitempty"`
+	Role                []CodeableConcept    `bson:"role,omitempty" json:"role,omitempty"`
+	Feature             []SpecimenFeature    `bson:"feature,omitempty" json:"feature,omitempty"`
 	Collection          *SpecimenCollection  `bson:"collection,omitempty" json:"collection,omitempty"`
 	Processing          []SpecimenProcessing `bson:"processing,omitempty" json:"processing,omitempty"`
 	Container           []SpecimenContainer  `bson:"container,omitempty" json:"container,omitempty"`
 	Condition           []CodeableConcept    `bson:"condition,omitempty" json:"condition,omitempty"`
 	Note                []Annotation         `bson:"note,omitempty" json:"note,omitempty"`
 }
+type SpecimenFeature struct {
+	Id                *string         `bson:"id,omitempty" json:"id,omitempty"`
+	Extension         []Extension     `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension []Extension     `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Type              CodeableConcept `bson:"type" json:"type"`
+	Description       string          `bson:"description" json:"description"`
+}
 type SpecimenCollection struct {
-	Id                           *string          `bson:"id,omitempty" json:"id,omitempty"`
-	Extension                    []Extension      `bson:"extension,omitempty" json:"extension,omitempty"`
-	ModifierExtension            []Extension      `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	Collector                    *Reference       `bson:"collector,omitempty" json:"collector,omitempty"`
-	CollectedDateTime            *string          `bson:"collectedDateTime,omitempty" json:"collectedDateTime,omitempty"`
-	CollectedPeriod              *Period          `bson:"collectedPeriod,omitempty" json:"collectedPeriod,omitempty"`
-	Duration                     *Duration        `bson:"duration,omitempty" json:"duration,omitempty"`
-	Quantity                     *Quantity        `bson:"quantity,omitempty" json:"quantity,omitempty"`
-	Method                       *CodeableConcept `bson:"method,omitempty" json:"method,omitempty"`
-	BodySite                     *CodeableConcept `bson:"bodySite,omitempty" json:"bodySite,omitempty"`
-	FastingStatusCodeableConcept *CodeableConcept `bson:"fastingStatusCodeableConcept,omitempty" json:"fastingStatusCodeableConcept,omitempty"`
-	FastingStatusDuration        *Duration        `bson:"fastingStatusDuration,omitempty" json:"fastingStatusDuration,omitempty"`
+	Id                           *string            `bson:"id,omitempty" json:"id,omitempty"`
+	Extension                    []Extension        `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension            []Extension        `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Collector                    *Reference         `bson:"collector,omitempty" json:"collector,omitempty"`
+	CollectedDateTime            *string            `bson:"collectedDateTime,omitempty" json:"collectedDateTime,omitempty"`
+	CollectedPeriod              *Period            `bson:"collectedPeriod,omitempty" json:"collectedPeriod,omitempty"`
+	Duration                     *Duration          `bson:"duration,omitempty" json:"duration,omitempty"`
+	Quantity                     *Quantity          `bson:"quantity,omitempty" json:"quantity,omitempty"`
+	Method                       *CodeableConcept   `bson:"method,omitempty" json:"method,omitempty"`
+	Device                       *CodeableReference `bson:"device,omitempty" json:"device,omitempty"`
+	Procedure                    *Reference         `bson:"procedure,omitempty" json:"procedure,omitempty"`
+	BodySite                     *CodeableReference `bson:"bodySite,omitempty" json:"bodySite,omitempty"`
+	FastingStatusCodeableConcept *CodeableConcept   `bson:"fastingStatusCodeableConcept,omitempty" json:"fastingStatusCodeableConcept,omitempty"`
+	FastingStatusDuration        *Duration          `bson:"fastingStatusDuration,omitempty" json:"fastingStatusDuration,omitempty"`
 }
 type SpecimenProcessing struct {
 	Id                *string          `bson:"id,omitempty" json:"id,omitempty"`
 	Extension         []Extension      `bson:"extension,omitempty" json:"extension,omitempty"`
 	ModifierExtension []Extension      `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
 	Description       *string          `bson:"description,omitempty" json:"description,omitempty"`
-	Procedure         *CodeableConcept `bson:"procedure,omitempty" json:"procedure,omitempty"`
+	Method            *CodeableConcept `bson:"method,omitempty" json:"method,omitempty"`
 	Additive          []Reference      `bson:"additive,omitempty" json:"additive,omitempty"`
 	TimeDateTime      *string          `bson:"timeDateTime,omitempty" json:"timeDateTime,omitempty"`
 	TimePeriod        *Period          `bson:"timePeriod,omitempty" json:"timePeriod,omitempty"`
 }
 type SpecimenContainer struct {
-	Id                      *string          `bson:"id,omitempty" json:"id,omitempty"`
-	Extension               []Extension      `bson:"extension,omitempty" json:"extension,omitempty"`
-	ModifierExtension       []Extension      `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	Identifier              []Identifier     `bson:"identifier,omitempty" json:"identifier,omitempty"`
-	Description             *string          `bson:"description,omitempty" json:"description,omitempty"`
-	Type                    *CodeableConcept `bson:"type,omitempty" json:"type,omitempty"`
-	Capacity                *Quantity        `bson:"capacity,omitempty" json:"capacity,omitempty"`
-	SpecimenQuantity        *Quantity        `bson:"specimenQuantity,omitempty" json:"specimenQuantity,omitempty"`
-	AdditiveCodeableConcept *CodeableConcept `bson:"additiveCodeableConcept,omitempty" json:"additiveCodeableConcept,omitempty"`
-	AdditiveReference       *Reference       `bson:"additiveReference,omitempty" json:"additiveReference,omitempty"`
+	Id                *string     `bson:"id,omitempty" json:"id,omitempty"`
+	Extension         []Extension `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension []Extension `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Device            Reference   `bson:"device" json:"device"`
+	Location          *Reference  `bson:"location,omitempty" json:"location,omitempty"`
+	SpecimenQuantity  *Quantity   `bson:"specimenQuantity,omitempty" json:"specimenQuantity,omitempty"`
 }
 type OtherSpecimen Specimen
 

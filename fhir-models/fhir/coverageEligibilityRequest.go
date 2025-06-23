@@ -33,6 +33,7 @@ type CoverageEligibilityRequest struct {
 	Priority          *CodeableConcept                           `bson:"priority,omitempty" json:"priority,omitempty"`
 	Purpose           []EligibilityRequestPurpose                `bson:"purpose" json:"purpose"`
 	Patient           Reference                                  `bson:"patient" json:"patient"`
+	Event             []CoverageEligibilityRequestEvent          `bson:"event,omitempty" json:"event,omitempty"`
 	ServicedDate      *string                                    `bson:"servicedDate,omitempty" json:"servicedDate,omitempty"`
 	ServicedPeriod    *Period                                    `bson:"servicedPeriod,omitempty" json:"servicedPeriod,omitempty"`
 	Created           string                                     `bson:"created" json:"created"`
@@ -43,6 +44,14 @@ type CoverageEligibilityRequest struct {
 	SupportingInfo    []CoverageEligibilityRequestSupportingInfo `bson:"supportingInfo,omitempty" json:"supportingInfo,omitempty"`
 	Insurance         []CoverageEligibilityRequestInsurance      `bson:"insurance,omitempty" json:"insurance,omitempty"`
 	Item              []CoverageEligibilityRequestItem           `bson:"item,omitempty" json:"item,omitempty"`
+}
+type CoverageEligibilityRequestEvent struct {
+	Id                *string         `bson:"id,omitempty" json:"id,omitempty"`
+	Extension         []Extension     `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension []Extension     `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Type              CodeableConcept `bson:"type" json:"type"`
+	WhenDateTime      string          `bson:"whenDateTime" json:"whenDateTime"`
+	WhenPeriod        Period          `bson:"whenPeriod" json:"whenPeriod"`
 }
 type CoverageEligibilityRequestSupportingInfo struct {
 	Id                *string     `bson:"id,omitempty" json:"id,omitempty"`

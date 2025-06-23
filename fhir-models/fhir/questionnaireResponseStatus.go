@@ -99,7 +99,7 @@ func (code QuestionnaireResponseStatus) Definition() string {
 	case QuestionnaireResponseStatusEnteredInError:
 		return "This QuestionnaireResponse was entered in error and voided."
 	case QuestionnaireResponseStatusStopped:
-		return "This QuestionnaireResponse has been partially filled out with answers but has been abandoned. It is unknown whether changes or additions are expected to be made to it."
+		return "This QuestionnaireResponse has been partially filled out with answers but has been abandoned. No subsequent changes can be made."
 	}
 	return "<unknown>"
 }

@@ -33,23 +33,22 @@ type CareTeam struct {
 	Category             []CodeableConcept     `bson:"category,omitempty" json:"category,omitempty"`
 	Name                 *string               `bson:"name,omitempty" json:"name,omitempty"`
 	Subject              *Reference            `bson:"subject,omitempty" json:"subject,omitempty"`
-	Encounter            *Reference            `bson:"encounter,omitempty" json:"encounter,omitempty"`
 	Period               *Period               `bson:"period,omitempty" json:"period,omitempty"`
 	Participant          []CareTeamParticipant `bson:"participant,omitempty" json:"participant,omitempty"`
-	ReasonCode           []CodeableConcept     `bson:"reasonCode,omitempty" json:"reasonCode,omitempty"`
-	ReasonReference      []Reference           `bson:"reasonReference,omitempty" json:"reasonReference,omitempty"`
+	Reason               []CodeableReference   `bson:"reason,omitempty" json:"reason,omitempty"`
 	ManagingOrganization []Reference           `bson:"managingOrganization,omitempty" json:"managingOrganization,omitempty"`
 	Telecom              []ContactPoint        `bson:"telecom,omitempty" json:"telecom,omitempty"`
 	Note                 []Annotation          `bson:"note,omitempty" json:"note,omitempty"`
 }
 type CareTeamParticipant struct {
-	Id                *string           `bson:"id,omitempty" json:"id,omitempty"`
-	Extension         []Extension       `bson:"extension,omitempty" json:"extension,omitempty"`
-	ModifierExtension []Extension       `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	Role              []CodeableConcept `bson:"role,omitempty" json:"role,omitempty"`
-	Member            *Reference        `bson:"member,omitempty" json:"member,omitempty"`
-	OnBehalfOf        *Reference        `bson:"onBehalfOf,omitempty" json:"onBehalfOf,omitempty"`
-	Period            *Period           `bson:"period,omitempty" json:"period,omitempty"`
+	Id                *string          `bson:"id,omitempty" json:"id,omitempty"`
+	Extension         []Extension      `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension []Extension      `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Role              *CodeableConcept `bson:"role,omitempty" json:"role,omitempty"`
+	Member            *Reference       `bson:"member,omitempty" json:"member,omitempty"`
+	OnBehalfOf        *Reference       `bson:"onBehalfOf,omitempty" json:"onBehalfOf,omitempty"`
+	CoveragePeriod    *Period          `bson:"coveragePeriod,omitempty" json:"coveragePeriod,omitempty"`
+	CoverageTiming    *Timing          `bson:"coverageTiming,omitempty" json:"coverageTiming,omitempty"`
 }
 type OtherCareTeam CareTeam
 

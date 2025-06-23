@@ -38,6 +38,7 @@ const (
 	AssertionOperatorTypeContains
 	AssertionOperatorTypeNotContains
 	AssertionOperatorTypeEval
+	AssertionOperatorTypeManualEval
 )
 
 func (code AssertionOperatorType) MarshalJSON() ([]byte, error) {
@@ -68,6 +69,8 @@ func (code *AssertionOperatorType) UnmarshalJSON(json []byte) error {
 		*code = AssertionOperatorTypeNotContains
 	case "eval":
 		*code = AssertionOperatorTypeEval
+	case "manualEval":
+		*code = AssertionOperatorTypeManualEval
 	default:
 		return fmt.Errorf("unknown AssertionOperatorType code `%s`", s)
 	}
@@ -100,6 +103,8 @@ func (code AssertionOperatorType) Code() string {
 		return "notContains"
 	case AssertionOperatorTypeEval:
 		return "eval"
+	case AssertionOperatorTypeManualEval:
+		return "manualEval"
 	}
 	return "<unknown>"
 }
@@ -127,6 +132,8 @@ func (code AssertionOperatorType) Display() string {
 		return "notContains"
 	case AssertionOperatorTypeEval:
 		return "evaluate"
+	case AssertionOperatorTypeManualEval:
+		return "manualEvaluate"
 	}
 	return "<unknown>"
 }
@@ -154,6 +161,8 @@ func (code AssertionOperatorType) Definition() string {
 		return "Compare value string does not contain a known value."
 	case AssertionOperatorTypeEval:
 		return "Evaluate the FHIRPath expression as a boolean condition."
+	case AssertionOperatorTypeManualEval:
+		return "Manually evaluate the condition described by this assert. The test engine SHALL pause and provide an input mechanism to set the outcome of this assert to 'pass', 'fail', 'skip' or 'stop'."
 	}
 	return "<unknown>"
 }

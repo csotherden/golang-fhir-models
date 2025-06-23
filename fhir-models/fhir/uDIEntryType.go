@@ -32,6 +32,7 @@ const (
 	UDIEntryTypeManual
 	UDIEntryTypeCard
 	UDIEntryTypeSelfReported
+	UDIEntryTypeElectronicTransmission
 	UDIEntryTypeUnknown
 )
 
@@ -51,6 +52,8 @@ func (code *UDIEntryType) UnmarshalJSON(json []byte) error {
 		*code = UDIEntryTypeCard
 	case "self-reported":
 		*code = UDIEntryTypeSelfReported
+	case "electronic-transmission":
+		*code = UDIEntryTypeElectronicTransmission
 	case "unknown":
 		*code = UDIEntryTypeUnknown
 	default:
@@ -73,6 +76,8 @@ func (code UDIEntryType) Code() string {
 		return "card"
 	case UDIEntryTypeSelfReported:
 		return "self-reported"
+	case UDIEntryTypeElectronicTransmission:
+		return "electronic-transmission"
 	case UDIEntryTypeUnknown:
 		return "unknown"
 	}
@@ -90,6 +95,8 @@ func (code UDIEntryType) Display() string {
 		return "Card"
 	case UDIEntryTypeSelfReported:
 		return "Self Reported"
+	case UDIEntryTypeElectronicTransmission:
+		return "Electronic Transmission"
 	case UDIEntryTypeUnknown:
 		return "Unknown"
 	}
@@ -107,6 +114,8 @@ func (code UDIEntryType) Definition() string {
 		return "The data originated from a patient's implant card and was read by an operator."
 	case UDIEntryTypeSelfReported:
 		return "The data originated from a patient source and was not directly scanned or read from a label or card."
+	case UDIEntryTypeElectronicTransmission:
+		return "The UDI information was received electronically from the device through a communication protocol, such as the IEEE 11073 20601 version 4 exchange protocol over Bluetooth or USB."
 	case UDIEntryTypeUnknown:
 		return "The method of data capture has not been determined."
 	}

@@ -31,7 +31,7 @@ type TestReport struct {
 	Identifier        *Identifier             `bson:"identifier,omitempty" json:"identifier,omitempty"`
 	Name              *string                 `bson:"name,omitempty" json:"name,omitempty"`
 	Status            TestReportStatus        `bson:"status" json:"status"`
-	TestScript        Reference               `bson:"testScript" json:"testScript"`
+	TestScript        string                  `bson:"testScript" json:"testScript"`
 	Result            TestReportResult        `bson:"result" json:"result"`
 	Score             *json.Number            `bson:"score,omitempty" json:"score,omitempty"`
 	Tester            *string                 `bson:"tester,omitempty" json:"tester,omitempty"`
@@ -71,12 +71,20 @@ type TestReportSetupActionOperation struct {
 	Detail            *string                `bson:"detail,omitempty" json:"detail,omitempty"`
 }
 type TestReportSetupActionAssert struct {
-	Id                *string                `bson:"id,omitempty" json:"id,omitempty"`
-	Extension         []Extension            `bson:"extension,omitempty" json:"extension,omitempty"`
-	ModifierExtension []Extension            `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	Result            TestReportActionResult `bson:"result" json:"result"`
-	Message           *string                `bson:"message,omitempty" json:"message,omitempty"`
-	Detail            *string                `bson:"detail,omitempty" json:"detail,omitempty"`
+	Id                *string                                  `bson:"id,omitempty" json:"id,omitempty"`
+	Extension         []Extension                              `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension []Extension                              `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Result            TestReportActionResult                   `bson:"result" json:"result"`
+	Message           *string                                  `bson:"message,omitempty" json:"message,omitempty"`
+	Detail            *string                                  `bson:"detail,omitempty" json:"detail,omitempty"`
+	Requirement       []TestReportSetupActionAssertRequirement `bson:"requirement,omitempty" json:"requirement,omitempty"`
+}
+type TestReportSetupActionAssertRequirement struct {
+	Id                *string     `bson:"id,omitempty" json:"id,omitempty"`
+	Extension         []Extension `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension []Extension `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	LinkUri           *string     `bson:"linkUri,omitempty" json:"linkUri,omitempty"`
+	LinkCanonical     *string     `bson:"linkCanonical,omitempty" json:"linkCanonical,omitempty"`
 }
 type TestReportTest struct {
 	Id                *string                `bson:"id,omitempty" json:"id,omitempty"`

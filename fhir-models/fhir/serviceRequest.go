@@ -21,51 +21,78 @@ import "encoding/json"
 
 // ServiceRequest is documented here http://hl7.org/fhir/StructureDefinition/ServiceRequest
 type ServiceRequest struct {
-	Id                      *string           `bson:"id,omitempty" json:"id,omitempty"`
-	Meta                    *Meta             `bson:"meta,omitempty" json:"meta,omitempty"`
-	ImplicitRules           *string           `bson:"implicitRules,omitempty" json:"implicitRules,omitempty"`
-	Language                *string           `bson:"language,omitempty" json:"language,omitempty"`
-	Text                    *Narrative        `bson:"text,omitempty" json:"text,omitempty"`
-	Extension               []Extension       `bson:"extension,omitempty" json:"extension,omitempty"`
-	ModifierExtension       []Extension       `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	Identifier              []Identifier      `bson:"identifier,omitempty" json:"identifier,omitempty"`
-	InstantiatesCanonical   []string          `bson:"instantiatesCanonical,omitempty" json:"instantiatesCanonical,omitempty"`
-	InstantiatesUri         []string          `bson:"instantiatesUri,omitempty" json:"instantiatesUri,omitempty"`
-	BasedOn                 []Reference       `bson:"basedOn,omitempty" json:"basedOn,omitempty"`
-	Replaces                []Reference       `bson:"replaces,omitempty" json:"replaces,omitempty"`
-	Requisition             *Identifier       `bson:"requisition,omitempty" json:"requisition,omitempty"`
-	Status                  RequestStatus     `bson:"status" json:"status"`
-	Intent                  RequestIntent     `bson:"intent" json:"intent"`
-	Category                []CodeableConcept `bson:"category,omitempty" json:"category,omitempty"`
-	Priority                *RequestPriority  `bson:"priority,omitempty" json:"priority,omitempty"`
-	DoNotPerform            *bool             `bson:"doNotPerform,omitempty" json:"doNotPerform,omitempty"`
-	Code                    *CodeableConcept  `bson:"code,omitempty" json:"code,omitempty"`
-	OrderDetail             []CodeableConcept `bson:"orderDetail,omitempty" json:"orderDetail,omitempty"`
-	QuantityQuantity        *Quantity         `bson:"quantityQuantity,omitempty" json:"quantityQuantity,omitempty"`
-	QuantityRatio           *Ratio            `bson:"quantityRatio,omitempty" json:"quantityRatio,omitempty"`
-	QuantityRange           *Range            `bson:"quantityRange,omitempty" json:"quantityRange,omitempty"`
-	Subject                 Reference         `bson:"subject" json:"subject"`
-	Encounter               *Reference        `bson:"encounter,omitempty" json:"encounter,omitempty"`
-	OccurrenceDateTime      *string           `bson:"occurrenceDateTime,omitempty" json:"occurrenceDateTime,omitempty"`
-	OccurrencePeriod        *Period           `bson:"occurrencePeriod,omitempty" json:"occurrencePeriod,omitempty"`
-	OccurrenceTiming        *Timing           `bson:"occurrenceTiming,omitempty" json:"occurrenceTiming,omitempty"`
-	AsNeededBoolean         *bool             `bson:"asNeededBoolean,omitempty" json:"asNeededBoolean,omitempty"`
-	AsNeededCodeableConcept *CodeableConcept  `bson:"asNeededCodeableConcept,omitempty" json:"asNeededCodeableConcept,omitempty"`
-	AuthoredOn              *string           `bson:"authoredOn,omitempty" json:"authoredOn,omitempty"`
-	Requester               *Reference        `bson:"requester,omitempty" json:"requester,omitempty"`
-	PerformerType           *CodeableConcept  `bson:"performerType,omitempty" json:"performerType,omitempty"`
-	Performer               []Reference       `bson:"performer,omitempty" json:"performer,omitempty"`
-	LocationCode            []CodeableConcept `bson:"locationCode,omitempty" json:"locationCode,omitempty"`
-	LocationReference       []Reference       `bson:"locationReference,omitempty" json:"locationReference,omitempty"`
-	ReasonCode              []CodeableConcept `bson:"reasonCode,omitempty" json:"reasonCode,omitempty"`
-	ReasonReference         []Reference       `bson:"reasonReference,omitempty" json:"reasonReference,omitempty"`
-	Insurance               []Reference       `bson:"insurance,omitempty" json:"insurance,omitempty"`
-	SupportingInfo          []Reference       `bson:"supportingInfo,omitempty" json:"supportingInfo,omitempty"`
-	Specimen                []Reference       `bson:"specimen,omitempty" json:"specimen,omitempty"`
-	BodySite                []CodeableConcept `bson:"bodySite,omitempty" json:"bodySite,omitempty"`
-	Note                    []Annotation      `bson:"note,omitempty" json:"note,omitempty"`
-	PatientInstruction      *string           `bson:"patientInstruction,omitempty" json:"patientInstruction,omitempty"`
-	RelevantHistory         []Reference       `bson:"relevantHistory,omitempty" json:"relevantHistory,omitempty"`
+	Id                      *string                            `bson:"id,omitempty" json:"id,omitempty"`
+	Meta                    *Meta                              `bson:"meta,omitempty" json:"meta,omitempty"`
+	ImplicitRules           *string                            `bson:"implicitRules,omitempty" json:"implicitRules,omitempty"`
+	Language                *string                            `bson:"language,omitempty" json:"language,omitempty"`
+	Text                    *Narrative                         `bson:"text,omitempty" json:"text,omitempty"`
+	Extension               []Extension                        `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension       []Extension                        `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Identifier              []Identifier                       `bson:"identifier,omitempty" json:"identifier,omitempty"`
+	InstantiatesCanonical   []string                           `bson:"instantiatesCanonical,omitempty" json:"instantiatesCanonical,omitempty"`
+	InstantiatesUri         []string                           `bson:"instantiatesUri,omitempty" json:"instantiatesUri,omitempty"`
+	BasedOn                 []Reference                        `bson:"basedOn,omitempty" json:"basedOn,omitempty"`
+	Replaces                []Reference                        `bson:"replaces,omitempty" json:"replaces,omitempty"`
+	Requisition             *Identifier                        `bson:"requisition,omitempty" json:"requisition,omitempty"`
+	Status                  RequestStatus                      `bson:"status" json:"status"`
+	Intent                  RequestIntent                      `bson:"intent" json:"intent"`
+	Category                []CodeableConcept                  `bson:"category,omitempty" json:"category,omitempty"`
+	Priority                *RequestPriority                   `bson:"priority,omitempty" json:"priority,omitempty"`
+	DoNotPerform            *bool                              `bson:"doNotPerform,omitempty" json:"doNotPerform,omitempty"`
+	Code                    *CodeableReference                 `bson:"code,omitempty" json:"code,omitempty"`
+	OrderDetail             []ServiceRequestOrderDetail        `bson:"orderDetail,omitempty" json:"orderDetail,omitempty"`
+	QuantityQuantity        *Quantity                          `bson:"quantityQuantity,omitempty" json:"quantityQuantity,omitempty"`
+	QuantityRatio           *Ratio                             `bson:"quantityRatio,omitempty" json:"quantityRatio,omitempty"`
+	QuantityRange           *Range                             `bson:"quantityRange,omitempty" json:"quantityRange,omitempty"`
+	Subject                 Reference                          `bson:"subject" json:"subject"`
+	Focus                   []Reference                        `bson:"focus,omitempty" json:"focus,omitempty"`
+	Encounter               *Reference                         `bson:"encounter,omitempty" json:"encounter,omitempty"`
+	OccurrenceDateTime      *string                            `bson:"occurrenceDateTime,omitempty" json:"occurrenceDateTime,omitempty"`
+	OccurrencePeriod        *Period                            `bson:"occurrencePeriod,omitempty" json:"occurrencePeriod,omitempty"`
+	OccurrenceTiming        *Timing                            `bson:"occurrenceTiming,omitempty" json:"occurrenceTiming,omitempty"`
+	AsNeededBoolean         *bool                              `bson:"asNeededBoolean,omitempty" json:"asNeededBoolean,omitempty"`
+	AsNeededCodeableConcept *CodeableConcept                   `bson:"asNeededCodeableConcept,omitempty" json:"asNeededCodeableConcept,omitempty"`
+	AuthoredOn              *string                            `bson:"authoredOn,omitempty" json:"authoredOn,omitempty"`
+	Requester               *Reference                         `bson:"requester,omitempty" json:"requester,omitempty"`
+	PerformerType           *CodeableConcept                   `bson:"performerType,omitempty" json:"performerType,omitempty"`
+	Performer               []Reference                        `bson:"performer,omitempty" json:"performer,omitempty"`
+	Location                []CodeableReference                `bson:"location,omitempty" json:"location,omitempty"`
+	Reason                  []CodeableReference                `bson:"reason,omitempty" json:"reason,omitempty"`
+	Insurance               []Reference                        `bson:"insurance,omitempty" json:"insurance,omitempty"`
+	SupportingInfo          []CodeableReference                `bson:"supportingInfo,omitempty" json:"supportingInfo,omitempty"`
+	Specimen                []Reference                        `bson:"specimen,omitempty" json:"specimen,omitempty"`
+	BodySite                []CodeableConcept                  `bson:"bodySite,omitempty" json:"bodySite,omitempty"`
+	BodyStructure           *Reference                         `bson:"bodyStructure,omitempty" json:"bodyStructure,omitempty"`
+	Note                    []Annotation                       `bson:"note,omitempty" json:"note,omitempty"`
+	PatientInstruction      []ServiceRequestPatientInstruction `bson:"patientInstruction,omitempty" json:"patientInstruction,omitempty"`
+	RelevantHistory         []Reference                        `bson:"relevantHistory,omitempty" json:"relevantHistory,omitempty"`
+}
+type ServiceRequestOrderDetail struct {
+	Id                *string                              `bson:"id,omitempty" json:"id,omitempty"`
+	Extension         []Extension                          `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension []Extension                          `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	ParameterFocus    *CodeableReference                   `bson:"parameterFocus,omitempty" json:"parameterFocus,omitempty"`
+	Parameter         []ServiceRequestOrderDetailParameter `bson:"parameter" json:"parameter"`
+}
+type ServiceRequestOrderDetailParameter struct {
+	Id                   *string         `bson:"id,omitempty" json:"id,omitempty"`
+	Extension            []Extension     `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension    []Extension     `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Code                 CodeableConcept `bson:"code" json:"code"`
+	ValueQuantity        Quantity        `bson:"valueQuantity" json:"valueQuantity"`
+	ValueRatio           Ratio           `bson:"valueRatio" json:"valueRatio"`
+	ValueRange           Range           `bson:"valueRange" json:"valueRange"`
+	ValueBoolean         bool            `bson:"valueBoolean" json:"valueBoolean"`
+	ValueCodeableConcept CodeableConcept `bson:"valueCodeableConcept" json:"valueCodeableConcept"`
+	ValueString          string          `bson:"valueString" json:"valueString"`
+	ValuePeriod          Period          `bson:"valuePeriod" json:"valuePeriod"`
+}
+type ServiceRequestPatientInstruction struct {
+	Id                   *string     `bson:"id,omitempty" json:"id,omitempty"`
+	Extension            []Extension `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension    []Extension `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	InstructionMarkdown  *string     `bson:"instructionMarkdown,omitempty" json:"instructionMarkdown,omitempty"`
+	InstructionReference *Reference  `bson:"instructionReference,omitempty" json:"instructionReference,omitempty"`
 }
 type OtherServiceRequest ServiceRequest
 

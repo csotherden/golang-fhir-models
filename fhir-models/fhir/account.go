@@ -21,24 +21,30 @@ import "encoding/json"
 
 // Account is documented here http://hl7.org/fhir/StructureDefinition/Account
 type Account struct {
-	Id                *string            `bson:"id,omitempty" json:"id,omitempty"`
-	Meta              *Meta              `bson:"meta,omitempty" json:"meta,omitempty"`
-	ImplicitRules     *string            `bson:"implicitRules,omitempty" json:"implicitRules,omitempty"`
-	Language          *string            `bson:"language,omitempty" json:"language,omitempty"`
-	Text              *Narrative         `bson:"text,omitempty" json:"text,omitempty"`
-	Extension         []Extension        `bson:"extension,omitempty" json:"extension,omitempty"`
-	ModifierExtension []Extension        `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	Identifier        []Identifier       `bson:"identifier,omitempty" json:"identifier,omitempty"`
-	Status            AccountStatus      `bson:"status" json:"status"`
-	Type              *CodeableConcept   `bson:"type,omitempty" json:"type,omitempty"`
-	Name              *string            `bson:"name,omitempty" json:"name,omitempty"`
-	Subject           []Reference        `bson:"subject,omitempty" json:"subject,omitempty"`
-	ServicePeriod     *Period            `bson:"servicePeriod,omitempty" json:"servicePeriod,omitempty"`
-	Coverage          []AccountCoverage  `bson:"coverage,omitempty" json:"coverage,omitempty"`
-	Owner             *Reference         `bson:"owner,omitempty" json:"owner,omitempty"`
-	Description       *string            `bson:"description,omitempty" json:"description,omitempty"`
-	Guarantor         []AccountGuarantor `bson:"guarantor,omitempty" json:"guarantor,omitempty"`
-	PartOf            *Reference         `bson:"partOf,omitempty" json:"partOf,omitempty"`
+	Id                *string                 `bson:"id,omitempty" json:"id,omitempty"`
+	Meta              *Meta                   `bson:"meta,omitempty" json:"meta,omitempty"`
+	ImplicitRules     *string                 `bson:"implicitRules,omitempty" json:"implicitRules,omitempty"`
+	Language          *string                 `bson:"language,omitempty" json:"language,omitempty"`
+	Text              *Narrative              `bson:"text,omitempty" json:"text,omitempty"`
+	Extension         []Extension             `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension []Extension             `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Identifier        []Identifier            `bson:"identifier,omitempty" json:"identifier,omitempty"`
+	Status            AccountStatus           `bson:"status" json:"status"`
+	BillingStatus     *CodeableConcept        `bson:"billingStatus,omitempty" json:"billingStatus,omitempty"`
+	Type              *CodeableConcept        `bson:"type,omitempty" json:"type,omitempty"`
+	Name              *string                 `bson:"name,omitempty" json:"name,omitempty"`
+	Subject           []Reference             `bson:"subject,omitempty" json:"subject,omitempty"`
+	ServicePeriod     *Period                 `bson:"servicePeriod,omitempty" json:"servicePeriod,omitempty"`
+	Coverage          []AccountCoverage       `bson:"coverage,omitempty" json:"coverage,omitempty"`
+	Owner             *Reference              `bson:"owner,omitempty" json:"owner,omitempty"`
+	Description       *string                 `bson:"description,omitempty" json:"description,omitempty"`
+	Guarantor         []AccountGuarantor      `bson:"guarantor,omitempty" json:"guarantor,omitempty"`
+	Diagnosis         []AccountDiagnosis      `bson:"diagnosis,omitempty" json:"diagnosis,omitempty"`
+	Procedure         []AccountProcedure      `bson:"procedure,omitempty" json:"procedure,omitempty"`
+	RelatedAccount    []AccountRelatedAccount `bson:"relatedAccount,omitempty" json:"relatedAccount,omitempty"`
+	Currency          *CodeableConcept        `bson:"currency,omitempty" json:"currency,omitempty"`
+	Balance           []AccountBalance        `bson:"balance,omitempty" json:"balance,omitempty"`
+	CalculatedAt      *string                 `bson:"calculatedAt,omitempty" json:"calculatedAt,omitempty"`
 }
 type AccountCoverage struct {
 	Id                *string     `bson:"id,omitempty" json:"id,omitempty"`
@@ -54,6 +60,44 @@ type AccountGuarantor struct {
 	Party             Reference   `bson:"party" json:"party"`
 	OnHold            *bool       `bson:"onHold,omitempty" json:"onHold,omitempty"`
 	Period            *Period     `bson:"period,omitempty" json:"period,omitempty"`
+}
+type AccountDiagnosis struct {
+	Id                *string           `bson:"id,omitempty" json:"id,omitempty"`
+	Extension         []Extension       `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension []Extension       `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Sequence          *int              `bson:"sequence,omitempty" json:"sequence,omitempty"`
+	Condition         CodeableReference `bson:"condition" json:"condition"`
+	DateOfDiagnosis   *string           `bson:"dateOfDiagnosis,omitempty" json:"dateOfDiagnosis,omitempty"`
+	Type              []CodeableConcept `bson:"type,omitempty" json:"type,omitempty"`
+	OnAdmission       *bool             `bson:"onAdmission,omitempty" json:"onAdmission,omitempty"`
+	PackageCode       []CodeableConcept `bson:"packageCode,omitempty" json:"packageCode,omitempty"`
+}
+type AccountProcedure struct {
+	Id                *string           `bson:"id,omitempty" json:"id,omitempty"`
+	Extension         []Extension       `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension []Extension       `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Sequence          *int              `bson:"sequence,omitempty" json:"sequence,omitempty"`
+	Code              CodeableReference `bson:"code" json:"code"`
+	DateOfService     *string           `bson:"dateOfService,omitempty" json:"dateOfService,omitempty"`
+	Type              []CodeableConcept `bson:"type,omitempty" json:"type,omitempty"`
+	PackageCode       []CodeableConcept `bson:"packageCode,omitempty" json:"packageCode,omitempty"`
+	Device            []Reference       `bson:"device,omitempty" json:"device,omitempty"`
+}
+type AccountRelatedAccount struct {
+	Id                *string          `bson:"id,omitempty" json:"id,omitempty"`
+	Extension         []Extension      `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension []Extension      `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Relationship      *CodeableConcept `bson:"relationship,omitempty" json:"relationship,omitempty"`
+	Account           Reference        `bson:"account" json:"account"`
+}
+type AccountBalance struct {
+	Id                *string          `bson:"id,omitempty" json:"id,omitempty"`
+	Extension         []Extension      `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension []Extension      `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Aggregate         *CodeableConcept `bson:"aggregate,omitempty" json:"aggregate,omitempty"`
+	Term              *CodeableConcept `bson:"term,omitempty" json:"term,omitempty"`
+	Estimate          *bool            `bson:"estimate,omitempty" json:"estimate,omitempty"`
+	Amount            Money            `bson:"amount" json:"amount"`
 }
 type OtherAccount Account
 

@@ -21,24 +21,25 @@ import "encoding/json"
 
 // Bundle is documented here http://hl7.org/fhir/StructureDefinition/Bundle
 type Bundle struct {
-	Id            *string       `bson:"id,omitempty" json:"id,omitempty"`
-	Meta          *Meta         `bson:"meta,omitempty" json:"meta,omitempty"`
-	ImplicitRules *string       `bson:"implicitRules,omitempty" json:"implicitRules,omitempty"`
-	Language      *string       `bson:"language,omitempty" json:"language,omitempty"`
-	Identifier    *Identifier   `bson:"identifier,omitempty" json:"identifier,omitempty"`
-	Type          BundleType    `bson:"type" json:"type"`
-	Timestamp     *string       `bson:"timestamp,omitempty" json:"timestamp,omitempty"`
-	Total         *int          `bson:"total,omitempty" json:"total,omitempty"`
-	Link          []BundleLink  `bson:"link,omitempty" json:"link,omitempty"`
-	Entry         []BundleEntry `bson:"entry,omitempty" json:"entry,omitempty"`
-	Signature     *Signature    `bson:"signature,omitempty" json:"signature,omitempty"`
+	Id            *string         `bson:"id,omitempty" json:"id,omitempty"`
+	Meta          *Meta           `bson:"meta,omitempty" json:"meta,omitempty"`
+	ImplicitRules *string         `bson:"implicitRules,omitempty" json:"implicitRules,omitempty"`
+	Language      *string         `bson:"language,omitempty" json:"language,omitempty"`
+	Identifier    *Identifier     `bson:"identifier,omitempty" json:"identifier,omitempty"`
+	Type          BundleType      `bson:"type" json:"type"`
+	Timestamp     *string         `bson:"timestamp,omitempty" json:"timestamp,omitempty"`
+	Total         *int            `bson:"total,omitempty" json:"total,omitempty"`
+	Link          []BundleLink    `bson:"link,omitempty" json:"link,omitempty"`
+	Entry         []BundleEntry   `bson:"entry,omitempty" json:"entry,omitempty"`
+	Signature     *Signature      `bson:"signature,omitempty" json:"signature,omitempty"`
+	Issues        json.RawMessage `bson:"issues,omitempty" json:"issues,omitempty"`
 }
 type BundleLink struct {
-	Id                *string     `bson:"id,omitempty" json:"id,omitempty"`
-	Extension         []Extension `bson:"extension,omitempty" json:"extension,omitempty"`
-	ModifierExtension []Extension `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	Relation          string      `bson:"relation" json:"relation"`
-	Url               string      `bson:"url" json:"url"`
+	Id                *string           `bson:"id,omitempty" json:"id,omitempty"`
+	Extension         []Extension       `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension []Extension       `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Relation          LinkRelationTypes `bson:"relation" json:"relation"`
+	Url               string            `bson:"url" json:"url"`
 }
 type BundleEntry struct {
 	Id                *string              `bson:"id,omitempty" json:"id,omitempty"`

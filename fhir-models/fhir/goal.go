@@ -32,6 +32,7 @@ type Goal struct {
 	LifecycleStatus      GoalLifecycleStatus `bson:"lifecycleStatus" json:"lifecycleStatus"`
 	AchievementStatus    *CodeableConcept    `bson:"achievementStatus,omitempty" json:"achievementStatus,omitempty"`
 	Category             []CodeableConcept   `bson:"category,omitempty" json:"category,omitempty"`
+	Continuous           *bool               `bson:"continuous,omitempty" json:"continuous,omitempty"`
 	Priority             *CodeableConcept    `bson:"priority,omitempty" json:"priority,omitempty"`
 	Description          CodeableConcept     `bson:"description" json:"description"`
 	Subject              Reference           `bson:"subject" json:"subject"`
@@ -40,11 +41,10 @@ type Goal struct {
 	Target               []GoalTarget        `bson:"target,omitempty" json:"target,omitempty"`
 	StatusDate           *string             `bson:"statusDate,omitempty" json:"statusDate,omitempty"`
 	StatusReason         *string             `bson:"statusReason,omitempty" json:"statusReason,omitempty"`
-	ExpressedBy          *Reference          `bson:"expressedBy,omitempty" json:"expressedBy,omitempty"`
+	Source               *Reference          `bson:"source,omitempty" json:"source,omitempty"`
 	Addresses            []Reference         `bson:"addresses,omitempty" json:"addresses,omitempty"`
 	Note                 []Annotation        `bson:"note,omitempty" json:"note,omitempty"`
-	OutcomeCode          []CodeableConcept   `bson:"outcomeCode,omitempty" json:"outcomeCode,omitempty"`
-	OutcomeReference     []Reference         `bson:"outcomeReference,omitempty" json:"outcomeReference,omitempty"`
+	Outcome              []CodeableReference `bson:"outcome,omitempty" json:"outcome,omitempty"`
 }
 type GoalTarget struct {
 	Id                    *string          `bson:"id,omitempty" json:"id,omitempty"`

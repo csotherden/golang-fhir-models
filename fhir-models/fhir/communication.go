@@ -47,18 +47,17 @@ type Communication struct {
 	Received              *string                `bson:"received,omitempty" json:"received,omitempty"`
 	Recipient             []Reference            `bson:"recipient,omitempty" json:"recipient,omitempty"`
 	Sender                *Reference             `bson:"sender,omitempty" json:"sender,omitempty"`
-	ReasonCode            []CodeableConcept      `bson:"reasonCode,omitempty" json:"reasonCode,omitempty"`
-	ReasonReference       []Reference            `bson:"reasonReference,omitempty" json:"reasonReference,omitempty"`
+	Reason                []CodeableReference    `bson:"reason,omitempty" json:"reason,omitempty"`
 	Payload               []CommunicationPayload `bson:"payload,omitempty" json:"payload,omitempty"`
 	Note                  []Annotation           `bson:"note,omitempty" json:"note,omitempty"`
 }
 type CommunicationPayload struct {
-	Id                *string     `bson:"id,omitempty" json:"id,omitempty"`
-	Extension         []Extension `bson:"extension,omitempty" json:"extension,omitempty"`
-	ModifierExtension []Extension `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	ContentString     string      `bson:"contentString" json:"contentString"`
-	ContentAttachment Attachment  `bson:"contentAttachment" json:"contentAttachment"`
-	ContentReference  Reference   `bson:"contentReference" json:"contentReference"`
+	Id                     *string         `bson:"id,omitempty" json:"id,omitempty"`
+	Extension              []Extension     `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension      []Extension     `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	ContentAttachment      Attachment      `bson:"contentAttachment" json:"contentAttachment"`
+	ContentReference       Reference       `bson:"contentReference" json:"contentReference"`
+	ContentCodeableConcept CodeableConcept `bson:"contentCodeableConcept" json:"contentCodeableConcept"`
 }
 type OtherCommunication Communication
 

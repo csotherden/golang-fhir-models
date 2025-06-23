@@ -30,6 +30,7 @@ const (
 	DiagnosticReportStatusRegistered DiagnosticReportStatus = iota
 	DiagnosticReportStatusPartial
 	DiagnosticReportStatusPreliminary
+	DiagnosticReportStatusModified
 	DiagnosticReportStatusFinal
 	DiagnosticReportStatusAmended
 	DiagnosticReportStatusCorrected
@@ -51,6 +52,8 @@ func (code *DiagnosticReportStatus) UnmarshalJSON(json []byte) error {
 		*code = DiagnosticReportStatusPartial
 	case "preliminary":
 		*code = DiagnosticReportStatusPreliminary
+	case "modified":
+		*code = DiagnosticReportStatusModified
 	case "final":
 		*code = DiagnosticReportStatusFinal
 	case "amended":
@@ -81,6 +84,8 @@ func (code DiagnosticReportStatus) Code() string {
 		return "partial"
 	case DiagnosticReportStatusPreliminary:
 		return "preliminary"
+	case DiagnosticReportStatusModified:
+		return "modified"
 	case DiagnosticReportStatusFinal:
 		return "final"
 	case DiagnosticReportStatusAmended:
@@ -106,6 +111,8 @@ func (code DiagnosticReportStatus) Display() string {
 		return "Partial"
 	case DiagnosticReportStatusPreliminary:
 		return "Preliminary"
+	case DiagnosticReportStatusModified:
+		return "Modified"
 	case DiagnosticReportStatusFinal:
 		return "Final"
 	case DiagnosticReportStatusAmended:
@@ -130,13 +137,15 @@ func (code DiagnosticReportStatus) Definition() string {
 	case DiagnosticReportStatusPartial:
 		return "This is a partial (e.g. initial, interim or preliminary) report: data in the report may be incomplete or unverified."
 	case DiagnosticReportStatusPreliminary:
-		return "Verified early results are available, but not all  results are final."
+		return "Verified early results are available, but not all results are final."
+	case DiagnosticReportStatusModified:
+		return "Prior to being final, the report has been modified.  This includes any change in the results, diagnosis, narrative text, or other content of a non-finalized (e.g., preliminary) report that has been issued."
 	case DiagnosticReportStatusFinal:
 		return "The report is complete and verified by an authorized person."
 	case DiagnosticReportStatusAmended:
 		return "Subsequent to being final, the report has been modified.  This includes any change in the results, diagnosis, narrative text, or other content of a report that has been issued."
 	case DiagnosticReportStatusCorrected:
-		return "Subsequent to being final, the report has been modified  to correct an error in the report or referenced results."
+		return "Subsequent to being final, the report has been modified to correct an error in the report or referenced results."
 	case DiagnosticReportStatusAppended:
 		return "Subsequent to being final, the report has been modified by adding new content. The existing content is unchanged."
 	case DiagnosticReportStatusCancelled:

@@ -21,19 +21,43 @@ import "encoding/json"
 
 // SpecimenDefinition is documented here http://hl7.org/fhir/StructureDefinition/SpecimenDefinition
 type SpecimenDefinition struct {
-	Id                 *string                        `bson:"id,omitempty" json:"id,omitempty"`
-	Meta               *Meta                          `bson:"meta,omitempty" json:"meta,omitempty"`
-	ImplicitRules      *string                        `bson:"implicitRules,omitempty" json:"implicitRules,omitempty"`
-	Language           *string                        `bson:"language,omitempty" json:"language,omitempty"`
-	Text               *Narrative                     `bson:"text,omitempty" json:"text,omitempty"`
-	Extension          []Extension                    `bson:"extension,omitempty" json:"extension,omitempty"`
-	ModifierExtension  []Extension                    `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	Identifier         *Identifier                    `bson:"identifier,omitempty" json:"identifier,omitempty"`
-	TypeCollected      *CodeableConcept               `bson:"typeCollected,omitempty" json:"typeCollected,omitempty"`
-	PatientPreparation []CodeableConcept              `bson:"patientPreparation,omitempty" json:"patientPreparation,omitempty"`
-	TimeAspect         *string                        `bson:"timeAspect,omitempty" json:"timeAspect,omitempty"`
-	Collection         []CodeableConcept              `bson:"collection,omitempty" json:"collection,omitempty"`
-	TypeTested         []SpecimenDefinitionTypeTested `bson:"typeTested,omitempty" json:"typeTested,omitempty"`
+	Id                     *string                        `bson:"id,omitempty" json:"id,omitempty"`
+	Meta                   *Meta                          `bson:"meta,omitempty" json:"meta,omitempty"`
+	ImplicitRules          *string                        `bson:"implicitRules,omitempty" json:"implicitRules,omitempty"`
+	Language               *string                        `bson:"language,omitempty" json:"language,omitempty"`
+	Text                   *Narrative                     `bson:"text,omitempty" json:"text,omitempty"`
+	Extension              []Extension                    `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension      []Extension                    `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Url                    *string                        `bson:"url,omitempty" json:"url,omitempty"`
+	Identifier             *Identifier                    `bson:"identifier,omitempty" json:"identifier,omitempty"`
+	Version                *string                        `bson:"version,omitempty" json:"version,omitempty"`
+	VersionAlgorithmString *string                        `bson:"versionAlgorithmString,omitempty" json:"versionAlgorithmString,omitempty"`
+	VersionAlgorithmCoding *Coding                        `bson:"versionAlgorithmCoding,omitempty" json:"versionAlgorithmCoding,omitempty"`
+	Name                   *string                        `bson:"name,omitempty" json:"name,omitempty"`
+	Title                  *string                        `bson:"title,omitempty" json:"title,omitempty"`
+	DerivedFromCanonical   []string                       `bson:"derivedFromCanonical,omitempty" json:"derivedFromCanonical,omitempty"`
+	DerivedFromUri         []string                       `bson:"derivedFromUri,omitempty" json:"derivedFromUri,omitempty"`
+	Status                 PublicationStatus              `bson:"status" json:"status"`
+	Experimental           *bool                          `bson:"experimental,omitempty" json:"experimental,omitempty"`
+	SubjectCodeableConcept *CodeableConcept               `bson:"subjectCodeableConcept,omitempty" json:"subjectCodeableConcept,omitempty"`
+	SubjectReference       *Reference                     `bson:"subjectReference,omitempty" json:"subjectReference,omitempty"`
+	Date                   *string                        `bson:"date,omitempty" json:"date,omitempty"`
+	Publisher              *string                        `bson:"publisher,omitempty" json:"publisher,omitempty"`
+	Contact                []ContactDetail                `bson:"contact,omitempty" json:"contact,omitempty"`
+	Description            *string                        `bson:"description,omitempty" json:"description,omitempty"`
+	UseContext             []UsageContext                 `bson:"useContext,omitempty" json:"useContext,omitempty"`
+	Jurisdiction           []CodeableConcept              `bson:"jurisdiction,omitempty" json:"jurisdiction,omitempty"`
+	Purpose                *string                        `bson:"purpose,omitempty" json:"purpose,omitempty"`
+	Copyright              *string                        `bson:"copyright,omitempty" json:"copyright,omitempty"`
+	CopyrightLabel         *string                        `bson:"copyrightLabel,omitempty" json:"copyrightLabel,omitempty"`
+	ApprovalDate           *string                        `bson:"approvalDate,omitempty" json:"approvalDate,omitempty"`
+	LastReviewDate         *string                        `bson:"lastReviewDate,omitempty" json:"lastReviewDate,omitempty"`
+	EffectivePeriod        *Period                        `bson:"effectivePeriod,omitempty" json:"effectivePeriod,omitempty"`
+	TypeCollected          *CodeableConcept               `bson:"typeCollected,omitempty" json:"typeCollected,omitempty"`
+	PatientPreparation     []CodeableConcept              `bson:"patientPreparation,omitempty" json:"patientPreparation,omitempty"`
+	TimeAspect             *string                        `bson:"timeAspect,omitempty" json:"timeAspect,omitempty"`
+	Collection             []CodeableConcept              `bson:"collection,omitempty" json:"collection,omitempty"`
+	TypeTested             []SpecimenDefinitionTypeTested `bson:"typeTested,omitempty" json:"typeTested,omitempty"`
 }
 type SpecimenDefinitionTypeTested struct {
 	Id                 *string                                `bson:"id,omitempty" json:"id,omitempty"`
@@ -45,8 +69,10 @@ type SpecimenDefinitionTypeTested struct {
 	Container          *SpecimenDefinitionTypeTestedContainer `bson:"container,omitempty" json:"container,omitempty"`
 	Requirement        *string                                `bson:"requirement,omitempty" json:"requirement,omitempty"`
 	RetentionTime      *Duration                              `bson:"retentionTime,omitempty" json:"retentionTime,omitempty"`
+	SingleUse          *bool                                  `bson:"singleUse,omitempty" json:"singleUse,omitempty"`
 	RejectionCriterion []CodeableConcept                      `bson:"rejectionCriterion,omitempty" json:"rejectionCriterion,omitempty"`
 	Handling           []SpecimenDefinitionTypeTestedHandling `bson:"handling,omitempty" json:"handling,omitempty"`
+	TestingDestination []CodeableConcept                      `bson:"testingDestination,omitempty" json:"testingDestination,omitempty"`
 }
 type SpecimenDefinitionTypeTestedContainer struct {
 	Id                    *string                                         `bson:"id,omitempty" json:"id,omitempty"`

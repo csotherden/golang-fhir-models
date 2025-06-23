@@ -28,10 +28,10 @@ type QuestionnaireResponse struct {
 	Text              *Narrative                  `bson:"text,omitempty" json:"text,omitempty"`
 	Extension         []Extension                 `bson:"extension,omitempty" json:"extension,omitempty"`
 	ModifierExtension []Extension                 `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	Identifier        *Identifier                 `bson:"identifier,omitempty" json:"identifier,omitempty"`
+	Identifier        []Identifier                `bson:"identifier,omitempty" json:"identifier,omitempty"`
 	BasedOn           []Reference                 `bson:"basedOn,omitempty" json:"basedOn,omitempty"`
 	PartOf            []Reference                 `bson:"partOf,omitempty" json:"partOf,omitempty"`
-	Questionnaire     *string                     `bson:"questionnaire,omitempty" json:"questionnaire,omitempty"`
+	Questionnaire     string                      `bson:"questionnaire" json:"questionnaire"`
 	Status            QuestionnaireResponseStatus `bson:"status" json:"status"`
 	Subject           *Reference                  `bson:"subject,omitempty" json:"subject,omitempty"`
 	Encounter         *Reference                  `bson:"encounter,omitempty" json:"encounter,omitempty"`
@@ -54,18 +54,18 @@ type QuestionnaireResponseItemAnswer struct {
 	Id                *string                     `bson:"id,omitempty" json:"id,omitempty"`
 	Extension         []Extension                 `bson:"extension,omitempty" json:"extension,omitempty"`
 	ModifierExtension []Extension                 `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	ValueBoolean      *bool                       `bson:"valueBoolean,omitempty" json:"valueBoolean,omitempty"`
-	ValueDecimal      *json.Number                `bson:"valueDecimal,omitempty" json:"valueDecimal,omitempty"`
-	ValueInteger      *int                        `bson:"valueInteger,omitempty" json:"valueInteger,omitempty"`
-	ValueDate         *string                     `bson:"valueDate,omitempty" json:"valueDate,omitempty"`
-	ValueDateTime     *string                     `bson:"valueDateTime,omitempty" json:"valueDateTime,omitempty"`
-	ValueTime         *string                     `bson:"valueTime,omitempty" json:"valueTime,omitempty"`
-	ValueString       *string                     `bson:"valueString,omitempty" json:"valueString,omitempty"`
-	ValueUri          *string                     `bson:"valueUri,omitempty" json:"valueUri,omitempty"`
-	ValueAttachment   *Attachment                 `bson:"valueAttachment,omitempty" json:"valueAttachment,omitempty"`
-	ValueCoding       *Coding                     `bson:"valueCoding,omitempty" json:"valueCoding,omitempty"`
-	ValueQuantity     *Quantity                   `bson:"valueQuantity,omitempty" json:"valueQuantity,omitempty"`
-	ValueReference    *Reference                  `bson:"valueReference,omitempty" json:"valueReference,omitempty"`
+	ValueBoolean      bool                        `bson:"valueBoolean" json:"valueBoolean"`
+	ValueDecimal      json.Number                 `bson:"valueDecimal" json:"valueDecimal"`
+	ValueInteger      int                         `bson:"valueInteger" json:"valueInteger"`
+	ValueDate         string                      `bson:"valueDate" json:"valueDate"`
+	ValueDateTime     string                      `bson:"valueDateTime" json:"valueDateTime"`
+	ValueTime         string                      `bson:"valueTime" json:"valueTime"`
+	ValueString       string                      `bson:"valueString" json:"valueString"`
+	ValueUri          string                      `bson:"valueUri" json:"valueUri"`
+	ValueAttachment   Attachment                  `bson:"valueAttachment" json:"valueAttachment"`
+	ValueCoding       Coding                      `bson:"valueCoding" json:"valueCoding"`
+	ValueQuantity     Quantity                    `bson:"valueQuantity" json:"valueQuantity"`
+	ValueReference    Reference                   `bson:"valueReference" json:"valueReference"`
 	Item              []QuestionnaireResponseItem `bson:"item,omitempty" json:"item,omitempty"`
 }
 type OtherQuestionnaireResponse QuestionnaireResponse

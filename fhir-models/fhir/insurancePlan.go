@@ -37,20 +37,11 @@ type InsurancePlan struct {
 	OwnedBy           *Reference              `bson:"ownedBy,omitempty" json:"ownedBy,omitempty"`
 	AdministeredBy    *Reference              `bson:"administeredBy,omitempty" json:"administeredBy,omitempty"`
 	CoverageArea      []Reference             `bson:"coverageArea,omitempty" json:"coverageArea,omitempty"`
-	Contact           []InsurancePlanContact  `bson:"contact,omitempty" json:"contact,omitempty"`
+	Contact           []ExtendedContactDetail `bson:"contact,omitempty" json:"contact,omitempty"`
 	Endpoint          []Reference             `bson:"endpoint,omitempty" json:"endpoint,omitempty"`
 	Network           []Reference             `bson:"network,omitempty" json:"network,omitempty"`
 	Coverage          []InsurancePlanCoverage `bson:"coverage,omitempty" json:"coverage,omitempty"`
 	Plan              []InsurancePlanPlan     `bson:"plan,omitempty" json:"plan,omitempty"`
-}
-type InsurancePlanContact struct {
-	Id                *string          `bson:"id,omitempty" json:"id,omitempty"`
-	Extension         []Extension      `bson:"extension,omitempty" json:"extension,omitempty"`
-	ModifierExtension []Extension      `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	Purpose           *CodeableConcept `bson:"purpose,omitempty" json:"purpose,omitempty"`
-	Name              *HumanName       `bson:"name,omitempty" json:"name,omitempty"`
-	Telecom           []ContactPoint   `bson:"telecom,omitempty" json:"telecom,omitempty"`
-	Address           *Address         `bson:"address,omitempty" json:"address,omitempty"`
 }
 type InsurancePlanCoverage struct {
 	Id                *string                        `bson:"id,omitempty" json:"id,omitempty"`

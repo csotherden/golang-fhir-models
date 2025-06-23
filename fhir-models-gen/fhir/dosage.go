@@ -27,13 +27,13 @@ type Dosage struct {
 	AdditionalInstruction    []CodeableConcept   `bson:"additionalInstruction,omitempty" json:"additionalInstruction,omitempty"`
 	PatientInstruction       *string             `bson:"patientInstruction,omitempty" json:"patientInstruction,omitempty"`
 	Timing                   *Timing             `bson:"timing,omitempty" json:"timing,omitempty"`
-	AsNeededBoolean          *bool               `bson:"asNeededBoolean,omitempty" json:"asNeededBoolean,omitempty"`
-	AsNeededCodeableConcept  *CodeableConcept    `bson:"asNeededCodeableConcept,omitempty" json:"asNeededCodeableConcept,omitempty"`
+	AsNeeded                 *bool               `bson:"asNeeded,omitempty" json:"asNeeded,omitempty"`
+	AsNeededFor              []CodeableConcept   `bson:"asNeededFor,omitempty" json:"asNeededFor,omitempty"`
 	Site                     *CodeableConcept    `bson:"site,omitempty" json:"site,omitempty"`
 	Route                    *CodeableConcept    `bson:"route,omitempty" json:"route,omitempty"`
 	Method                   *CodeableConcept    `bson:"method,omitempty" json:"method,omitempty"`
 	DoseAndRate              []DosageDoseAndRate `bson:"doseAndRate,omitempty" json:"doseAndRate,omitempty"`
-	MaxDosePerPeriod         *Ratio              `bson:"maxDosePerPeriod,omitempty" json:"maxDosePerPeriod,omitempty"`
+	MaxDosePerPeriod         []Ratio             `bson:"maxDosePerPeriod,omitempty" json:"maxDosePerPeriod,omitempty"`
 	MaxDosePerAdministration *Quantity           `bson:"maxDosePerAdministration,omitempty" json:"maxDosePerAdministration,omitempty"`
 	MaxDosePerLifetime       *Quantity           `bson:"maxDosePerLifetime,omitempty" json:"maxDosePerLifetime,omitempty"`
 }

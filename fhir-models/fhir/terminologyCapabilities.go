@@ -21,37 +21,41 @@ import "encoding/json"
 
 // TerminologyCapabilities is documented here http://hl7.org/fhir/StructureDefinition/TerminologyCapabilities
 type TerminologyCapabilities struct {
-	Id                *string                                `bson:"id,omitempty" json:"id,omitempty"`
-	Meta              *Meta                                  `bson:"meta,omitempty" json:"meta,omitempty"`
-	ImplicitRules     *string                                `bson:"implicitRules,omitempty" json:"implicitRules,omitempty"`
-	Language          *string                                `bson:"language,omitempty" json:"language,omitempty"`
-	Text              *Narrative                             `bson:"text,omitempty" json:"text,omitempty"`
-	Extension         []Extension                            `bson:"extension,omitempty" json:"extension,omitempty"`
-	ModifierExtension []Extension                            `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	Url               *string                                `bson:"url,omitempty" json:"url,omitempty"`
-	Version           *string                                `bson:"version,omitempty" json:"version,omitempty"`
-	Name              *string                                `bson:"name,omitempty" json:"name,omitempty"`
-	Title             *string                                `bson:"title,omitempty" json:"title,omitempty"`
-	Status            PublicationStatus                      `bson:"status" json:"status"`
-	Experimental      *bool                                  `bson:"experimental,omitempty" json:"experimental,omitempty"`
-	Date              string                                 `bson:"date" json:"date"`
-	Publisher         *string                                `bson:"publisher,omitempty" json:"publisher,omitempty"`
-	Contact           []ContactDetail                        `bson:"contact,omitempty" json:"contact,omitempty"`
-	Description       *string                                `bson:"description,omitempty" json:"description,omitempty"`
-	UseContext        []UsageContext                         `bson:"useContext,omitempty" json:"useContext,omitempty"`
-	Jurisdiction      []CodeableConcept                      `bson:"jurisdiction,omitempty" json:"jurisdiction,omitempty"`
-	Purpose           *string                                `bson:"purpose,omitempty" json:"purpose,omitempty"`
-	Copyright         *string                                `bson:"copyright,omitempty" json:"copyright,omitempty"`
-	Kind              CapabilityStatementKind                `bson:"kind" json:"kind"`
-	Software          *TerminologyCapabilitiesSoftware       `bson:"software,omitempty" json:"software,omitempty"`
-	Implementation    *TerminologyCapabilitiesImplementation `bson:"implementation,omitempty" json:"implementation,omitempty"`
-	LockedDate        *bool                                  `bson:"lockedDate,omitempty" json:"lockedDate,omitempty"`
-	CodeSystem        []TerminologyCapabilitiesCodeSystem    `bson:"codeSystem,omitempty" json:"codeSystem,omitempty"`
-	Expansion         *TerminologyCapabilitiesExpansion      `bson:"expansion,omitempty" json:"expansion,omitempty"`
-	CodeSearch        *CodeSearchSupport                     `bson:"codeSearch,omitempty" json:"codeSearch,omitempty"`
-	ValidateCode      *TerminologyCapabilitiesValidateCode   `bson:"validateCode,omitempty" json:"validateCode,omitempty"`
-	Translation       *TerminologyCapabilitiesTranslation    `bson:"translation,omitempty" json:"translation,omitempty"`
-	Closure           *TerminologyCapabilitiesClosure        `bson:"closure,omitempty" json:"closure,omitempty"`
+	Id                     *string                                `bson:"id,omitempty" json:"id,omitempty"`
+	Meta                   *Meta                                  `bson:"meta,omitempty" json:"meta,omitempty"`
+	ImplicitRules          *string                                `bson:"implicitRules,omitempty" json:"implicitRules,omitempty"`
+	Language               *string                                `bson:"language,omitempty" json:"language,omitempty"`
+	Text                   *Narrative                             `bson:"text,omitempty" json:"text,omitempty"`
+	Extension              []Extension                            `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension      []Extension                            `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Url                    *string                                `bson:"url,omitempty" json:"url,omitempty"`
+	Identifier             []Identifier                           `bson:"identifier,omitempty" json:"identifier,omitempty"`
+	Version                *string                                `bson:"version,omitempty" json:"version,omitempty"`
+	VersionAlgorithmString *string                                `bson:"versionAlgorithmString,omitempty" json:"versionAlgorithmString,omitempty"`
+	VersionAlgorithmCoding *Coding                                `bson:"versionAlgorithmCoding,omitempty" json:"versionAlgorithmCoding,omitempty"`
+	Name                   *string                                `bson:"name,omitempty" json:"name,omitempty"`
+	Title                  *string                                `bson:"title,omitempty" json:"title,omitempty"`
+	Status                 PublicationStatus                      `bson:"status" json:"status"`
+	Experimental           *bool                                  `bson:"experimental,omitempty" json:"experimental,omitempty"`
+	Date                   string                                 `bson:"date" json:"date"`
+	Publisher              *string                                `bson:"publisher,omitempty" json:"publisher,omitempty"`
+	Contact                []ContactDetail                        `bson:"contact,omitempty" json:"contact,omitempty"`
+	Description            *string                                `bson:"description,omitempty" json:"description,omitempty"`
+	UseContext             []UsageContext                         `bson:"useContext,omitempty" json:"useContext,omitempty"`
+	Jurisdiction           []CodeableConcept                      `bson:"jurisdiction,omitempty" json:"jurisdiction,omitempty"`
+	Purpose                *string                                `bson:"purpose,omitempty" json:"purpose,omitempty"`
+	Copyright              *string                                `bson:"copyright,omitempty" json:"copyright,omitempty"`
+	CopyrightLabel         *string                                `bson:"copyrightLabel,omitempty" json:"copyrightLabel,omitempty"`
+	Kind                   CapabilityStatementKind                `bson:"kind" json:"kind"`
+	Software               *TerminologyCapabilitiesSoftware       `bson:"software,omitempty" json:"software,omitempty"`
+	Implementation         *TerminologyCapabilitiesImplementation `bson:"implementation,omitempty" json:"implementation,omitempty"`
+	LockedDate             *bool                                  `bson:"lockedDate,omitempty" json:"lockedDate,omitempty"`
+	CodeSystem             []TerminologyCapabilitiesCodeSystem    `bson:"codeSystem,omitempty" json:"codeSystem,omitempty"`
+	Expansion              *TerminologyCapabilitiesExpansion      `bson:"expansion,omitempty" json:"expansion,omitempty"`
+	CodeSearch             *CodeSearchSupport                     `bson:"codeSearch,omitempty" json:"codeSearch,omitempty"`
+	ValidateCode           *TerminologyCapabilitiesValidateCode   `bson:"validateCode,omitempty" json:"validateCode,omitempty"`
+	Translation            *TerminologyCapabilitiesTranslation    `bson:"translation,omitempty" json:"translation,omitempty"`
+	Closure                *TerminologyCapabilitiesClosure        `bson:"closure,omitempty" json:"closure,omitempty"`
 }
 type TerminologyCapabilitiesSoftware struct {
 	Id                *string     `bson:"id,omitempty" json:"id,omitempty"`
@@ -73,6 +77,7 @@ type TerminologyCapabilitiesCodeSystem struct {
 	ModifierExtension []Extension                                `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
 	Uri               *string                                    `bson:"uri,omitempty" json:"uri,omitempty"`
 	Version           []TerminologyCapabilitiesCodeSystemVersion `bson:"version,omitempty" json:"version,omitempty"`
+	Content           CodeSystemContentMode                      `bson:"content" json:"content"`
 	Subsumption       *bool                                      `bson:"subsumption,omitempty" json:"subsumption,omitempty"`
 }
 type TerminologyCapabilitiesCodeSystemVersion struct {

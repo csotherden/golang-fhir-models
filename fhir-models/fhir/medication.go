@@ -21,30 +21,32 @@ import "encoding/json"
 
 // Medication is documented here http://hl7.org/fhir/StructureDefinition/Medication
 type Medication struct {
-	Id                *string                `bson:"id,omitempty" json:"id,omitempty"`
-	Meta              *Meta                  `bson:"meta,omitempty" json:"meta,omitempty"`
-	ImplicitRules     *string                `bson:"implicitRules,omitempty" json:"implicitRules,omitempty"`
-	Language          *string                `bson:"language,omitempty" json:"language,omitempty"`
-	Text              *Narrative             `bson:"text,omitempty" json:"text,omitempty"`
-	Extension         []Extension            `bson:"extension,omitempty" json:"extension,omitempty"`
-	ModifierExtension []Extension            `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	Identifier        []Identifier           `bson:"identifier,omitempty" json:"identifier,omitempty"`
-	Code              *CodeableConcept       `bson:"code,omitempty" json:"code,omitempty"`
-	Status            *string                `bson:"status,omitempty" json:"status,omitempty"`
-	Manufacturer      *Reference             `bson:"manufacturer,omitempty" json:"manufacturer,omitempty"`
-	Form              *CodeableConcept       `bson:"form,omitempty" json:"form,omitempty"`
-	Amount            *Ratio                 `bson:"amount,omitempty" json:"amount,omitempty"`
-	Ingredient        []MedicationIngredient `bson:"ingredient,omitempty" json:"ingredient,omitempty"`
-	Batch             *MedicationBatch       `bson:"batch,omitempty" json:"batch,omitempty"`
+	Id                           *string                `bson:"id,omitempty" json:"id,omitempty"`
+	Meta                         *Meta                  `bson:"meta,omitempty" json:"meta,omitempty"`
+	ImplicitRules                *string                `bson:"implicitRules,omitempty" json:"implicitRules,omitempty"`
+	Language                     *string                `bson:"language,omitempty" json:"language,omitempty"`
+	Text                         *Narrative             `bson:"text,omitempty" json:"text,omitempty"`
+	Extension                    []Extension            `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension            []Extension            `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Identifier                   []Identifier           `bson:"identifier,omitempty" json:"identifier,omitempty"`
+	Code                         *CodeableConcept       `bson:"code,omitempty" json:"code,omitempty"`
+	Status                       *MedicationStatusCodes `bson:"status,omitempty" json:"status,omitempty"`
+	MarketingAuthorizationHolder *Reference             `bson:"marketingAuthorizationHolder,omitempty" json:"marketingAuthorizationHolder,omitempty"`
+	DoseForm                     *CodeableConcept       `bson:"doseForm,omitempty" json:"doseForm,omitempty"`
+	TotalVolume                  *Quantity              `bson:"totalVolume,omitempty" json:"totalVolume,omitempty"`
+	Ingredient                   []MedicationIngredient `bson:"ingredient,omitempty" json:"ingredient,omitempty"`
+	Batch                        *MedicationBatch       `bson:"batch,omitempty" json:"batch,omitempty"`
+	Definition                   *Reference             `bson:"definition,omitempty" json:"definition,omitempty"`
 }
 type MedicationIngredient struct {
-	Id                  *string         `bson:"id,omitempty" json:"id,omitempty"`
-	Extension           []Extension     `bson:"extension,omitempty" json:"extension,omitempty"`
-	ModifierExtension   []Extension     `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	ItemCodeableConcept CodeableConcept `bson:"itemCodeableConcept" json:"itemCodeableConcept"`
-	ItemReference       Reference       `bson:"itemReference" json:"itemReference"`
-	IsActive            *bool           `bson:"isActive,omitempty" json:"isActive,omitempty"`
-	Strength            *Ratio          `bson:"strength,omitempty" json:"strength,omitempty"`
+	Id                      *string           `bson:"id,omitempty" json:"id,omitempty"`
+	Extension               []Extension       `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension       []Extension       `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Item                    CodeableReference `bson:"item" json:"item"`
+	IsActive                *bool             `bson:"isActive,omitempty" json:"isActive,omitempty"`
+	StrengthRatio           *Ratio            `bson:"strengthRatio,omitempty" json:"strengthRatio,omitempty"`
+	StrengthCodeableConcept *CodeableConcept  `bson:"strengthCodeableConcept,omitempty" json:"strengthCodeableConcept,omitempty"`
+	StrengthQuantity        *Quantity         `bson:"strengthQuantity,omitempty" json:"strengthQuantity,omitempty"`
 }
 type MedicationBatch struct {
 	Id                *string     `bson:"id,omitempty" json:"id,omitempty"`

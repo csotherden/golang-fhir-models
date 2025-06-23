@@ -40,8 +40,7 @@ type RiskAssessment struct {
 	OccurrencePeriod   *Period                    `bson:"occurrencePeriod,omitempty" json:"occurrencePeriod,omitempty"`
 	Condition          *Reference                 `bson:"condition,omitempty" json:"condition,omitempty"`
 	Performer          *Reference                 `bson:"performer,omitempty" json:"performer,omitempty"`
-	ReasonCode         []CodeableConcept          `bson:"reasonCode,omitempty" json:"reasonCode,omitempty"`
-	ReasonReference    []Reference                `bson:"reasonReference,omitempty" json:"reasonReference,omitempty"`
+	Reason             []CodeableReference        `bson:"reason,omitempty" json:"reason,omitempty"`
 	Basis              []Reference                `bson:"basis,omitempty" json:"basis,omitempty"`
 	Prediction         []RiskAssessmentPrediction `bson:"prediction,omitempty" json:"prediction,omitempty"`
 	Mitigation         *string                    `bson:"mitigation,omitempty" json:"mitigation,omitempty"`

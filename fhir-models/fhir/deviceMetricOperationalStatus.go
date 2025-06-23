@@ -84,11 +84,11 @@ func (code DeviceMetricOperationalStatus) Display() string {
 func (code DeviceMetricOperationalStatus) Definition() string {
 	switch code {
 	case DeviceMetricOperationalStatusOn:
-		return "The DeviceMetric is operating and will generate DeviceObservations."
+		return "The DeviceMetric is operating and will generate Observations."
 	case DeviceMetricOperationalStatusOff:
 		return "The DeviceMetric is not operating."
 	case DeviceMetricOperationalStatusStandby:
-		return "The DeviceMetric is operating, but will not generate any DeviceObservations."
+		return "The DeviceMetric is operating, but will not generate any Observations."
 	case DeviceMetricOperationalStatusEnteredInError:
 		return "The DeviceMetric was entered in error."
 	}

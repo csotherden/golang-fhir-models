@@ -31,6 +31,7 @@ const (
 	IssueSeverityError
 	IssueSeverityWarning
 	IssueSeverityInformation
+	IssueSeveritySuccess
 )
 
 func (code IssueSeverity) MarshalJSON() ([]byte, error) {
@@ -47,6 +48,8 @@ func (code *IssueSeverity) UnmarshalJSON(json []byte) error {
 		*code = IssueSeverityWarning
 	case "information":
 		*code = IssueSeverityInformation
+	case "success":
+		*code = IssueSeveritySuccess
 	default:
 		return fmt.Errorf("unknown IssueSeverity code `%s`", s)
 	}
@@ -65,6 +68,8 @@ func (code IssueSeverity) Code() string {
 		return "warning"
 	case IssueSeverityInformation:
 		return "information"
+	case IssueSeveritySuccess:
+		return "success"
 	}
 	return "<unknown>"
 }
@@ -78,6 +83,8 @@ func (code IssueSeverity) Display() string {
 		return "Warning"
 	case IssueSeverityInformation:
 		return "Information"
+	case IssueSeveritySuccess:
+		return "Operation Successful"
 	}
 	return "<unknown>"
 }
@@ -91,6 +98,8 @@ func (code IssueSeverity) Definition() string {
 		return "The issue is not important enough to cause the action to fail but may cause it to be performed suboptimally or in a way that is not as desired."
 	case IssueSeverityInformation:
 		return "The issue has no relation to the degree of success of the action."
+	case IssueSeveritySuccess:
+		return "The operation completed successfully."
 	}
 	return "<unknown>"
 }

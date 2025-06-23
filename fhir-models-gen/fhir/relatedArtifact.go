@@ -19,13 +19,16 @@ package fhir
 
 // RelatedArtifact is documented here http://hl7.org/fhir/StructureDefinition/RelatedArtifact
 type RelatedArtifact struct {
-	Id        *string             `bson:"id,omitempty" json:"id,omitempty"`
-	Extension []Extension         `bson:"extension,omitempty" json:"extension,omitempty"`
-	Type      RelatedArtifactType `bson:"type" json:"type"`
-	Label     *string             `bson:"label,omitempty" json:"label,omitempty"`
-	Display   *string             `bson:"display,omitempty" json:"display,omitempty"`
-	Citation  *string             `bson:"citation,omitempty" json:"citation,omitempty"`
-	Url       *string             `bson:"url,omitempty" json:"url,omitempty"`
-	Document  *Attachment         `bson:"document,omitempty" json:"document,omitempty"`
-	Resource  *string             `bson:"resource,omitempty" json:"resource,omitempty"`
+	Id                *string             `bson:"id,omitempty" json:"id,omitempty"`
+	Extension         []Extension         `bson:"extension,omitempty" json:"extension,omitempty"`
+	Type              RelatedArtifactType `bson:"type" json:"type"`
+	Classifier        []CodeableConcept   `bson:"classifier,omitempty" json:"classifier,omitempty"`
+	Label             *string             `bson:"label,omitempty" json:"label,omitempty"`
+	Display           *string             `bson:"display,omitempty" json:"display,omitempty"`
+	Citation          *string             `bson:"citation,omitempty" json:"citation,omitempty"`
+	Document          *Attachment         `bson:"document,omitempty" json:"document,omitempty"`
+	Resource          *string             `bson:"resource,omitempty" json:"resource,omitempty"`
+	ResourceReference *Reference          `bson:"resourceReference,omitempty" json:"resourceReference,omitempty"`
+	PublicationStatus *PublicationStatus  `bson:"publicationStatus,omitempty" json:"publicationStatus,omitempty"`
+	PublicationDate   *string             `bson:"publicationDate,omitempty" json:"publicationDate,omitempty"`
 }

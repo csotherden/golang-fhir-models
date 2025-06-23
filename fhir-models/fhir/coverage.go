@@ -30,28 +30,38 @@ type Coverage struct {
 	ModifierExtension []Extension                  `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
 	Identifier        []Identifier                 `bson:"identifier,omitempty" json:"identifier,omitempty"`
 	Status            FinancialResourceStatusCodes `bson:"status" json:"status"`
+	Kind              Kind                         `bson:"kind" json:"kind"`
+	PaymentBy         []CoveragePaymentBy          `bson:"paymentBy,omitempty" json:"paymentBy,omitempty"`
 	Type              *CodeableConcept             `bson:"type,omitempty" json:"type,omitempty"`
 	PolicyHolder      *Reference                   `bson:"policyHolder,omitempty" json:"policyHolder,omitempty"`
 	Subscriber        *Reference                   `bson:"subscriber,omitempty" json:"subscriber,omitempty"`
-	SubscriberId      *string                      `bson:"subscriberId,omitempty" json:"subscriberId,omitempty"`
+	SubscriberId      []Identifier                 `bson:"subscriberId,omitempty" json:"subscriberId,omitempty"`
 	Beneficiary       Reference                    `bson:"beneficiary" json:"beneficiary"`
 	Dependent         *string                      `bson:"dependent,omitempty" json:"dependent,omitempty"`
 	Relationship      *CodeableConcept             `bson:"relationship,omitempty" json:"relationship,omitempty"`
 	Period            *Period                      `bson:"period,omitempty" json:"period,omitempty"`
-	Payor             []Reference                  `bson:"payor" json:"payor"`
+	Insurer           *Reference                   `bson:"insurer,omitempty" json:"insurer,omitempty"`
 	Class             []CoverageClass              `bson:"class,omitempty" json:"class,omitempty"`
 	Order             *int                         `bson:"order,omitempty" json:"order,omitempty"`
 	Network           *string                      `bson:"network,omitempty" json:"network,omitempty"`
 	CostToBeneficiary []CoverageCostToBeneficiary  `bson:"costToBeneficiary,omitempty" json:"costToBeneficiary,omitempty"`
 	Subrogation       *bool                        `bson:"subrogation,omitempty" json:"subrogation,omitempty"`
 	Contract          []Reference                  `bson:"contract,omitempty" json:"contract,omitempty"`
+	InsurancePlan     *Reference                   `bson:"insurancePlan,omitempty" json:"insurancePlan,omitempty"`
+}
+type CoveragePaymentBy struct {
+	Id                *string     `bson:"id,omitempty" json:"id,omitempty"`
+	Extension         []Extension `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension []Extension `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Party             Reference   `bson:"party" json:"party"`
+	Responsibility    *string     `bson:"responsibility,omitempty" json:"responsibility,omitempty"`
 }
 type CoverageClass struct {
 	Id                *string         `bson:"id,omitempty" json:"id,omitempty"`
 	Extension         []Extension     `bson:"extension,omitempty" json:"extension,omitempty"`
 	ModifierExtension []Extension     `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
 	Type              CodeableConcept `bson:"type" json:"type"`
-	Value             string          `bson:"value" json:"value"`
+	Value             Identifier      `bson:"value" json:"value"`
 	Name              *string         `bson:"name,omitempty" json:"name,omitempty"`
 }
 type CoverageCostToBeneficiary struct {
@@ -59,8 +69,12 @@ type CoverageCostToBeneficiary struct {
 	Extension         []Extension                          `bson:"extension,omitempty" json:"extension,omitempty"`
 	ModifierExtension []Extension                          `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
 	Type              *CodeableConcept                     `bson:"type,omitempty" json:"type,omitempty"`
-	ValueQuantity     Quantity                             `bson:"valueQuantity" json:"valueQuantity"`
-	ValueMoney        Money                                `bson:"valueMoney" json:"valueMoney"`
+	Category          *CodeableConcept                     `bson:"category,omitempty" json:"category,omitempty"`
+	Network           *CodeableConcept                     `bson:"network,omitempty" json:"network,omitempty"`
+	Unit              *CodeableConcept                     `bson:"unit,omitempty" json:"unit,omitempty"`
+	Term              *CodeableConcept                     `bson:"term,omitempty" json:"term,omitempty"`
+	ValueQuantity     *Quantity                            `bson:"valueQuantity,omitempty" json:"valueQuantity,omitempty"`
+	ValueMoney        *Money                               `bson:"valueMoney,omitempty" json:"valueMoney,omitempty"`
 	Exception         []CoverageCostToBeneficiaryException `bson:"exception,omitempty" json:"exception,omitempty"`
 }
 type CoverageCostToBeneficiaryException struct {

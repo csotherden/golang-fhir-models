@@ -27,10 +27,10 @@ import (
 type ProvenanceEntityRole int
 
 const (
-	ProvenanceEntityRoleDerivation ProvenanceEntityRole = iota
-	ProvenanceEntityRoleRevision
+	ProvenanceEntityRoleRevision ProvenanceEntityRole = iota
 	ProvenanceEntityRoleQuotation
 	ProvenanceEntityRoleSource
+	ProvenanceEntityRoleInstantiates
 	ProvenanceEntityRoleRemoval
 )
 
@@ -40,14 +40,14 @@ func (code ProvenanceEntityRole) MarshalJSON() ([]byte, error) {
 func (code *ProvenanceEntityRole) UnmarshalJSON(json []byte) error {
 	s := strings.Trim(string(json), "\"")
 	switch s {
-	case "derivation":
-		*code = ProvenanceEntityRoleDerivation
 	case "revision":
 		*code = ProvenanceEntityRoleRevision
 	case "quotation":
 		*code = ProvenanceEntityRoleQuotation
 	case "source":
 		*code = ProvenanceEntityRoleSource
+	case "instantiates":
+		*code = ProvenanceEntityRoleInstantiates
 	case "removal":
 		*code = ProvenanceEntityRoleRemoval
 	default:
@@ -60,14 +60,14 @@ func (code ProvenanceEntityRole) String() string {
 }
 func (code ProvenanceEntityRole) Code() string {
 	switch code {
-	case ProvenanceEntityRoleDerivation:
-		return "derivation"
 	case ProvenanceEntityRoleRevision:
 		return "revision"
 	case ProvenanceEntityRoleQuotation:
 		return "quotation"
 	case ProvenanceEntityRoleSource:
 		return "source"
+	case ProvenanceEntityRoleInstantiates:
+		return "instantiates"
 	case ProvenanceEntityRoleRemoval:
 		return "removal"
 	}
@@ -75,14 +75,14 @@ func (code ProvenanceEntityRole) Code() string {
 }
 func (code ProvenanceEntityRole) Display() string {
 	switch code {
-	case ProvenanceEntityRoleDerivation:
-		return "Derivation"
 	case ProvenanceEntityRoleRevision:
 		return "Revision"
 	case ProvenanceEntityRoleQuotation:
 		return "Quotation"
 	case ProvenanceEntityRoleSource:
 		return "Source"
+	case ProvenanceEntityRoleInstantiates:
+		return "Instantiates"
 	case ProvenanceEntityRoleRemoval:
 		return "Removal"
 	}
@@ -90,16 +90,16 @@ func (code ProvenanceEntityRole) Display() string {
 }
 func (code ProvenanceEntityRole) Definition() string {
 	switch code {
-	case ProvenanceEntityRoleDerivation:
-		return "A transformation of an entity into another, an update of an entity resulting in a new one, or the construction of a new entity based on a pre-existing entity."
 	case ProvenanceEntityRoleRevision:
-		return "A derivation for which the resulting entity is a revised version of some original."
+		return "An entity that is used by the activity to produce a new version of that entity."
 	case ProvenanceEntityRoleQuotation:
-		return "The repeat of (some or all of) an entity, such as text or image, by someone who might or might not be its original author."
+		return "An entity that is copied in full or part by an agent that is not the author of the entity."
 	case ProvenanceEntityRoleSource:
-		return "A primary source for a topic refers to something produced by some agent with direct experience and knowledge about the topic, at the time of the topic's study, without benefit from hindsight."
+		return "An entity that is used as input to the activity that produced the target."
+	case ProvenanceEntityRoleInstantiates:
+		return "The record resulting from this event adheres to the protocol, guideline, order set or other definition represented by this entity."
 	case ProvenanceEntityRoleRemoval:
-		return "A derivation for which the entity is removed from accessibility usually through the use of the Delete operation."
+		return "An entity that is removed from accessibility, usually through the DELETE operator."
 	}
 	return "<unknown>"
 }

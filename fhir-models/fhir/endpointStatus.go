@@ -32,7 +32,6 @@ const (
 	EndpointStatusError
 	EndpointStatusOff
 	EndpointStatusEnteredInError
-	EndpointStatusTest
 )
 
 func (code EndpointStatus) MarshalJSON() ([]byte, error) {
@@ -51,8 +50,6 @@ func (code *EndpointStatus) UnmarshalJSON(json []byte) error {
 		*code = EndpointStatusOff
 	case "entered-in-error":
 		*code = EndpointStatusEnteredInError
-	case "test":
-		*code = EndpointStatusTest
 	default:
 		return fmt.Errorf("unknown EndpointStatus code `%s`", s)
 	}
@@ -73,8 +70,6 @@ func (code EndpointStatus) Code() string {
 		return "off"
 	case EndpointStatusEnteredInError:
 		return "entered-in-error"
-	case EndpointStatusTest:
-		return "test"
 	}
 	return "<unknown>"
 }
@@ -90,8 +85,6 @@ func (code EndpointStatus) Display() string {
 		return "Off"
 	case EndpointStatusEnteredInError:
 		return "Entered in error"
-	case EndpointStatusTest:
-		return "Test"
 	}
 	return "<unknown>"
 }
@@ -107,8 +100,6 @@ func (code EndpointStatus) Definition() string {
 		return "This endpoint is no longer to be used."
 	case EndpointStatusEnteredInError:
 		return "This instance should not have been part of this patient's medical record."
-	case EndpointStatusTest:
-		return "This endpoint is not intended for production usage."
 	}
 	return "<unknown>"
 }

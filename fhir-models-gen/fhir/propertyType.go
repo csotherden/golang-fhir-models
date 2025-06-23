@@ -111,7 +111,7 @@ func (code PropertyType) Definition() string {
 	case PropertyTypeString:
 		return "The property value is a string."
 	case PropertyTypeInteger:
-		return "The property value is a string (often used to assign ranking values to concepts for supporting score assessments)."
+		return "The property value is an integer (often used to assign ranking values to concepts for supporting score assessments)."
 	case PropertyTypeBoolean:
 		return "The property value is a boolean true | false."
 	case PropertyTypeDateTime:

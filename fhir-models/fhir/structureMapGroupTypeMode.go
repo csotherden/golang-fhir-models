@@ -27,8 +27,7 @@ import (
 type StructureMapGroupTypeMode int
 
 const (
-	StructureMapGroupTypeModeNone StructureMapGroupTypeMode = iota
-	StructureMapGroupTypeModeTypes
+	StructureMapGroupTypeModeTypes StructureMapGroupTypeMode = iota
 	StructureMapGroupTypeModeTypeAndTypes
 )
 
@@ -38,8 +37,6 @@ func (code StructureMapGroupTypeMode) MarshalJSON() ([]byte, error) {
 func (code *StructureMapGroupTypeMode) UnmarshalJSON(json []byte) error {
 	s := strings.Trim(string(json), "\"")
 	switch s {
-	case "none":
-		*code = StructureMapGroupTypeModeNone
 	case "types":
 		*code = StructureMapGroupTypeModeTypes
 	case "type-and-types":
@@ -54,8 +51,6 @@ func (code StructureMapGroupTypeMode) String() string {
 }
 func (code StructureMapGroupTypeMode) Code() string {
 	switch code {
-	case StructureMapGroupTypeModeNone:
-		return "none"
 	case StructureMapGroupTypeModeTypes:
 		return "types"
 	case StructureMapGroupTypeModeTypeAndTypes:
@@ -65,8 +60,6 @@ func (code StructureMapGroupTypeMode) Code() string {
 }
 func (code StructureMapGroupTypeMode) Display() string {
 	switch code {
-	case StructureMapGroupTypeModeNone:
-		return "Not a Default"
 	case StructureMapGroupTypeModeTypes:
 		return "Default for Type Combination"
 	case StructureMapGroupTypeModeTypeAndTypes:
@@ -76,8 +69,6 @@ func (code StructureMapGroupTypeMode) Display() string {
 }
 func (code StructureMapGroupTypeMode) Definition() string {
 	switch code {
-	case StructureMapGroupTypeModeNone:
-		return "This group is not a default group for the types."
 	case StructureMapGroupTypeModeTypes:
 		return "This group is a default mapping group for the specified types and for the primary source type."
 	case StructureMapGroupTypeModeTypeAndTypes:

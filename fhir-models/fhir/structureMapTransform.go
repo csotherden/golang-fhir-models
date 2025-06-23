@@ -183,7 +183,7 @@ func (code StructureMapTransform) Definition() string {
 	case StructureMapTransformEscape:
 		return "escape(source, fmt1, fmt2) - change source from one kind of escaping to another (plain, java, xml, json). note that this is for when the string itself is escaped."
 	case StructureMapTransformCast:
-		return "cast(source, type?) - case source from one type to another. target type can be left as implicit if there is one and only one target type known."
+		return "cast(source, type?) - cast (convert) source from one type to another. Target type can be left as implicit if there is one and only one target type known. The default namespace for the type is 'FHIR' (see [FHIRPath type specifiers](http://hl7.org/fhirpath/N1/#is-type-specifier))"
 	case StructureMapTransformAppend:
 		return "append(source...) - source is element or string."
 	case StructureMapTransformTranslate:

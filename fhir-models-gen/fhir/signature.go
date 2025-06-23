@@ -21,9 +21,9 @@ package fhir
 type Signature struct {
 	Id           *string     `bson:"id,omitempty" json:"id,omitempty"`
 	Extension    []Extension `bson:"extension,omitempty" json:"extension,omitempty"`
-	Type         []Coding    `bson:"type" json:"type"`
-	When         string      `bson:"when" json:"when"`
-	Who          Reference   `bson:"who" json:"who"`
+	Type         []Coding    `bson:"type,omitempty" json:"type,omitempty"`
+	When         *string     `bson:"when,omitempty" json:"when,omitempty"`
+	Who          *Reference  `bson:"who,omitempty" json:"who,omitempty"`
 	OnBehalfOf   *Reference  `bson:"onBehalfOf,omitempty" json:"onBehalfOf,omitempty"`
 	TargetFormat *string     `bson:"targetFormat,omitempty" json:"targetFormat,omitempty"`
 	SigFormat    *string     `bson:"sigFormat,omitempty" json:"sigFormat,omitempty"`

@@ -81,7 +81,7 @@ func (code ResourceVersionPolicy) Definition() string {
 	case ResourceVersionPolicyVersioned:
 		return "VersionId meta-property is supported (server) or used (client)."
 	case ResourceVersionPolicyVersionedUpdate:
-		return "VersionId must be correct for updates (server) or will be specified (If-match header) for updates (client)."
+		return "Supports version-aware updates (server) or will be specified (If-match header) for updates (client)."
 	}
 	return "<unknown>"
 }

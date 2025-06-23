@@ -23,7 +23,7 @@ type Expression struct {
 	Extension   []Extension `bson:"extension,omitempty" json:"extension,omitempty"`
 	Description *string     `bson:"description,omitempty" json:"description,omitempty"`
 	Name        *string     `bson:"name,omitempty" json:"name,omitempty"`
-	Language    string      `bson:"language" json:"language"`
+	Language    *string     `bson:"language,omitempty" json:"language,omitempty"`
 	Expression  *string     `bson:"expression,omitempty" json:"expression,omitempty"`
 	Reference   *string     `bson:"reference,omitempty" json:"reference,omitempty"`
 }

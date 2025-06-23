@@ -50,6 +50,7 @@ const (
 	IssueTypeTooCostly
 	IssueTypeBusinessRule
 	IssueTypeConflict
+	IssueTypeLimitedFilter
 	IssueTypeTransient
 	IssueTypeLockError
 	IssueTypeNoStore
@@ -58,6 +59,7 @@ const (
 	IssueTypeIncomplete
 	IssueTypeThrottled
 	IssueTypeInformational
+	IssueTypeSuccess
 )
 
 func (code IssueType) MarshalJSON() ([]byte, error) {
@@ -112,6 +114,8 @@ func (code *IssueType) UnmarshalJSON(json []byte) error {
 		*code = IssueTypeBusinessRule
 	case "conflict":
 		*code = IssueTypeConflict
+	case "limited-filter":
+		*code = IssueTypeLimitedFilter
 	case "transient":
 		*code = IssueTypeTransient
 	case "lock-error":
@@ -128,6 +132,8 @@ func (code *IssueType) UnmarshalJSON(json []byte) error {
 		*code = IssueTypeThrottled
 	case "informational":
 		*code = IssueTypeInformational
+	case "success":
+		*code = IssueTypeSuccess
 	default:
 		return fmt.Errorf("unknown IssueType code `%s`", s)
 	}
@@ -184,6 +190,8 @@ func (code IssueType) Code() string {
 		return "business-rule"
 	case IssueTypeConflict:
 		return "conflict"
+	case IssueTypeLimitedFilter:
+		return "limited-filter"
 	case IssueTypeTransient:
 		return "transient"
 	case IssueTypeLockError:
@@ -200,6 +208,8 @@ func (code IssueType) Code() string {
 		return "throttled"
 	case IssueTypeInformational:
 		return "informational"
+	case IssueTypeSuccess:
+		return "success"
 	}
 	return "<unknown>"
 }
@@ -251,6 +261,8 @@ func (code IssueType) Display() string {
 		return "Business Rule Violation"
 	case IssueTypeConflict:
 		return "Edit Version Conflict"
+	case IssueTypeLimitedFilter:
+		return "Limited Filter Application"
 	case IssueTypeTransient:
 		return "Transient Issue"
 	case IssueTypeLockError:
@@ -267,6 +279,8 @@ func (code IssueType) Display() string {
 		return "Throttled"
 	case IssueTypeInformational:
 		return "Informational Note"
+	case IssueTypeSuccess:
+		return "Operation Successful"
 	}
 	return "<unknown>"
 }
@@ -318,6 +332,8 @@ func (code IssueType) Definition() string {
 		return "The content/operation failed to pass some business rule and so could not proceed."
 	case IssueTypeConflict:
 		return "Content could not be accepted because of an edit conflict (i.e. version aware updates). (In a pure RESTful environment, this would be an HTTP 409 error, but this code may be used where the conflict is discovered further into the application architecture.)."
+	case IssueTypeLimitedFilter:
+		return "Some search filters might not have applied on all results.  Data may have been included that does not meet all of the filters listed in the `self` `Bundle.link`."
 	case IssueTypeTransient:
 		return "Transient processing issues. The system receiving the message may be able to resubmit the same content once an underlying issue is resolved."
 	case IssueTypeLockError:
@@ -334,6 +350,8 @@ func (code IssueType) Definition() string {
 		return "The system is not prepared to handle this request due to load management."
 	case IssueTypeInformational:
 		return "A message unrelated to the processing success of the completed operation (examples of the latter include things like reminders of password expiry, system maintenance times, etc.)."
+	case IssueTypeSuccess:
+		return "The operation completed successfully."
 	}
 	return "<unknown>"
 }

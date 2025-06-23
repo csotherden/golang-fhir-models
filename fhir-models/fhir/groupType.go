@@ -31,8 +31,12 @@ const (
 	GroupTypeAnimal
 	GroupTypePractitioner
 	GroupTypeDevice
-	GroupTypeMedication
-	GroupTypeSubstance
+	GroupTypeCareteam
+	GroupTypeHealthcareservice
+	GroupTypeLocation
+	GroupTypeOrganization
+	GroupTypeRelatedperson
+	GroupTypeSpecimen
 )
 
 func (code GroupType) MarshalJSON() ([]byte, error) {
@@ -49,10 +53,18 @@ func (code *GroupType) UnmarshalJSON(json []byte) error {
 		*code = GroupTypePractitioner
 	case "device":
 		*code = GroupTypeDevice
-	case "medication":
-		*code = GroupTypeMedication
-	case "substance":
-		*code = GroupTypeSubstance
+	case "careteam":
+		*code = GroupTypeCareteam
+	case "healthcareservice":
+		*code = GroupTypeHealthcareservice
+	case "location":
+		*code = GroupTypeLocation
+	case "organization":
+		*code = GroupTypeOrganization
+	case "relatedperson":
+		*code = GroupTypeRelatedperson
+	case "specimen":
+		*code = GroupTypeSpecimen
 	default:
 		return fmt.Errorf("unknown GroupType code `%s`", s)
 	}
@@ -71,10 +83,18 @@ func (code GroupType) Code() string {
 		return "practitioner"
 	case GroupTypeDevice:
 		return "device"
-	case GroupTypeMedication:
-		return "medication"
-	case GroupTypeSubstance:
-		return "substance"
+	case GroupTypeCareteam:
+		return "careteam"
+	case GroupTypeHealthcareservice:
+		return "healthcareservice"
+	case GroupTypeLocation:
+		return "location"
+	case GroupTypeOrganization:
+		return "organization"
+	case GroupTypeRelatedperson:
+		return "relatedperson"
+	case GroupTypeSpecimen:
+		return "specimen"
 	}
 	return "<unknown>"
 }
@@ -88,10 +108,18 @@ func (code GroupType) Display() string {
 		return "Practitioner"
 	case GroupTypeDevice:
 		return "Device"
-	case GroupTypeMedication:
-		return "Medication"
-	case GroupTypeSubstance:
-		return "Substance"
+	case GroupTypeCareteam:
+		return "CareTeam"
+	case GroupTypeHealthcareservice:
+		return "HealthcareService"
+	case GroupTypeLocation:
+		return "Location"
+	case GroupTypeOrganization:
+		return "Organization"
+	case GroupTypeRelatedperson:
+		return "RelatedPerson"
+	case GroupTypeSpecimen:
+		return "Specimen"
 	}
 	return "<unknown>"
 }
@@ -105,10 +133,18 @@ func (code GroupType) Definition() string {
 		return "Group contains healthcare practitioner resources (Practitioner or PractitionerRole)."
 	case GroupTypeDevice:
 		return "Group contains Device resources."
-	case GroupTypeMedication:
-		return "Group contains Medication resources."
-	case GroupTypeSubstance:
-		return "Group contains Substance resources."
+	case GroupTypeCareteam:
+		return "Group contains CareTeam resources."
+	case GroupTypeHealthcareservice:
+		return "Group contains HealthcareService resources."
+	case GroupTypeLocation:
+		return "Group contains Location resources."
+	case GroupTypeOrganization:
+		return "Group contains Organization resources."
+	case GroupTypeRelatedperson:
+		return "Group contains RelatedPerson resources."
+	case GroupTypeSpecimen:
+		return "Group contains Specimen resources."
 	}
 	return "<unknown>"
 }

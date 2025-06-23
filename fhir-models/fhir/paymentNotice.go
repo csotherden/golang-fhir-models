@@ -33,8 +33,8 @@ type PaymentNotice struct {
 	Request           *Reference                   `bson:"request,omitempty" json:"request,omitempty"`
 	Response          *Reference                   `bson:"response,omitempty" json:"response,omitempty"`
 	Created           string                       `bson:"created" json:"created"`
-	Provider          *Reference                   `bson:"provider,omitempty" json:"provider,omitempty"`
-	Payment           Reference                    `bson:"payment" json:"payment"`
+	Reporter          *Reference                   `bson:"reporter,omitempty" json:"reporter,omitempty"`
+	Payment           *Reference                   `bson:"payment,omitempty" json:"payment,omitempty"`
 	PaymentDate       *string                      `bson:"paymentDate,omitempty" json:"paymentDate,omitempty"`
 	Payee             *Reference                   `bson:"payee,omitempty" json:"payee,omitempty"`
 	Recipient         Reference                    `bson:"recipient" json:"recipient"`

@@ -32,12 +32,14 @@ type Practitioner struct {
 	Active            *bool                       `bson:"active,omitempty" json:"active,omitempty"`
 	Name              []HumanName                 `bson:"name,omitempty" json:"name,omitempty"`
 	Telecom           []ContactPoint              `bson:"telecom,omitempty" json:"telecom,omitempty"`
-	Address           []Address                   `bson:"address,omitempty" json:"address,omitempty"`
 	Gender            *AdministrativeGender       `bson:"gender,omitempty" json:"gender,omitempty"`
 	BirthDate         *string                     `bson:"birthDate,omitempty" json:"birthDate,omitempty"`
+	DeceasedBoolean   *bool                       `bson:"deceasedBoolean,omitempty" json:"deceasedBoolean,omitempty"`
+	DeceasedDateTime  *string                     `bson:"deceasedDateTime,omitempty" json:"deceasedDateTime,omitempty"`
+	Address           []Address                   `bson:"address,omitempty" json:"address,omitempty"`
 	Photo             []Attachment                `bson:"photo,omitempty" json:"photo,omitempty"`
 	Qualification     []PractitionerQualification `bson:"qualification,omitempty" json:"qualification,omitempty"`
-	Communication     []CodeableConcept           `bson:"communication,omitempty" json:"communication,omitempty"`
+	Communication     []PractitionerCommunication `bson:"communication,omitempty" json:"communication,omitempty"`
 }
 type PractitionerQualification struct {
 	Id                *string         `bson:"id,omitempty" json:"id,omitempty"`
@@ -47,6 +49,13 @@ type PractitionerQualification struct {
 	Code              CodeableConcept `bson:"code" json:"code"`
 	Period            *Period         `bson:"period,omitempty" json:"period,omitempty"`
 	Issuer            *Reference      `bson:"issuer,omitempty" json:"issuer,omitempty"`
+}
+type PractitionerCommunication struct {
+	Id                *string         `bson:"id,omitempty" json:"id,omitempty"`
+	Extension         []Extension     `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension []Extension     `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Language          CodeableConcept `bson:"language" json:"language"`
+	Preferred         *bool           `bson:"preferred,omitempty" json:"preferred,omitempty"`
 }
 type OtherPractitioner Practitioner
 

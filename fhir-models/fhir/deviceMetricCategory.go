@@ -84,11 +84,11 @@ func (code DeviceMetricCategory) Display() string {
 func (code DeviceMetricCategory) Definition() string {
 	switch code {
 	case DeviceMetricCategoryMeasurement:
-		return "DeviceObservations generated for this DeviceMetric are measured."
+		return "Observations generated for this DeviceMetric are measured."
 	case DeviceMetricCategorySetting:
-		return "DeviceObservations generated for this DeviceMetric is a setting that will influence the behavior of the Device."
+		return "Observations generated for this DeviceMetric is a setting that will influence the behavior of the Device."
 	case DeviceMetricCategoryCalculation:
-		return "DeviceObservations generated for this DeviceMetric are calculated."
+		return "Observations generated for this DeviceMetric are calculated."
 	case DeviceMetricCategoryUnspecified:
 		return "The category of this DeviceMetric is unspecified."
 	}

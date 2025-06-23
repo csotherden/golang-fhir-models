@@ -31,7 +31,7 @@ type EnrollmentResponse struct {
 	Identifier        []Identifier                  `bson:"identifier,omitempty" json:"identifier,omitempty"`
 	Status            *FinancialResourceStatusCodes `bson:"status,omitempty" json:"status,omitempty"`
 	Request           *Reference                    `bson:"request,omitempty" json:"request,omitempty"`
-	Outcome           *ClaimProcessingCodes         `bson:"outcome,omitempty" json:"outcome,omitempty"`
+	Outcome           *EnrollmentOutcome            `bson:"outcome,omitempty" json:"outcome,omitempty"`
 	Disposition       *string                       `bson:"disposition,omitempty" json:"disposition,omitempty"`
 	Created           *string                       `bson:"created,omitempty" json:"created,omitempty"`
 	Organization      *Reference                    `bson:"organization,omitempty" json:"organization,omitempty"`

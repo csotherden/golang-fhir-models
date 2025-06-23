@@ -21,24 +21,27 @@ import "encoding/json"
 
 // Provenance is documented here http://hl7.org/fhir/StructureDefinition/Provenance
 type Provenance struct {
-	Id                *string            `bson:"id,omitempty" json:"id,omitempty"`
-	Meta              *Meta              `bson:"meta,omitempty" json:"meta,omitempty"`
-	ImplicitRules     *string            `bson:"implicitRules,omitempty" json:"implicitRules,omitempty"`
-	Language          *string            `bson:"language,omitempty" json:"language,omitempty"`
-	Text              *Narrative         `bson:"text,omitempty" json:"text,omitempty"`
-	Extension         []Extension        `bson:"extension,omitempty" json:"extension,omitempty"`
-	ModifierExtension []Extension        `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	Target            []Reference        `bson:"target" json:"target"`
-	OccurredPeriod    *Period            `bson:"occurredPeriod,omitempty" json:"occurredPeriod,omitempty"`
-	OccurredDateTime  *string            `bson:"occurredDateTime,omitempty" json:"occurredDateTime,omitempty"`
-	Recorded          string             `bson:"recorded" json:"recorded"`
-	Policy            []string           `bson:"policy,omitempty" json:"policy,omitempty"`
-	Location          *Reference         `bson:"location,omitempty" json:"location,omitempty"`
-	Reason            []CodeableConcept  `bson:"reason,omitempty" json:"reason,omitempty"`
-	Activity          *CodeableConcept   `bson:"activity,omitempty" json:"activity,omitempty"`
-	Agent             []ProvenanceAgent  `bson:"agent" json:"agent"`
-	Entity            []ProvenanceEntity `bson:"entity,omitempty" json:"entity,omitempty"`
-	Signature         []Signature        `bson:"signature,omitempty" json:"signature,omitempty"`
+	Id                *string             `bson:"id,omitempty" json:"id,omitempty"`
+	Meta              *Meta               `bson:"meta,omitempty" json:"meta,omitempty"`
+	ImplicitRules     *string             `bson:"implicitRules,omitempty" json:"implicitRules,omitempty"`
+	Language          *string             `bson:"language,omitempty" json:"language,omitempty"`
+	Text              *Narrative          `bson:"text,omitempty" json:"text,omitempty"`
+	Extension         []Extension         `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension []Extension         `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Target            []Reference         `bson:"target" json:"target"`
+	OccurredPeriod    *Period             `bson:"occurredPeriod,omitempty" json:"occurredPeriod,omitempty"`
+	OccurredDateTime  *string             `bson:"occurredDateTime,omitempty" json:"occurredDateTime,omitempty"`
+	Recorded          *string             `bson:"recorded,omitempty" json:"recorded,omitempty"`
+	Policy            []string            `bson:"policy,omitempty" json:"policy,omitempty"`
+	Location          *Reference          `bson:"location,omitempty" json:"location,omitempty"`
+	Authorization     []CodeableReference `bson:"authorization,omitempty" json:"authorization,omitempty"`
+	Activity          *CodeableConcept    `bson:"activity,omitempty" json:"activity,omitempty"`
+	BasedOn           []Reference         `bson:"basedOn,omitempty" json:"basedOn,omitempty"`
+	Patient           *Reference          `bson:"patient,omitempty" json:"patient,omitempty"`
+	Encounter         *Reference          `bson:"encounter,omitempty" json:"encounter,omitempty"`
+	Agent             []ProvenanceAgent   `bson:"agent" json:"agent"`
+	Entity            []ProvenanceEntity  `bson:"entity,omitempty" json:"entity,omitempty"`
+	Signature         []Signature         `bson:"signature,omitempty" json:"signature,omitempty"`
 }
 type ProvenanceAgent struct {
 	Id                *string           `bson:"id,omitempty" json:"id,omitempty"`

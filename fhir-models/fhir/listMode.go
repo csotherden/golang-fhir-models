@@ -77,7 +77,7 @@ func (code ListMode) Display() string {
 func (code ListMode) Definition() string {
 	switch code {
 	case ListModeWorking:
-		return "This list is the master list, maintained in an ongoing fashion with regular updates as the real world list it is tracking changes."
+		return "This list is the master list, maintained in an ongoing fashion with regular updates as the real-world list it is tracking changes."
 	case ListModeSnapshot:
 		return "This list was prepared as a snapshot. It should not be assumed to be current."
 	case ListModeChanges:

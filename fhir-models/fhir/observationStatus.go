@@ -116,7 +116,7 @@ func (code ObservationStatus) Definition() string {
 	case ObservationStatusPreliminary:
 		return "This is an initial or interim observation: data may be incomplete or unverified."
 	case ObservationStatusFinal:
-		return "The observation is complete and there are no further actions needed. Additional information such \"released\", \"signed\", etc would be represented using [Provenance](provenance.html) which provides not only the act but also the actors and dates and other related data. These act states would be associated with an observation status of `preliminary` until they are all completed and then a status of `final` would be applied."
+		return "The observation is complete and there are no further actions needed. Additional information such \"released\", \"signed\", etc. would be represented using [Provenance](provenance.html) which provides not only the act but also the actors and dates and other related data. These act states would be associated with an observation status of `preliminary` until they are all completed and then a status of `final` would be applied."
 	case ObservationStatusAmended:
 		return "Subsequent to being Final, the observation has been modified subsequent.  This includes updates/new information and corrections."
 	case ObservationStatusCorrected:

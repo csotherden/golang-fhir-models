@@ -22,8 +22,8 @@ type ProductShelfLife struct {
 	Id                           *string           `bson:"id,omitempty" json:"id,omitempty"`
 	Extension                    []Extension       `bson:"extension,omitempty" json:"extension,omitempty"`
 	ModifierExtension            []Extension       `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	Identifier                   *Identifier       `bson:"identifier,omitempty" json:"identifier,omitempty"`
-	Type                         CodeableConcept   `bson:"type" json:"type"`
-	Period                       Quantity          `bson:"period" json:"period"`
+	Type                         *CodeableConcept  `bson:"type,omitempty" json:"type,omitempty"`
+	PeriodDuration               *Duration         `bson:"periodDuration,omitempty" json:"periodDuration,omitempty"`
+	PeriodString                 *string           `bson:"periodString,omitempty" json:"periodString,omitempty"`
 	SpecialPrecautionsForStorage []CodeableConcept `bson:"specialPrecautionsForStorage,omitempty" json:"specialPrecautionsForStorage,omitempty"`
 }

@@ -79,7 +79,7 @@ func (code ObservationRangeCategory) Definition() string {
 	case ObservationRangeCategoryReference:
 		return "Reference (Normal) Range for Ordinal and Continuous Observations."
 	case ObservationRangeCategoryCritical:
-		return "Critical Range for Ordinal and Continuous Observations."
+		return "Critical Range for Ordinal and Continuous Observations. Results outside this range are critical."
 	case ObservationRangeCategoryAbsolute:
 		return "Absolute Range for Ordinal and Continuous Observations. Results outside this range are not possible."
 	}

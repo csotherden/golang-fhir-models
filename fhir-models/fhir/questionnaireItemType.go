@@ -39,8 +39,7 @@ const (
 	QuestionnaireItemTypeString
 	QuestionnaireItemTypeText
 	QuestionnaireItemTypeUrl
-	QuestionnaireItemTypeChoice
-	QuestionnaireItemTypeOpenChoice
+	QuestionnaireItemTypeCoding
 	QuestionnaireItemTypeAttachment
 	QuestionnaireItemTypeReference
 	QuestionnaireItemTypeQuantity
@@ -76,10 +75,8 @@ func (code *QuestionnaireItemType) UnmarshalJSON(json []byte) error {
 		*code = QuestionnaireItemTypeText
 	case "url":
 		*code = QuestionnaireItemTypeUrl
-	case "choice":
-		*code = QuestionnaireItemTypeChoice
-	case "open-choice":
-		*code = QuestionnaireItemTypeOpenChoice
+	case "coding":
+		*code = QuestionnaireItemTypeCoding
 	case "attachment":
 		*code = QuestionnaireItemTypeAttachment
 	case "reference":
@@ -120,10 +117,8 @@ func (code QuestionnaireItemType) Code() string {
 		return "text"
 	case QuestionnaireItemTypeUrl:
 		return "url"
-	case QuestionnaireItemTypeChoice:
-		return "choice"
-	case QuestionnaireItemTypeOpenChoice:
-		return "open-choice"
+	case QuestionnaireItemTypeCoding:
+		return "coding"
 	case QuestionnaireItemTypeAttachment:
 		return "attachment"
 	case QuestionnaireItemTypeReference:
@@ -159,10 +154,8 @@ func (code QuestionnaireItemType) Display() string {
 		return "Text"
 	case QuestionnaireItemTypeUrl:
 		return "Url"
-	case QuestionnaireItemTypeChoice:
-		return "Choice"
-	case QuestionnaireItemTypeOpenChoice:
-		return "Open Choice"
+	case QuestionnaireItemTypeCoding:
+		return "Coding"
 	case QuestionnaireItemTypeAttachment:
 		return "Attachment"
 	case QuestionnaireItemTypeReference:
@@ -183,9 +176,9 @@ func (code QuestionnaireItemType) Definition() string {
 	case QuestionnaireItemTypeBoolean:
 		return "Question with a yes/no answer (valueBoolean)."
 	case QuestionnaireItemTypeDecimal:
-		return "Question with is a real number answer (valueDecimal)."
+		return "Question with is a real number answer (valueDecimal).  There is an extension 'http://hl7.org/fhir/StructureDefinition/questionnaire-unit' that can be used to computably convey the unit of measure associated with the answer for use when performing data extraction to an element of type Quantity."
 	case QuestionnaireItemTypeInteger:
-		return "Question with an integer answer (valueInteger)."
+		return "Question with an integer answer (valueInteger).  There is an extension 'http://hl7.org/fhir/StructureDefinition/questionnaire-unit' that can be used to computably convey the unit of measure associated with the answer for use when performing data extraction to an element of type Quantity."
 	case QuestionnaireItemTypeDate:
 		return "Question with a date answer (valueDate)."
 	case QuestionnaireItemTypeDateTime:
@@ -193,21 +186,19 @@ func (code QuestionnaireItemType) Definition() string {
 	case QuestionnaireItemTypeTime:
 		return "Question with a time (hour:minute:second) answer independent of date. (valueTime)."
 	case QuestionnaireItemTypeString:
-		return "Question with a short (few words to short sentence) free-text entry answer (valueString)."
+		return "Question with a short (few words to short sentence) free-text entry answer (valueString).  Strings SHOULD NOT contain carriage return or newline characters.  If multi-line answers are needed, use the 'text' type."
 	case QuestionnaireItemTypeText:
 		return "Question with a long (potentially multi-paragraph) free-text entry answer (valueString)."
 	case QuestionnaireItemTypeUrl:
 		return "Question with a URL (website, FTP site, etc.) answer (valueUri)."
-	case QuestionnaireItemTypeChoice:
-		return "Question with a Coding drawn from a list of possible answers (specified in either the answerOption property, or via the valueset referenced in the answerValueSet property) as an answer (valueCoding)."
-	case QuestionnaireItemTypeOpenChoice:
-		return "Answer is a Coding drawn from a list of possible answers (as with the choice type) or a free-text entry in a string (valueCoding or valueString)."
+	case QuestionnaireItemTypeCoding:
+		return "Question with a Coding - generally drawn from a list of possible answers (valueCoding)"
 	case QuestionnaireItemTypeAttachment:
 		return "Question with binary content such as an image, PDF, etc. as an answer (valueAttachment)."
 	case QuestionnaireItemTypeReference:
 		return "Question with a reference to another resource (practitioner, organization, etc.) as an answer (valueReference)."
 	case QuestionnaireItemTypeQuantity:
-		return "Question with a combination of a numeric value and unit, potentially with a comparator (<, >, etc.) as an answer. (valueQuantity) There is an extension 'http://hl7.org/fhir/StructureDefinition/questionnaire-unit' that can be used to define what unit should be captured (or the unit that has a ucum conversion from the provided unit)."
+		return "Question with a combination of a numeric value and unit as an answer. (valueSimpleQuantity)  There are two extensions ('http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption' and 'http://hl7.org/fhir/StructureDefinition/questionnaire-unitValueSet')  that can be used to define what unit should be selected for the Quantity.code and Quantity.system."
 	}
 	return "<unknown>"
 }

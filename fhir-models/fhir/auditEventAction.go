@@ -78,7 +78,7 @@ func (code AuditEventAction) Display() string {
 	case AuditEventActionC:
 		return "Create"
 	case AuditEventActionR:
-		return "Read/View/Print"
+		return "Read"
 	case AuditEventActionU:
 		return "Update"
 	case AuditEventActionD:
@@ -93,7 +93,7 @@ func (code AuditEventAction) Definition() string {
 	case AuditEventActionC:
 		return "Create a new database object, such as placing an order."
 	case AuditEventActionR:
-		return "Display or print data, such as a doctor census."
+		return "Read data, such as to print or display to a doctor."
 	case AuditEventActionU:
 		return "Update data, such as revise patient information."
 	case AuditEventActionD:

@@ -31,6 +31,7 @@ const (
 	QuantityComparatorLessOrEquals
 	QuantityComparatorGreaterOrEquals
 	QuantityComparatorGreaterThan
+	QuantityComparatorAd
 )
 
 func (code QuantityComparator) MarshalJSON() ([]byte, error) {
@@ -47,6 +48,8 @@ func (code *QuantityComparator) UnmarshalJSON(json []byte) error {
 		*code = QuantityComparatorGreaterOrEquals
 	case ">":
 		*code = QuantityComparatorGreaterThan
+	case "ad":
+		*code = QuantityComparatorAd
 	default:
 		return fmt.Errorf("unknown QuantityComparator code `%s`", s)
 	}
@@ -65,6 +68,8 @@ func (code QuantityComparator) Code() string {
 		return ">="
 	case QuantityComparatorGreaterThan:
 		return ">"
+	case QuantityComparatorAd:
+		return "ad"
 	}
 	return "<unknown>"
 }
@@ -78,6 +83,8 @@ func (code QuantityComparator) Display() string {
 		return "Greater or Equal to"
 	case QuantityComparatorGreaterThan:
 		return "Greater than"
+	case QuantityComparatorAd:
+		return "Sufficient to achieve this total quantity"
 	}
 	return "<unknown>"
 }
@@ -91,6 +98,8 @@ func (code QuantityComparator) Definition() string {
 		return "The actual value is greater than or equal to the given value."
 	case QuantityComparatorGreaterThan:
 		return "The actual value is greater than the given value."
+	case QuantityComparatorAd:
+		return "The actual value is sufficient for the total quantity to equal the given value."
 	}
 	return "<unknown>"
 }

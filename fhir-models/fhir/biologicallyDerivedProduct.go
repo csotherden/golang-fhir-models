@@ -21,24 +21,26 @@ import "encoding/json"
 
 // BiologicallyDerivedProduct is documented here http://hl7.org/fhir/StructureDefinition/BiologicallyDerivedProduct
 type BiologicallyDerivedProduct struct {
-	Id                *string                                 `bson:"id,omitempty" json:"id,omitempty"`
-	Meta              *Meta                                   `bson:"meta,omitempty" json:"meta,omitempty"`
-	ImplicitRules     *string                                 `bson:"implicitRules,omitempty" json:"implicitRules,omitempty"`
-	Language          *string                                 `bson:"language,omitempty" json:"language,omitempty"`
-	Text              *Narrative                              `bson:"text,omitempty" json:"text,omitempty"`
-	Extension         []Extension                             `bson:"extension,omitempty" json:"extension,omitempty"`
-	ModifierExtension []Extension                             `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	Identifier        []Identifier                            `bson:"identifier,omitempty" json:"identifier,omitempty"`
-	ProductCategory   *BiologicallyDerivedProductCategory     `bson:"productCategory,omitempty" json:"productCategory,omitempty"`
-	ProductCode       *CodeableConcept                        `bson:"productCode,omitempty" json:"productCode,omitempty"`
-	Status            *BiologicallyDerivedProductStatus       `bson:"status,omitempty" json:"status,omitempty"`
-	Request           []Reference                             `bson:"request,omitempty" json:"request,omitempty"`
-	Quantity          *int                                    `bson:"quantity,omitempty" json:"quantity,omitempty"`
-	Parent            []Reference                             `bson:"parent,omitempty" json:"parent,omitempty"`
-	Collection        *BiologicallyDerivedProductCollection   `bson:"collection,omitempty" json:"collection,omitempty"`
-	Processing        []BiologicallyDerivedProductProcessing  `bson:"processing,omitempty" json:"processing,omitempty"`
-	Manipulation      *BiologicallyDerivedProductManipulation `bson:"manipulation,omitempty" json:"manipulation,omitempty"`
-	Storage           []BiologicallyDerivedProductStorage     `bson:"storage,omitempty" json:"storage,omitempty"`
+	Id                      *string                               `bson:"id,omitempty" json:"id,omitempty"`
+	Meta                    *Meta                                 `bson:"meta,omitempty" json:"meta,omitempty"`
+	ImplicitRules           *string                               `bson:"implicitRules,omitempty" json:"implicitRules,omitempty"`
+	Language                *string                               `bson:"language,omitempty" json:"language,omitempty"`
+	Text                    *Narrative                            `bson:"text,omitempty" json:"text,omitempty"`
+	Extension               []Extension                           `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension       []Extension                           `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	ProductCategory         *Coding                               `bson:"productCategory,omitempty" json:"productCategory,omitempty"`
+	ProductCode             *CodeableConcept                      `bson:"productCode,omitempty" json:"productCode,omitempty"`
+	Parent                  []Reference                           `bson:"parent,omitempty" json:"parent,omitempty"`
+	Request                 []Reference                           `bson:"request,omitempty" json:"request,omitempty"`
+	Identifier              []Identifier                          `bson:"identifier,omitempty" json:"identifier,omitempty"`
+	BiologicalSourceEvent   *Identifier                           `bson:"biologicalSourceEvent,omitempty" json:"biologicalSourceEvent,omitempty"`
+	ProcessingFacility      []Reference                           `bson:"processingFacility,omitempty" json:"processingFacility,omitempty"`
+	Division                *string                               `bson:"division,omitempty" json:"division,omitempty"`
+	ProductStatus           *Coding                               `bson:"productStatus,omitempty" json:"productStatus,omitempty"`
+	ExpirationDate          *string                               `bson:"expirationDate,omitempty" json:"expirationDate,omitempty"`
+	Collection              *BiologicallyDerivedProductCollection `bson:"collection,omitempty" json:"collection,omitempty"`
+	StorageTempRequirements *Range                                `bson:"storageTempRequirements,omitempty" json:"storageTempRequirements,omitempty"`
+	Property                []BiologicallyDerivedProductProperty  `bson:"property,omitempty" json:"property,omitempty"`
 }
 type BiologicallyDerivedProductCollection struct {
 	Id                *string     `bson:"id,omitempty" json:"id,omitempty"`
@@ -49,32 +51,20 @@ type BiologicallyDerivedProductCollection struct {
 	CollectedDateTime *string     `bson:"collectedDateTime,omitempty" json:"collectedDateTime,omitempty"`
 	CollectedPeriod   *Period     `bson:"collectedPeriod,omitempty" json:"collectedPeriod,omitempty"`
 }
-type BiologicallyDerivedProductProcessing struct {
-	Id                *string          `bson:"id,omitempty" json:"id,omitempty"`
-	Extension         []Extension      `bson:"extension,omitempty" json:"extension,omitempty"`
-	ModifierExtension []Extension      `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	Description       *string          `bson:"description,omitempty" json:"description,omitempty"`
-	Procedure         *CodeableConcept `bson:"procedure,omitempty" json:"procedure,omitempty"`
-	Additive          *Reference       `bson:"additive,omitempty" json:"additive,omitempty"`
-	TimeDateTime      *string          `bson:"timeDateTime,omitempty" json:"timeDateTime,omitempty"`
-	TimePeriod        *Period          `bson:"timePeriod,omitempty" json:"timePeriod,omitempty"`
-}
-type BiologicallyDerivedProductManipulation struct {
-	Id                *string     `bson:"id,omitempty" json:"id,omitempty"`
-	Extension         []Extension `bson:"extension,omitempty" json:"extension,omitempty"`
-	ModifierExtension []Extension `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	Description       *string     `bson:"description,omitempty" json:"description,omitempty"`
-	TimeDateTime      *string     `bson:"timeDateTime,omitempty" json:"timeDateTime,omitempty"`
-	TimePeriod        *Period     `bson:"timePeriod,omitempty" json:"timePeriod,omitempty"`
-}
-type BiologicallyDerivedProductStorage struct {
-	Id                *string                                 `bson:"id,omitempty" json:"id,omitempty"`
-	Extension         []Extension                             `bson:"extension,omitempty" json:"extension,omitempty"`
-	ModifierExtension []Extension                             `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	Description       *string                                 `bson:"description,omitempty" json:"description,omitempty"`
-	Temperature       *json.Number                            `bson:"temperature,omitempty" json:"temperature,omitempty"`
-	Scale             *BiologicallyDerivedProductStorageScale `bson:"scale,omitempty" json:"scale,omitempty"`
-	Duration          *Period                                 `bson:"duration,omitempty" json:"duration,omitempty"`
+type BiologicallyDerivedProductProperty struct {
+	Id                   *string         `bson:"id,omitempty" json:"id,omitempty"`
+	Extension            []Extension     `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension    []Extension     `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Type                 CodeableConcept `bson:"type" json:"type"`
+	ValueBoolean         bool            `bson:"valueBoolean" json:"valueBoolean"`
+	ValueInteger         int             `bson:"valueInteger" json:"valueInteger"`
+	ValueCodeableConcept CodeableConcept `bson:"valueCodeableConcept" json:"valueCodeableConcept"`
+	ValuePeriod          Period          `bson:"valuePeriod" json:"valuePeriod"`
+	ValueQuantity        Quantity        `bson:"valueQuantity" json:"valueQuantity"`
+	ValueRange           Range           `bson:"valueRange" json:"valueRange"`
+	ValueRatio           Ratio           `bson:"valueRatio" json:"valueRatio"`
+	ValueString          string          `bson:"valueString" json:"valueString"`
+	ValueAttachment      Attachment      `bson:"valueAttachment" json:"valueAttachment"`
 }
 type OtherBiologicallyDerivedProduct BiologicallyDerivedProduct
 

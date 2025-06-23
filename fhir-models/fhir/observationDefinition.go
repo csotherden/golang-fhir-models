@@ -21,48 +21,77 @@ import "encoding/json"
 
 // ObservationDefinition is documented here http://hl7.org/fhir/StructureDefinition/ObservationDefinition
 type ObservationDefinition struct {
-	Id                     *string                                   `bson:"id,omitempty" json:"id,omitempty"`
-	Meta                   *Meta                                     `bson:"meta,omitempty" json:"meta,omitempty"`
-	ImplicitRules          *string                                   `bson:"implicitRules,omitempty" json:"implicitRules,omitempty"`
-	Language               *string                                   `bson:"language,omitempty" json:"language,omitempty"`
-	Text                   *Narrative                                `bson:"text,omitempty" json:"text,omitempty"`
-	Extension              []Extension                               `bson:"extension,omitempty" json:"extension,omitempty"`
-	ModifierExtension      []Extension                               `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	Category               []CodeableConcept                         `bson:"category,omitempty" json:"category,omitempty"`
-	Code                   CodeableConcept                           `bson:"code" json:"code"`
-	Identifier             []Identifier                              `bson:"identifier,omitempty" json:"identifier,omitempty"`
-	PermittedDataType      []ObservationDataType                     `bson:"permittedDataType,omitempty" json:"permittedDataType,omitempty"`
-	MultipleResultsAllowed *bool                                     `bson:"multipleResultsAllowed,omitempty" json:"multipleResultsAllowed,omitempty"`
-	Method                 *CodeableConcept                          `bson:"method,omitempty" json:"method,omitempty"`
-	PreferredReportName    *string                                   `bson:"preferredReportName,omitempty" json:"preferredReportName,omitempty"`
-	QuantitativeDetails    *ObservationDefinitionQuantitativeDetails `bson:"quantitativeDetails,omitempty" json:"quantitativeDetails,omitempty"`
-	QualifiedInterval      []ObservationDefinitionQualifiedInterval  `bson:"qualifiedInterval,omitempty" json:"qualifiedInterval,omitempty"`
-	ValidCodedValueSet     *Reference                                `bson:"validCodedValueSet,omitempty" json:"validCodedValueSet,omitempty"`
-	NormalCodedValueSet    *Reference                                `bson:"normalCodedValueSet,omitempty" json:"normalCodedValueSet,omitempty"`
-	AbnormalCodedValueSet  *Reference                                `bson:"abnormalCodedValueSet,omitempty" json:"abnormalCodedValueSet,omitempty"`
-	CriticalCodedValueSet  *Reference                                `bson:"criticalCodedValueSet,omitempty" json:"criticalCodedValueSet,omitempty"`
+	Id                     *string                               `bson:"id,omitempty" json:"id,omitempty"`
+	Meta                   *Meta                                 `bson:"meta,omitempty" json:"meta,omitempty"`
+	ImplicitRules          *string                               `bson:"implicitRules,omitempty" json:"implicitRules,omitempty"`
+	Language               *string                               `bson:"language,omitempty" json:"language,omitempty"`
+	Text                   *Narrative                            `bson:"text,omitempty" json:"text,omitempty"`
+	Extension              []Extension                           `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension      []Extension                           `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Url                    *string                               `bson:"url,omitempty" json:"url,omitempty"`
+	Identifier             *Identifier                           `bson:"identifier,omitempty" json:"identifier,omitempty"`
+	Version                *string                               `bson:"version,omitempty" json:"version,omitempty"`
+	VersionAlgorithmString *string                               `bson:"versionAlgorithmString,omitempty" json:"versionAlgorithmString,omitempty"`
+	VersionAlgorithmCoding *Coding                               `bson:"versionAlgorithmCoding,omitempty" json:"versionAlgorithmCoding,omitempty"`
+	Name                   *string                               `bson:"name,omitempty" json:"name,omitempty"`
+	Title                  *string                               `bson:"title,omitempty" json:"title,omitempty"`
+	Status                 PublicationStatus                     `bson:"status" json:"status"`
+	Experimental           *bool                                 `bson:"experimental,omitempty" json:"experimental,omitempty"`
+	Date                   *string                               `bson:"date,omitempty" json:"date,omitempty"`
+	Publisher              *string                               `bson:"publisher,omitempty" json:"publisher,omitempty"`
+	Contact                []ContactDetail                       `bson:"contact,omitempty" json:"contact,omitempty"`
+	Description            *string                               `bson:"description,omitempty" json:"description,omitempty"`
+	UseContext             []UsageContext                        `bson:"useContext,omitempty" json:"useContext,omitempty"`
+	Jurisdiction           []CodeableConcept                     `bson:"jurisdiction,omitempty" json:"jurisdiction,omitempty"`
+	Purpose                *string                               `bson:"purpose,omitempty" json:"purpose,omitempty"`
+	Copyright              *string                               `bson:"copyright,omitempty" json:"copyright,omitempty"`
+	CopyrightLabel         *string                               `bson:"copyrightLabel,omitempty" json:"copyrightLabel,omitempty"`
+	ApprovalDate           *string                               `bson:"approvalDate,omitempty" json:"approvalDate,omitempty"`
+	LastReviewDate         *string                               `bson:"lastReviewDate,omitempty" json:"lastReviewDate,omitempty"`
+	EffectivePeriod        *Period                               `bson:"effectivePeriod,omitempty" json:"effectivePeriod,omitempty"`
+	DerivedFromCanonical   []string                              `bson:"derivedFromCanonical,omitempty" json:"derivedFromCanonical,omitempty"`
+	DerivedFromUri         []string                              `bson:"derivedFromUri,omitempty" json:"derivedFromUri,omitempty"`
+	Subject                []CodeableConcept                     `bson:"subject,omitempty" json:"subject,omitempty"`
+	PerformerType          *CodeableConcept                      `bson:"performerType,omitempty" json:"performerType,omitempty"`
+	Category               []CodeableConcept                     `bson:"category,omitempty" json:"category,omitempty"`
+	Code                   CodeableConcept                       `bson:"code" json:"code"`
+	PermittedDataType      []ObservationDataType                 `bson:"permittedDataType,omitempty" json:"permittedDataType,omitempty"`
+	MultipleResultsAllowed *bool                                 `bson:"multipleResultsAllowed,omitempty" json:"multipleResultsAllowed,omitempty"`
+	BodySite               *CodeableConcept                      `bson:"bodySite,omitempty" json:"bodySite,omitempty"`
+	Method                 *CodeableConcept                      `bson:"method,omitempty" json:"method,omitempty"`
+	Specimen               []Reference                           `bson:"specimen,omitempty" json:"specimen,omitempty"`
+	Device                 []Reference                           `bson:"device,omitempty" json:"device,omitempty"`
+	PreferredReportName    *string                               `bson:"preferredReportName,omitempty" json:"preferredReportName,omitempty"`
+	PermittedUnit          []Coding                              `bson:"permittedUnit,omitempty" json:"permittedUnit,omitempty"`
+	QualifiedValue         []ObservationDefinitionQualifiedValue `bson:"qualifiedValue,omitempty" json:"qualifiedValue,omitempty"`
+	HasMember              []Reference                           `bson:"hasMember,omitempty" json:"hasMember,omitempty"`
+	Component              []ObservationDefinitionComponent      `bson:"component,omitempty" json:"component,omitempty"`
 }
-type ObservationDefinitionQuantitativeDetails struct {
-	Id                *string          `bson:"id,omitempty" json:"id,omitempty"`
-	Extension         []Extension      `bson:"extension,omitempty" json:"extension,omitempty"`
-	ModifierExtension []Extension      `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	CustomaryUnit     *CodeableConcept `bson:"customaryUnit,omitempty" json:"customaryUnit,omitempty"`
-	Unit              *CodeableConcept `bson:"unit,omitempty" json:"unit,omitempty"`
-	ConversionFactor  *json.Number     `bson:"conversionFactor,omitempty" json:"conversionFactor,omitempty"`
-	DecimalPrecision  *int             `bson:"decimalPrecision,omitempty" json:"decimalPrecision,omitempty"`
+type ObservationDefinitionQualifiedValue struct {
+	Id                    *string                   `bson:"id,omitempty" json:"id,omitempty"`
+	Extension             []Extension               `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension     []Extension               `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Context               *CodeableConcept          `bson:"context,omitempty" json:"context,omitempty"`
+	AppliesTo             []CodeableConcept         `bson:"appliesTo,omitempty" json:"appliesTo,omitempty"`
+	Gender                *AdministrativeGender     `bson:"gender,omitempty" json:"gender,omitempty"`
+	Age                   *Range                    `bson:"age,omitempty" json:"age,omitempty"`
+	GestationalAge        *Range                    `bson:"gestationalAge,omitempty" json:"gestationalAge,omitempty"`
+	Condition             *string                   `bson:"condition,omitempty" json:"condition,omitempty"`
+	RangeCategory         *ObservationRangeCategory `bson:"rangeCategory,omitempty" json:"rangeCategory,omitempty"`
+	Range                 *Range                    `bson:"range,omitempty" json:"range,omitempty"`
+	ValidCodedValueSet    *string                   `bson:"validCodedValueSet,omitempty" json:"validCodedValueSet,omitempty"`
+	NormalCodedValueSet   *string                   `bson:"normalCodedValueSet,omitempty" json:"normalCodedValueSet,omitempty"`
+	AbnormalCodedValueSet *string                   `bson:"abnormalCodedValueSet,omitempty" json:"abnormalCodedValueSet,omitempty"`
+	CriticalCodedValueSet *string                   `bson:"criticalCodedValueSet,omitempty" json:"criticalCodedValueSet,omitempty"`
 }
-type ObservationDefinitionQualifiedInterval struct {
-	Id                *string                   `bson:"id,omitempty" json:"id,omitempty"`
-	Extension         []Extension               `bson:"extension,omitempty" json:"extension,omitempty"`
-	ModifierExtension []Extension               `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	Category          *ObservationRangeCategory `bson:"category,omitempty" json:"category,omitempty"`
-	Range             *Range                    `bson:"range,omitempty" json:"range,omitempty"`
-	Context           *CodeableConcept          `bson:"context,omitempty" json:"context,omitempty"`
-	AppliesTo         []CodeableConcept         `bson:"appliesTo,omitempty" json:"appliesTo,omitempty"`
-	Gender            *AdministrativeGender     `bson:"gender,omitempty" json:"gender,omitempty"`
-	Age               *Range                    `bson:"age,omitempty" json:"age,omitempty"`
-	GestationalAge    *Range                    `bson:"gestationalAge,omitempty" json:"gestationalAge,omitempty"`
-	Condition         *string                   `bson:"condition,omitempty" json:"condition,omitempty"`
+type ObservationDefinitionComponent struct {
+	Id                *string                               `bson:"id,omitempty" json:"id,omitempty"`
+	Extension         []Extension                           `bson:"extension,omitempty" json:"extension,omitempty"`
+	ModifierExtension []Extension                           `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
+	Code              CodeableConcept                       `bson:"code" json:"code"`
+	PermittedDataType []ObservationDataType                 `bson:"permittedDataType,omitempty" json:"permittedDataType,omitempty"`
+	PermittedUnit     []Coding                              `bson:"permittedUnit,omitempty" json:"permittedUnit,omitempty"`
+	QualifiedValue    []ObservationDefinitionQualifiedValue `bson:"qualifiedValue,omitempty" json:"qualifiedValue,omitempty"`
 }
 type OtherObservationDefinition ObservationDefinition
 

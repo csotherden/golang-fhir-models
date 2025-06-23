@@ -29,20 +29,14 @@ type Substance struct {
 	Extension         []Extension           `bson:"extension,omitempty" json:"extension,omitempty"`
 	ModifierExtension []Extension           `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
 	Identifier        []Identifier          `bson:"identifier,omitempty" json:"identifier,omitempty"`
+	Instance          bool                  `bson:"instance" json:"instance"`
 	Status            *FHIRSubstanceStatus  `bson:"status,omitempty" json:"status,omitempty"`
 	Category          []CodeableConcept     `bson:"category,omitempty" json:"category,omitempty"`
-	Code              CodeableConcept       `bson:"code" json:"code"`
+	Code              CodeableReference     `bson:"code" json:"code"`
 	Description       *string               `bson:"description,omitempty" json:"description,omitempty"`
-	Instance          []SubstanceInstance   `bson:"instance,omitempty" json:"instance,omitempty"`
+	Expiry            *string               `bson:"expiry,omitempty" json:"expiry,omitempty"`
+	Quantity          *Quantity             `bson:"quantity,omitempty" json:"quantity,omitempty"`
 	Ingredient        []SubstanceIngredient `bson:"ingredient,omitempty" json:"ingredient,omitempty"`
-}
-type SubstanceInstance struct {
-	Id                *string     `bson:"id,omitempty" json:"id,omitempty"`
-	Extension         []Extension `bson:"extension,omitempty" json:"extension,omitempty"`
-	ModifierExtension []Extension `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
-	Identifier        *Identifier `bson:"identifier,omitempty" json:"identifier,omitempty"`
-	Expiry            *string     `bson:"expiry,omitempty" json:"expiry,omitempty"`
-	Quantity          *Quantity   `bson:"quantity,omitempty" json:"quantity,omitempty"`
 }
 type SubstanceIngredient struct {
 	Id                       *string         `bson:"id,omitempty" json:"id,omitempty"`

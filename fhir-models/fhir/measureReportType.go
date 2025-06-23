@@ -30,7 +30,7 @@ const (
 	MeasureReportTypeIndividual MeasureReportType = iota
 	MeasureReportTypeSubjectList
 	MeasureReportTypeSummary
-	MeasureReportTypeDataCollection
+	MeasureReportTypeDataExchange
 )
 
 func (code MeasureReportType) MarshalJSON() ([]byte, error) {
@@ -45,8 +45,8 @@ func (code *MeasureReportType) UnmarshalJSON(json []byte) error {
 		*code = MeasureReportTypeSubjectList
 	case "summary":
 		*code = MeasureReportTypeSummary
-	case "data-collection":
-		*code = MeasureReportTypeDataCollection
+	case "data-exchange":
+		*code = MeasureReportTypeDataExchange
 	default:
 		return fmt.Errorf("unknown MeasureReportType code `%s`", s)
 	}
@@ -63,8 +63,8 @@ func (code MeasureReportType) Code() string {
 		return "subject-list"
 	case MeasureReportTypeSummary:
 		return "summary"
-	case MeasureReportTypeDataCollection:
-		return "data-collection"
+	case MeasureReportTypeDataExchange:
+		return "data-exchange"
 	}
 	return "<unknown>"
 }
@@ -76,8 +76,8 @@ func (code MeasureReportType) Display() string {
 		return "Subject List"
 	case MeasureReportTypeSummary:
 		return "Summary"
-	case MeasureReportTypeDataCollection:
-		return "Data Collection"
+	case MeasureReportTypeDataExchange:
+		return "Data Exchange"
 	}
 	return "<unknown>"
 }
@@ -89,8 +89,8 @@ func (code MeasureReportType) Definition() string {
 		return "A subject list report that includes a listing of subjects that satisfied each population criteria in the measure."
 	case MeasureReportTypeSummary:
 		return "A summary report that returns the number of members in each population criteria for the measure."
-	case MeasureReportTypeDataCollection:
-		return "A data collection report that contains data-of-interest for the measure."
+	case MeasureReportTypeDataExchange:
+		return "A data exchange report that contains data-of-interest for the measure (i.e. data that is needed to calculate the measure)"
 	}
 	return "<unknown>"
 }

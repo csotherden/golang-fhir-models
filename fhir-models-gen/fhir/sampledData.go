@@ -21,13 +21,16 @@ import "encoding/json"
 
 // SampledData is documented here http://hl7.org/fhir/StructureDefinition/SampledData
 type SampledData struct {
-	Id         *string      `bson:"id,omitempty" json:"id,omitempty"`
-	Extension  []Extension  `bson:"extension,omitempty" json:"extension,omitempty"`
-	Origin     Quantity     `bson:"origin" json:"origin"`
-	Period     json.Number  `bson:"period" json:"period"`
-	Factor     *json.Number `bson:"factor,omitempty" json:"factor,omitempty"`
-	LowerLimit *json.Number `bson:"lowerLimit,omitempty" json:"lowerLimit,omitempty"`
-	UpperLimit *json.Number `bson:"upperLimit,omitempty" json:"upperLimit,omitempty"`
-	Dimensions int          `bson:"dimensions" json:"dimensions"`
-	Data       *string      `bson:"data,omitempty" json:"data,omitempty"`
+	Id           *string      `bson:"id,omitempty" json:"id,omitempty"`
+	Extension    []Extension  `bson:"extension,omitempty" json:"extension,omitempty"`
+	Origin       Quantity     `bson:"origin" json:"origin"`
+	Interval     *json.Number `bson:"interval,omitempty" json:"interval,omitempty"`
+	IntervalUnit string       `bson:"intervalUnit" json:"intervalUnit"`
+	Factor       *json.Number `bson:"factor,omitempty" json:"factor,omitempty"`
+	LowerLimit   *json.Number `bson:"lowerLimit,omitempty" json:"lowerLimit,omitempty"`
+	UpperLimit   *json.Number `bson:"upperLimit,omitempty" json:"upperLimit,omitempty"`
+	Dimensions   int          `bson:"dimensions" json:"dimensions"`
+	CodeMap      *string      `bson:"codeMap,omitempty" json:"codeMap,omitempty"`
+	Offsets      *string      `bson:"offsets,omitempty" json:"offsets,omitempty"`
+	Data         *string      `bson:"data,omitempty" json:"data,omitempty"`
 }

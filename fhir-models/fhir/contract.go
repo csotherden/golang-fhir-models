@@ -210,9 +210,7 @@ type ContractTermAction struct {
 	PerformerRole       *CodeableConcept            `bson:"performerRole,omitempty" json:"performerRole,omitempty"`
 	Performer           *Reference                  `bson:"performer,omitempty" json:"performer,omitempty"`
 	PerformerLinkId     []string                    `bson:"performerLinkId,omitempty" json:"performerLinkId,omitempty"`
-	ReasonCode          []CodeableConcept           `bson:"reasonCode,omitempty" json:"reasonCode,omitempty"`
-	ReasonReference     []Reference                 `bson:"reasonReference,omitempty" json:"reasonReference,omitempty"`
-	Reason              []string                    `bson:"reason,omitempty" json:"reason,omitempty"`
+	Reason              []CodeableReference         `bson:"reason,omitempty" json:"reason,omitempty"`
 	ReasonLinkId        []string                    `bson:"reasonLinkId,omitempty" json:"reasonLinkId,omitempty"`
 	Note                []Annotation                `bson:"note,omitempty" json:"note,omitempty"`
 	SecurityLabelNumber []int                       `bson:"securityLabelNumber,omitempty" json:"securityLabelNumber,omitempty"`

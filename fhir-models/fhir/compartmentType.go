@@ -32,6 +32,7 @@ const (
 	CompartmentTypeRelatedPerson
 	CompartmentTypePractitioner
 	CompartmentTypeDevice
+	CompartmentTypeEpisodeOfCare
 )
 
 func (code CompartmentType) MarshalJSON() ([]byte, error) {
@@ -50,6 +51,8 @@ func (code *CompartmentType) UnmarshalJSON(json []byte) error {
 		*code = CompartmentTypePractitioner
 	case "Device":
 		*code = CompartmentTypeDevice
+	case "EpisodeOfCare":
+		*code = CompartmentTypeEpisodeOfCare
 	default:
 		return fmt.Errorf("unknown CompartmentType code `%s`", s)
 	}
@@ -70,6 +73,8 @@ func (code CompartmentType) Code() string {
 		return "Practitioner"
 	case CompartmentTypeDevice:
 		return "Device"
+	case CompartmentTypeEpisodeOfCare:
+		return "EpisodeOfCare"
 	}
 	return "<unknown>"
 }
@@ -85,6 +90,8 @@ func (code CompartmentType) Display() string {
 		return "Practitioner"
 	case CompartmentTypeDevice:
 		return "Device"
+	case CompartmentTypeEpisodeOfCare:
+		return "EpisodeOfCare"
 	}
 	return "<unknown>"
 }
@@ -100,6 +107,8 @@ func (code CompartmentType) Definition() string {
 		return "The compartment definition is for the practitioner compartment."
 	case CompartmentTypeDevice:
 		return "The compartment definition is for the device compartment."
+	case CompartmentTypeEpisodeOfCare:
+		return "The compartment definition is for the episodeofcare compartment."
 	}
 	return "<unknown>"
 }

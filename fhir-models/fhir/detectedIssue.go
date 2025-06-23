@@ -29,10 +29,12 @@ type DetectedIssue struct {
 	Extension          []Extension               `bson:"extension,omitempty" json:"extension,omitempty"`
 	ModifierExtension  []Extension               `bson:"modifierExtension,omitempty" json:"modifierExtension,omitempty"`
 	Identifier         []Identifier              `bson:"identifier,omitempty" json:"identifier,omitempty"`
-	Status             ObservationStatus         `bson:"status" json:"status"`
+	Status             string                    `bson:"status" json:"status"`
+	Category           []CodeableConcept         `bson:"category,omitempty" json:"category,omitempty"`
 	Code               *CodeableConcept          `bson:"code,omitempty" json:"code,omitempty"`
 	Severity           *DetectedIssueSeverity    `bson:"severity,omitempty" json:"severity,omitempty"`
-	Patient            *Reference                `bson:"patient,omitempty" json:"patient,omitempty"`
+	Subject            *Reference                `bson:"subject,omitempty" json:"subject,omitempty"`
+	Encounter          *Reference                `bson:"encounter,omitempty" json:"encounter,omitempty"`
 	IdentifiedDateTime *string                   `bson:"identifiedDateTime,omitempty" json:"identifiedDateTime,omitempty"`
 	IdentifiedPeriod   *Period                   `bson:"identifiedPeriod,omitempty" json:"identifiedPeriod,omitempty"`
 	Author             *Reference                `bson:"author,omitempty" json:"author,omitempty"`
@@ -56,6 +58,7 @@ type DetectedIssueMitigation struct {
 	Action            CodeableConcept `bson:"action" json:"action"`
 	Date              *string         `bson:"date,omitempty" json:"date,omitempty"`
 	Author            *Reference      `bson:"author,omitempty" json:"author,omitempty"`
+	Note              []Annotation    `bson:"note,omitempty" json:"note,omitempty"`
 }
 type OtherDetectedIssue DetectedIssue
 
